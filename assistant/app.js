@@ -8,7 +8,9 @@
   const formId = /^[a-z0-9]{6,32}$/.test(config.formspreeId || "") ? config.formspreeId : "";
   const provider = config.provider === "formsubmit" ? "formsubmit" : "formspree";
   const deliveryConfigured = provider === "formsubmit" ? config.formsubmitActivated === true : !!formId;
-  const uploadsEnabled = deliveryConfigured && (provider === "formsubmit" || config.formspreeUploads === true);
+  const uploadsEnabled = deliveryConfigured && (provider === "formsubmit" ? config.formsubmitUploadMode === "native" : config.formspreeUploads === true);
+  const receiptUrl = new URL("thanks.html",document.currentScript.src);
+  const receiptKey = "solvonord-upload-receipt";
   const recipient = "solvonord@gmail.com";
   const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
   let statusKey = "";
@@ -289,6 +291,27 @@
         payload._honey=payload._gotcha;delete payload._gotcha;
         payload._url=`${location.origin}${location.pathname}`;payload._template="table";
       }
+      // FormSubmit AJAX acknowledges text but silently omits uploaded files.
+      // Photo requests must use its documented native multipart form flow.
+      if(provider==="formsubmit"&&uploadsEnabled&&state.photos.length){
+        const token=crypto.randomUUID();
+        const receipt={reference:state.reference,lang,count:state.photos.length,token,createdAt:Date.now(),status:"pending"};
+        sessionStorage.setItem(receiptKey,JSON.stringify(receipt));
+        const target=new URL(receiptUrl);target.searchParams.set("receipt",token);
+        const form=el("form",{method:"post",action:`https://formsubmit.co/${recipient}`,enctype:"multipart/form-data",hidden:""});
+        payload._next=target.href;
+        Object.entries(payload).forEach(([name,value])=>form.append(el("input",{type:"hidden",name,value})));
+        state.photos.forEach((photo,index)=>{
+          const input=el("input",{type:"file",name:index===0?"attachment":`attachment${index+1}`});
+          const transfer=new DataTransfer();transfer.items.add(new File([photo.file],photoName(photo,index),{type:photo.file.type}));
+          input.files=transfer.files;form.append(input);
+        });
+        // This navigation preserves the provider's verification; never disable CAPTCHA.
+        document.querySelector('meta[name="referrer"]').content="strict-origin-when-cross-origin";
+        document.body.append(form);state.nativePending=true;
+        HTMLFormElement.prototype.submit.call(form);
+        return;
+      }
       const headers={Accept:"application/json"};let body;
       if(uploadsEnabled&&state.photos.length){
         body=new FormData();Object.entries(payload).forEach(([key,value])=>body.append(key,value));
@@ -301,8 +324,17 @@
       if(!response.ok || !accepted)throw new Error("Unconfirmed submission");
       state.submitted=true;statusKey="";
     } catch {statusKey="sendError";}
-    finally {clearTimeout(timeout);state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}
+    finally {clearTimeout(timeout);if(!state.nativePending){state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}}
   }
+  window.addEventListener("pageshow",event=>{
+    if(!event.persisted||!state.nativePending)return;
+    state.nativePending=false;state.busy=false;
+    let receipt;try{receipt=JSON.parse(sessionStorage.getItem(receiptKey));}catch{}
+    state.submitted=receipt?.reference===state.reference&&receipt.status==="confirmed";
+    statusKey=state.submitted?"":"sendError";
+    document.querySelectorAll('form[action^="https://formsubmit.co/"]').forEach(form=>form.remove());
+    render(true);
+  });
   async function addPhotos(input) {
     const files=Array.from(input.files||[]),accepted=[],epoch=++photoEpoch;
     if(state.photos.length+files.length>3)return error(t().photoError,input);

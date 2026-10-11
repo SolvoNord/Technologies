@@ -58,7 +58,7 @@
     "deliveryTitle": "Envoi par messagerie pour le moment",
     "deliveryText": "Le bouton courriel ouvre votre application : vous devez ensuite y envoyer le message. L’envoi direct depuis cette page n’est pas encore activé.",
     "deliveryReadyTitle": "Envoyez votre demande ici",
-    "deliveryReadyText": "Décrivez votre besoin, ajoutez vos photos et vérifiez le résumé. Une confirmation avec une référence apparaîtra après l’envoi.",
+    "deliveryReadyText": "Décrivez votre besoin et vérifiez le résumé. Une confirmation avec une référence apparaîtra après l’envoi.",
     "footerLocation": "Montréal et région · FR / EN",
     "services": [
       [
@@ -182,7 +182,7 @@
     "deliveryTitle": "Email app required for now",
     "deliveryText": "The email button opens your app: you still need to send the message there. Direct submission from this page has not been activated yet.",
     "deliveryReadyTitle": "Submit your request here",
-    "deliveryReadyText": "Describe your needs, add photos and review the summary. A confirmation with a reference will appear after submission.",
+    "deliveryReadyText": "Describe your needs and review the summary. A confirmation with a reference will appear after submission.",
     "footerLocation": "Montréal & surrounding area · FR / EN",
     "services": [
       [
