@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Préparez votre demande de service TI avec l’assistant guidé bilingue de SolvoNord Technologies.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src https://formspree.io; object-src 'none'; base-uri 'self'; form-action https://formspree.io">
+  <title>Votre demande, simplement. — SolvoNord Technologies</title>
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./config.js" defer></script>
+  <script src="./content.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#question">Aller à l’assistant / Skip to assistant</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="SolvoNord Technologies"><img src="./mark.svg" alt="" width="37" height="37"><span>solvo<span class="brand-light">nord</span><small>TECHNOLOGIES</small></span></a>
+    <div class="top-actions"><a href="../#accueil">Portfolio ↗</a><nav aria-label="Langue / Language"><button type="button" class="lang" data-lang="fr" lang="fr" aria-label="Français">FR</button><button type="button" class="lang" data-lang="en" lang="en" aria-label="English">EN</button></nav></div>
+  </header>
+  <main class="layout">
+    <aside class="intro">
+      <span class="eyebrow" data-t="eyebrow"></span>
+      <h1 data-t="headline"></h1>
+      <p class="lead" data-t="lead"></p>
+      <div class="process"><div><span>01</span><p data-t="p1"></p></div><div><span>02</span><p data-t="p2"></p></div><div><span>03</span><p data-t="p3"></p></div></div>
+      <div class="contact-card"><span class="mail-symbol" aria-hidden="true">↗</span><div><strong data-t="preferEmail"></strong><a href="mailto:solvonord@gmail.com">solvonord@gmail.com</a></div></div>
+      <p class="intro-foot" data-t="guided"></p>
+    </aside>
+    <section class="assistant" aria-labelledby="assistant-title">
+      <div class="assistant-head"><div class="avatar" aria-hidden="true">S<span></span></div><div><h2 id="assistant-title" data-t="assistantTitle"></h2><p data-t="assistantSub"></p></div><button type="button" id="reset" class="text-button" data-t="reset"></button></div>
+      <div class="progress-area"><div class="progress-text"><span id="step-label"></span><span id="step-count"></span></div><progress id="progress" max="8" value="1"></progress></div>
+      <div class="conversation">
+        <div id="history"></div>
+        <div class="bot-message"><span class="bot-label" data-t="botLabel"></span><h3 id="question" tabindex="-1"></h3><p id="hint"></p></div>
+        <form id="intake" novalidate>
+          <div class="honey" aria-hidden="true"><label for="website">Website</label><input id="website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></div>
+          <div id="fields"></div>
+          <p id="error" role="alert" class="error" hidden></p>
+          <div id="navigation" class="navigation"><button id="back" type="button" class="secondary" data-t="back"></button><button id="next" type="submit" class="primary" data-t="next"></button></div>
+        </form>
+        <p id="status" role="status" class="status" hidden></p>
+      </div>
+      <div class="assistant-foot"><span aria-hidden="true">◇</span><span data-t="safety"></span><a href="mailto:solvonord@gmail.com" data-t="directEmail"></a><button type="button" id="privacy-button" data-t="privacy"></button></div>
+    </section>
+  </main>
+  <footer class="page-footer"><span>© SolvoNord Technologies</span><a href="../#accueil" data-t="portfolio"></a><span data-t="footer"></span></footer>
+  <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-inner"><h2 id="privacy-title" data-t="privacyTitle"></h2><p data-t="privacyBody"></p><p data-t="privacyPhotos"></p><p data-t="privacyService"></p><a href="mailto:solvonord@gmail.com">solvonord@gmail.com</a><form method="dialog"><button class="primary" data-t="close"></button></form></div></dialog>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="dialog-inner"><h2 id="reset-title" data-t="resetTitle"></h2><p data-t="resetBody"></p><div class="navigation"><button id="cancel-reset" class="secondary" data-t="cancel"></button><button id="confirm-reset" class="primary" data-t="erase"></button></div></div></dialog>
+  <noscript>JavaScript est nécessaire pour l’assistant. / This assistant requires JavaScript. <a href="mailto:solvonord@gmail.com">Écrivez-nous / Email us</a>.</noscript>
+</body>
+</html>
