@@ -5,9 +5,9 @@ Portfolio bilingue français/anglais et assistant guidé de demande de service, 
 - Compte GitHub : **SolvoNord**
 - Dépôt de destination : **https://github.com/SolvoNord/Technologies**
 - Courriel : **solvonord@gmail.com**
-- Adresse prévue après activation de GitHub Pages : **https://solvonord.github.io/Technologies/**
+- Site public : **https://solvonord.github.io/Technologies/**
 
-Cette adresse n'est pas annoncée comme active avant publication et vérification. Ce dépôt est indépendant de l'ancien portfolio.
+Site publié et vérifié le 11 octobre 2026, en français et en anglais. GitHub Pages utilise la branche `main`, dossier racine, avec HTTPS activé. Ce dépôt est indépendant de l'ancien portfolio.
 
 ## Publication sur GitHub Pages
 
@@ -22,7 +22,7 @@ Le site est entièrement statique, sans compilation ni clé d'API payante. Les c
 
 Le formulaire fourni par le propriétaire est configuré dans `assistant/config.js` : `https://formspree.io/f/mqpelgwz`. `testMode: true` affiche une invitation à utiliser des renseignements fictifs.
 
-Le 11 octobre 2026, Formspree a accepté une demande fictive envoyée depuis la prévisualisation locale, référence **SN-20261011-01**, sans ouverture d'Outlook. La réception en boîte et le destinataire configuré dans Formspree restent à vérifier par le propriétaire. Une confirmation Formspree n'est pas une confirmation de livraison du courriel ou de rendez-vous.
+Le 11 octobre 2026, Formspree a accepté une demande fictive envoyée depuis la prévisualisation locale, référence **SN-20261011-01**, puis une demande depuis le site public, référence **SN-PUBLIC-20261011-01**, sans ouverture d'Outlook. La réception en boîte et le destinataire configuré dans Formspree restent à vérifier par le propriétaire. Une confirmation Formspree n'est pas une confirmation de livraison du courriel ou de rendez-vous.
 
 Avant utilisation par les clients : vérifier le destinataire `solvonord@gmail.com`, les protections anti-spam et les limites du service, tester depuis l'adresse publique, puis passer `testMode` à `false` lorsque la réception est confirmée.
 
@@ -49,6 +49,6 @@ Le formulaire applique un champ piège, un délai minimal et une limitation des 
 
 ## English
 
-A bilingual portfolio and guided service request form for SolvoNord Technologies. Publish the contents of this folder to the `main` branch of **SolvoNord/Technologies**, then enable GitHub Pages from `main` / root. The intended website address is **https://solvonord.github.io/Technologies/**; verify deployment before sharing it as a live site.
+A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
 
-The owner's test Formspree endpoint is already configured. One local test was accepted, reference **SN-20261011-01**; inbox delivery still needs owner verification. Keep test mode enabled until delivery is confirmed. The email-app option only prepares a message. Photos remain local and are not attached automatically.
+The owner's test Formspree endpoint is configured. Formspree accepted a local test, reference **SN-20261011-01**, and a public-site test, reference **SN-PUBLIC-20261011-01**; inbox delivery still needs owner verification. Keep test mode enabled until delivery is confirmed. The email-app option only prepares a message. Photos remain local and are not attached automatically.
