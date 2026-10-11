@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="SolvoNord Technologies : dépannage TI, Wi-Fi, réseaux, câblage et cybersécurité pour particuliers et entreprises à Montréal et dans la région.">
-  <meta property="og:title" content="SolvoNord Technologies | TI, réseaux et cybersécurité">
+  <meta property="og:title" content="SolvoNord Technologies | Réseaux, télécommunications et sécurité">
   <meta property="og:description" content="Découvrez nos services et nos réalisations, puis préparez votre demande avec notre assistant bilingue.">
   <meta property="og:type" content="website">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src https://formspree.io; object-src 'none'; base-uri 'self'; form-action https://formspree.io">
-  <title>SolvoNord Technologies | TI, réseaux et cybersécurité</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src https://formspree.io https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action https://formspree.io https://formsubmit.co">
+  <title>SolvoNord Technologies | Réseaux, télécommunications et sécurité</title>
   <link rel="icon" href="./assistant/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assistant/styles.css">
   <link rel="stylesheet" href="./site.css">
@@ -56,7 +56,7 @@
       <a href="#demande" class="portfolio-link project-cta" data-site="projectCta">Vous avez un projet similaire? Parlons-en ↗</a>
     </div></section>
     <section id="apropos" class="site-container content-section about-section">
-      <div class="about-copy"><span class="eyebrow" data-site="aboutEyebrow">VOTRE INTERLOCUTEUR</span><h2>Abdoul Mazide Baldé</h2><p class="about-role" data-site="aboutRole">Consultant en réseaux et cybersécurité</p><p data-site="aboutText">SolvoNord Technologies, c’est un accompagnement technique qui relie l’analyse, les explications et la mise en œuvre. Une expérience des environnements critiques, mise au service de vos besoins TI.</p><a href="https://linkedin.com/in/abdoul-mazide-balde-05a909140" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-site="linkedin">Voir le profil LinkedIn ↗</a></div>
+      <div class="about-copy"><span class="eyebrow" data-site="aboutEyebrow">VOTRE INTERLOCUTEUR</span><h2>Abdoul Mazide Baldé</h2><p class="about-role" data-site="aboutRole">Spécialiste en réseaux, télécommunications et sécurité</p><p data-site="aboutText">SolvoNord Technologies, c’est un accompagnement technique qui relie l’analyse, les explications et la mise en œuvre. Une expérience des environnements critiques, mise au service de vos besoins TI.</p><a href="https://linkedin.com/in/abdoul-mazide-balde-05a909140" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-site="linkedin">Voir le profil LinkedIn ↗</a></div>
       <div class="credentials"><h3 data-site="credentialsTitle">Parcours et compétences</h3><div class="credential"><strong>CCNA</strong><span>Cisco Systems</span></div><div class="credential"><strong>Fortinet Certified Associate</strong><span>Fortinet</span></div><div class="credential"><strong>EDU-110</strong><span>Palo Alto Networks</span></div><div class="credential"><strong data-site="degree1">Baccalauréat en cybersécurité</strong><span>Polytechnique Montréal</span></div><div class="credential"><strong data-site="degree2">DEC en réseautique</strong><span>Institut Teccart</span></div></div>
     </section>
     <section class="approach-section"><div class="site-container"><span class="eyebrow" data-site="approachEyebrow">COMMENT ÇA SE PASSE</span><div class="approach-grid"><div><span>01</span><h3 data-site="approach1Title">On comprend.</h3><p data-site="approach1Text">Vous décrivez le problème ou le projet avec l’assistant ou par courriel.</p></div><div><span>02</span><h3 data-site="approach2Title">On clarifie.</h3><p data-site="approach2Text">Nous précisons ensemble le périmètre, les options et les disponibilités.</p></div><div><span>03</span><h3 data-site="approach3Title">On intervient.</h3><p data-site="approach3Text">L’intervention se planifie après confirmation des détails et de votre accord.</p></div></div></div></section>
@@ -68,13 +68,14 @@
       <div class="conversation">
         <div id="history"></div>
         <div class="bot-message"><span class="bot-label" data-t="botLabel"></span><h3 id="question" tabindex="-1"></h3><p id="hint"></p></div>
+        <p id="status" role="status" class="status" hidden></p>
+        <div id="submission-success" class="submission-success" role="region" aria-labelledby="question" hidden></div>
         <form id="intake" novalidate>
           <div class="honey" aria-hidden="true"><label for="website">Website</label><input id="website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></div>
           <div id="fields"></div>
           <p id="error" role="alert" class="error" hidden></p>
           <div id="navigation" class="navigation"><button id="back" type="button" class="secondary" data-t="back"></button><button id="next" type="submit" class="primary" data-t="next"></button></div>
         </form>
-        <p id="status" role="status" class="status" hidden></p>
       </div>
       <div class="assistant-foot"><span aria-hidden="true">◇</span><span data-t="safety"></span><a href="mailto:solvonord@gmail.com" data-t="directEmail"></a><button type="button" id="privacy-button" data-t="privacy"></button></div>
     </section>

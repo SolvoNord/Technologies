@@ -6,8 +6,11 @@
   const config = window.SOLVONORD_CONFIG || {};
   // Deliberately accept only a public Formspree ID, never an arbitrary URL.
   const formId = /^[a-z0-9]{6,32}$/.test(config.formspreeId || "") ? config.formspreeId : "";
+  const provider = config.provider === "formsubmit" ? "formsubmit" : "formspree";
+  const deliveryConfigured = provider === "formsubmit" ? config.formsubmitActivated === true : !!formId;
+  const uploadsEnabled = deliveryConfigured && (provider === "formsubmit" || config.formspreeUploads === true);
   const recipient = "solvonord@gmail.com";
-  const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false};
+  const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
   let statusKey = "";
   let photoEpoch = 0;
   const t = () => window.SN_CONTENT[lang];
@@ -56,6 +59,8 @@
   }
   const details = () => t().details[state.answers.service];
   const opt = (options,value) => options[Number(value)] || t().notSpecified;
+  const photoName = (photo,index) => `photo-${index+1}.${({"image/jpeg":"jpg","image/png":"png","image/webp":"webp"})[photo.file.type]}`;
+  const photoSummary = () => uploadsEnabled ? (state.photos.length ? state.photos.map(photoName).join(", ") : t().none) : (state.photoFollowup ? t().photosByEmail : t().noPhotosSent);
   function summary() {
     const c=t(), a=state.answers, l=c.summaryLabels;
     const lines=[c.summaryTitle, "", `${l.service}: ${c.services[a.service]?.[0] || ""}`,`${l.description}: ${a.description || ""}`, ""];
@@ -63,7 +68,7 @@
       const value = Array.isArray(values) ? opt(values,a[key]) : a[key] || c.notSpecified;
       lines.push(`${label}: ${value}`);
     }
-    lines.push("", `${l.customer}: ${opt(c.customerOptions,a.customer)}`, `${l.location}: ${a.location || ""}`,`${l.site}: ${opt(c.siteOptions,a.site)}`,`${l.urgency}: ${opt(c.urgencyOptions,a.urgency)}`,`${l.availability}: ${a.availability || c.notSpecified}`,`${l.photos}: ${state.photos.length ? state.photos.map((_,i)=>`photo-${i+1}`).join(", ") : c.none}`, "",`${l.name}: ${a.name || ""}`,`${l.method}: ${opt(c.methods,a.method)}`);
+    lines.push("", `${l.customer}: ${opt(c.customerOptions,a.customer)}`, `${l.location}: ${a.location || ""}`,`${l.site}: ${opt(c.siteOptions,a.site)}`,`${l.urgency}: ${opt(c.urgencyOptions,a.urgency)}`,`${l.availability}: ${a.availability || c.notSpecified}`,`${l.photos}: ${photoSummary()}`, "",`${l.name}: ${a.name || ""}`,`${l.method}: ${opt(c.methods,a.method)}`);
     if (a.email) lines.push(`${l.email}: ${a.email}`);
     if (a.phone) lines.push(`${l.phone}: ${a.phone}`);
     lines.push(`${l.language}: ${lang === "fr" ? "Français" : "English"}`);
@@ -79,28 +84,42 @@
       (details()?.fields || []).map(([k,,v])=>Array.isArray(v)?opt(v,a[k]):a[k]).filter(Boolean).join(" · "),
       [a.location,opt(t().customerOptions,a.customer),opt(t().siteOptions,a.site)].join(" · "),
       [opt(t().urgencyOptions,a.urgency),a.availability].filter(Boolean).join(" · "),
-      `${state.photos.length} ${t().photoCount}`, [a.name,a.email,a.phone].filter(Boolean).join(" · ")];
+      photoSummary(), [a.name,a.email,a.phone].filter(Boolean).join(" · ")];
     prior.slice(0,state.step).forEach((value,index)=>{const p=el("div",{class:"history-entry"});p.append(el("strong",{},t().steps[index]),document.createTextNode(value||t().notSpecified));box.append(p);});
     $("history").append(box);
   }
   function render(focus = false) {
     const c=t();
     document.documentElement.lang=lang;
-    document.title = document.body.classList.contains("portfolio-page") ? (lang === "fr" ? "SolvoNord Technologies | TI, réseaux et cybersécurité" : "SolvoNord Technologies | IT, Networks & Cybersecurity") : (lang === "fr" ? "SolvoNord Technologies — Votre demande" : "SolvoNord Technologies — Your request");
+    document.title = document.body.classList.contains("portfolio-page") ? (lang === "fr" ? "SolvoNord Technologies | Réseaux, télécommunications et sécurité" : "SolvoNord Technologies | Networks, Telecommunications & Security") : (lang === "fr" ? "SolvoNord Technologies — Votre demande" : "SolvoNord Technologies — Your request");
     document.querySelectorAll("[data-t]").forEach(node=>node.textContent=c[node.dataset.t]);
+    document.querySelector('[data-t="privacyPhotos"]').textContent=uploadsEnabled?c.privacyPhotosUpload:c.privacyPhotos;
+    document.querySelector('[data-t="privacyService"]').textContent=c.privacyService.replaceAll("{service}",provider==="formsubmit"?"FormSubmit":"Formspree");
     document.querySelectorAll("[data-lang]").forEach(node=>{node.setAttribute("aria-pressed",String(node.dataset.lang===lang));node.disabled=state.busy;});
     $("step-label").textContent=c.steps[state.step];
     $("step-count").textContent=`${String(state.step+1).padStart(2,"0")} / 08`;
     $("progress").value=state.step+1;
     $("progress").setAttribute("aria-label",c.steps[state.step]);
-    $("question").textContent=c.questions[state.step];
-    $("hint").textContent=c.hints[state.step];
+    $("question").textContent=state.submitted?c.successTitle:c.questions[state.step];
+    $("hint").textContent=state.submitted?c.successLead:(state.step===5?(uploadsEnabled?c.photoUploadHint:c.photoEmailHint):c.hints[state.step]);
     $("back").hidden=state.step===0;
     $("next").hidden=state.step===7;
     $("error").hidden=true;
     $("status").hidden=!statusKey;
     $("status").textContent=statusKey?c[statusKey]:"";
+    $("status").classList.toggle("status-uncertain",statusKey==="sendError");
+    $("status").tabIndex=-1;
+    $("intake").hidden=state.submitted;
+    $("history").hidden=state.submitted;
+    $("submission-success").hidden=!state.submitted;
+    $("intake").setAttribute("aria-busy",String(state.busy));
     $("fields").replaceChildren();
+    if(state.submitted){
+      $("status").hidden=true;
+      $("reset").disabled=false;
+      $("step-label").textContent=c.successStep;
+      renderSuccess();finishRender(focus);return;
+    }
     renderHistory();
     const f=$("fields");
     if (state.step===0) {
@@ -134,7 +153,13 @@
     if (state.step===4) {
       f.append(field("urgency",c.urgency,c.urgencyOptions),el("p",{class:"note",id:"urgent-note"},c.urgentNote),field("availability",c.availability,c.availabilityPlaceholder,{optional:true,max:180,hint:c.availabilityHint}));
     }
-    if (state.step===5) {
+    if (state.step===5 && !uploadsEnabled) {
+      f.append(el("p",{class:"note"},c.photoEmailNotice));
+      const label=el("label",{class:"check",for:"photo-followup"});
+      const check=el("input",{type:"checkbox",id:"photo-followup"});check.checked=state.photoFollowup;
+      label.append(check,el("span",{},c.photoFollowup));f.append(label);
+    }
+    if (state.step===5 && uploadsEnabled) {
       const wrap=el("div",{class:"field"});wrap.append(el("label",{for:"photos"},c.photoLabel));
       const input=el("input",{type:"file",id:"photos",accept:"image/jpeg,image/png,image/webp",multiple:"","aria-describedby":"photos-hint"});
       input.addEventListener("change",()=>addPhotos(input));
@@ -147,7 +172,7 @@
         remove.onclick=()=>{URL.revokeObjectURL(p.url);state.photos.splice(i,1);state.summaryDirty=false;state.summary="";state.consent=false;render(true);};
         fig.append(remove);grid.append(fig);
       });
-      f.append(grid,el("p",{class:"note"},c.photoNotice));
+      f.append(grid,el("p",{class:"note"},c.photoUploadNotice));
     }
     if (state.step===6) {
       f.append(field("name",c.name,c.namePlaceholder,{min:2,max:80,autocomplete:"name"}),field("method",c.method,c.methods));
@@ -156,10 +181,28 @@
     }
     if(state.step===7) renderReview(f);
     $("reset").disabled=state.busy;
-    if (state.busy) $("intake").querySelectorAll("input,textarea,select,button").forEach(node=>node.disabled=true);
+    $("intake").querySelectorAll("input,textarea,select,button").forEach(node=>node.disabled=state.busy||(node.id==="send-direct"&&!deliveryConfigured));
+    finishRender(focus);
+  }
+  function finishRender(focus){
     document.dispatchEvent(new CustomEvent("solvonord:language",{detail:{lang}}));
     if(params.get("embed")==="1")window.parent.postMessage({type:"solvonord-language",lang},location.origin==="null"?"*":location.origin);
     if(focus) $("question").focus({preventScroll:false});
+  }
+  function renderSuccess(){
+    const c=t(),box=$("submission-success");box.replaceChildren();
+    box.append(el("div",{class:"success-mark","aria-hidden":"true"},"✓"),el("p",{class:"success-message"},c.successBody));
+    const reference=el("p",{class:"request-reference"});reference.append(el("span",{},c.referenceLabel),el("strong",{},state.reference));box.append(reference);
+    box.append(el("p",{class:"success-detail"},c.successNext));
+    if(uploadsEnabled&&state.photos.length)box.append(el("p",{class:"note"},`${state.photos.length} ${c.photosUploaded}`));
+    if(!uploadsEnabled){
+      const photos=el("div",{class:"success-photos"});photos.append(el("p",{},c.successPhotos));
+      const subject=`SolvoNord — Photos — ${state.reference}`;
+      const body=`${c.photoEmailBody} ${state.reference}\n\n`;
+      photos.append(el("a",{class:"secondary",id:"send-photos",href:`mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`},c.sendPhotos));box.append(photos);
+    }
+    const saved=el("details",{class:"submitted-summary"});saved.append(el("summary",{},c.viewSubmitted),el("pre",{},state.summary));box.append(saved);
+    const next=el("button",{type:"button",class:"primary",id:"new-request"},c.newRequest);next.onclick=()=>$("reset-dialog").showModal();box.append(next);
   }
   function renderReview(f) {
     const c=t();
@@ -171,14 +214,15 @@
     label.append(check,el("span",{},c.consent));f.append(label);
     const actions=el("div",{class:"review-actions"});
     const email=el("button",{type:"button",class:"secondary",id:"send-email","aria-describedby":"email-help"},c.emailSend);email.onclick=sendEmail;
-    const auto=el("button",{type:"button",class:"primary delivery-primary",id:"send-direct","aria-describedby":"delivery-note"},formId?c.autoSend:c.autoDisabled);auto.disabled=!formId;auto.onclick=sendDirect;
+    const auto=el("button",{type:"button",class:"primary delivery-primary",id:"send-direct","aria-describedby":"delivery-note"},state.busy?c.sending:(deliveryConfigured?c.autoSend:c.autoDisabled));auto.disabled=!deliveryConfigured;auto.onclick=sendDirect;
     const small=el("div",{class:"small-actions"});
     const copy=el("button",{type:"button",class:"secondary",id:"copy-summary"},c.copy);
     copy.onclick=async()=>{if(!checkSummary())return;try{await navigator.clipboard.writeText(state.summary);showStatus("copied");}catch{showStatus("copyError");}};
     const download=el("button",{type:"button",class:"secondary",id:"download-summary"},c.download);download.onclick=()=>{if(!checkSummary())return;const url=URL.createObjectURL(new Blob([state.summary],{type:"text/plain;charset=utf-8"}));const link=el("a",{href:url,download:"demande-solvonord.txt"});document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showStatus("downloaded");};
     const emailHelp=el("p",{class:"delivery-help",id:"email-help"},c.emailHelp);
-    small.append(copy,download);actions.append(auto,el("p",{class:"note delivery-note",id:"delivery-note"},formId?c.autoReady:c.autoNote),email,emailHelp,small);f.append(actions);
-    if(state.photos.length) f.append(el("p",{class:"note"},c.photoNotice));
+    const deliveryNote=(deliveryConfigured?(uploadsEnabled?c.autoReadyUpload:c.autoReady):c.autoNote).replaceAll("{service}",provider==="formsubmit"?"FormSubmit":"Formspree");
+    small.append(copy,download);actions.append(auto,el("p",{class:"note delivery-note",id:"delivery-note"},deliveryNote),email,emailHelp,small);f.append(actions);
+    if(state.photos.length) f.append(el("p",{class:"note"},c.photoUploadNotice));
   }
   // An extra guard for obvious secrets; this is not a complete DLP system.
   function containsSensitive(value) {
@@ -233,28 +277,41 @@
     const link=el("a",{href});document.body.append(link);link.click();link.remove();showStatus("mailOpened");
   }
   async function sendDirect() {
-    if(!formId || state.busy || !readyToSend())return;
+    if(state.submitted || !deliveryConfigured || state.busy || !readyToSend())return;
     if(state.lastSend && Date.now()-state.lastSend<60000)return error(t().rateError);
+    if(!state.reference)state.reference=`SN-${new Date().toISOString().slice(0,10).replaceAll("-","")}-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36).toUpperCase().padStart(7,"0")}`;
     state.busy=true;state.lastSend=Date.now();statusKey="sending";render();
-    const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),15000);
+    const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);
     try {
       // The edited summary is authoritative: do not silently resend old contact fields.
-      const payload={message:state.summary,language:lang,consent:t().consentRecorded,consent_version:"2026-10-11",consent_at:new Date().toISOString(),_subject:`SolvoNord — ${t().services[state.answers.service][0]}`,_gotcha:$("website").value};
-      const response=await fetch(`https://formspree.io/f/${formId}`,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(payload),signal:controller.signal,credentials:"omit",referrerPolicy:"no-referrer"});
-      const data=await response.json();
-      if(!response.ok || data.ok!==true)throw new Error("Unconfirmed submission");
-      statusKey="sent";
+      const payload={message:state.summary,request_reference:state.reference,language:lang,consent:t().consentRecorded,consent_version:"2026-10-11",consent_at:new Date().toISOString(),_subject:`SolvoNord — ${t().services[state.answers.service][0]} — ${state.reference}`,_gotcha:$("website").value};
+      if(provider==="formsubmit"){
+        payload._honey=payload._gotcha;delete payload._gotcha;
+        payload._url=`${location.origin}${location.pathname}`;payload._template="table";
+      }
+      const headers={Accept:"application/json"};let body;
+      if(uploadsEnabled&&state.photos.length){
+        body=new FormData();Object.entries(payload).forEach(([key,value])=>body.append(key,value));
+        state.photos.forEach((photo,index)=>body.append(provider==="formsubmit"?`attachment${index+1}`:"attachment",photo.file,photoName(photo,index)));
+      }else{headers["Content-Type"]="application/json";body=JSON.stringify(payload);}
+      const endpoint=provider==="formsubmit"?`https://formsubmit.co/ajax/${recipient}`:`https://formspree.io/f/${formId}`;
+      const response=await fetch(endpoint,{method:"POST",headers,body,signal:controller.signal,credentials:"omit",referrerPolicy:provider==="formsubmit"?"strict-origin-when-cross-origin":"no-referrer"});
+      const data=await response.json().catch(()=>null);
+      const accepted=provider==="formsubmit"?(data?.success===true||data?.success==="true"):(data?.ok!==false&&!data?.errors?.length);
+      if(!response.ok || !accepted)throw new Error("Unconfirmed submission");
+      state.submitted=true;statusKey="";
     } catch {statusKey="sendError";}
-    finally {clearTimeout(timeout);state.busy=false;render();}
+    finally {clearTimeout(timeout);state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}
   }
   async function addPhotos(input) {
     const files=Array.from(input.files||[]),accepted=[],epoch=++photoEpoch;
     if(state.photos.length+files.length>3)return error(t().photoError,input);
+    if([...state.photos.map(p=>p.file),...files].reduce((total,file)=>total+file.size,0)>9*1024*1024)return error(t().photoTotalError,input);
     // Validate actual image decoding as well as file type and size.
     try {
       for(const file of files){
         if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>5*1024*1024||!file.size)throw new Error("image");
-        const url=URL.createObjectURL(file);accepted.push({url});
+        const url=URL.createObjectURL(file);accepted.push({url,file});
         const image=new Image();image.src=url;await image.decode();
       }
       if(epoch!==photoEpoch){accepted.forEach(p=>URL.revokeObjectURL(p.url));return;}
@@ -271,8 +328,10 @@
     const input=event.target;
     input.removeAttribute("aria-invalid");
     if(input.id==="consent"){state.consent=input.checked;return;}
+    if(input.id==="photo-followup"){state.photoFollowup=input.checked;state.summary="";state.summaryDirty=false;state.consent=false;}
     if(input.id==="summary"){state.summary=input.value;state.summaryDirty=true;state.consent=false;$("consent").checked=false;}
     if(input.dataset.answer){state.answers[input.dataset.answer]=input.value;state.summaryDirty=false;state.summary="";state.consent=false;}
+    state.reference="";
     statusKey="";$("status").hidden=true;
   });
   $("intake").addEventListener("change",event=>{
@@ -296,7 +355,7 @@
   $("confirm-reset").onclick=()=>{
     photoEpoch++;
     state.photos.forEach(p=>URL.revokeObjectURL(p.url));
-    Object.assign(state,{step:0,answers:{},photos:[],summary:"",summaryDirty:false,consent:false,started:Date.now()});
+    Object.assign(state,{step:0,answers:{},photos:[],summary:"",summaryDirty:false,consent:false,started:Date.now(),submitted:false,reference:"",photoFollowup:false});
     $("website").value="";statusKey="";$("reset-dialog").close();render(true);
   };
   document.addEventListener("keydown",event=>{if(event.key==="Escape"&&params.get("embed")==="1"&&!$("privacy-dialog").open&&!$("reset-dialog").open)window.parent.postMessage({type:"solvonord-close"},location.origin==="null"?"*":location.origin);});

@@ -6,3 +6,4 @@
 .portfolio-page a.primary,.portfolio-page a.secondary{border-radius:9px}.portfolio-page .hero-board h2{font-size:29px;line-height:1.22;letter-spacing:-.8px;margin:22px 0 26px}
 @media(max-width:800px){html{scroll-padding-top:150px}.portfolio-page #question{scroll-margin-top:160px}.portfolio-page .hero-board h2{font-size:27px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.site-service{min-width:0;overflow-wrap:anywhere}.site-service h3{hyphens:auto}

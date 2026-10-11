@@ -6,7 +6,7 @@
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="Préparez votre demande de service TI avec l’assistant guidé bilingue de SolvoNord Technologies.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src https://formspree.io; object-src 'none'; base-uri 'self'; form-action https://formspree.io">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src https://formspree.io https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action https://formspree.io https://formsubmit.co">
   <title>Votre demande, simplement. — SolvoNord Technologies</title>
   <link rel="icon" href="./mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
@@ -35,13 +35,14 @@
       <div class="conversation">
         <div id="history"></div>
         <div class="bot-message"><span class="bot-label" data-t="botLabel"></span><h3 id="question" tabindex="-1"></h3><p id="hint"></p></div>
+        <p id="status" role="status" class="status" hidden></p>
+        <div id="submission-success" class="submission-success" role="region" aria-labelledby="question" hidden></div>
         <form id="intake" novalidate>
           <div class="honey" aria-hidden="true"><label for="website">Website</label><input id="website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></div>
           <div id="fields"></div>
           <p id="error" role="alert" class="error" hidden></p>
           <div id="navigation" class="navigation"><button id="back" type="button" class="secondary" data-t="back"></button><button id="next" type="submit" class="primary" data-t="next"></button></div>
         </form>
-        <p id="status" role="status" class="status" hidden></p>
       </div>
       <div class="assistant-foot"><span aria-hidden="true">◇</span><span data-t="safety"></span><a href="mailto:solvonord@gmail.com" data-t="directEmail"></a><button type="button" id="privacy-button" data-t="privacy"></button></div>
     </section>

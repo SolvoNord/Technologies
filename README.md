@@ -18,23 +18,27 @@ Site publié et vérifié le 11 octobre 2026, en français et en anglais. GitHub
 
 Le site est entièrement statique, sans compilation ni clé d'API payante. Les chemins relatifs sont compatibles avec le sous-dossier `/Technologies/`.
 
-## Formulaire de test
+## Envoi des demandes et photos
 
-Le formulaire fourni par le propriétaire est configuré dans `assistant/config.js` : `https://formspree.io/f/mqpelgwz`. `testMode: true` affiche une invitation à utiliser des renseignements fictifs.
+Le fournisseur actif est **FormSubmit**, avec le destinataire `solvonord@gmail.com`. Le propriétaire a confirmé l'activation du formulaire par courriel. `assistant/config.js` contient `provider: "formsubmit"`, `formsubmitActivated: true` et `testMode: false`.
 
-Le 11 octobre 2026, Formspree a accepté une demande fictive envoyée depuis la prévisualisation locale, référence **SN-20261011-01**, puis une demande depuis le site public, référence **SN-PUBLIC-20261011-01**, sans ouverture d'Outlook. La réception en boîte et le destinataire configuré dans Formspree restent à vérifier par le propriétaire. Une confirmation Formspree n'est pas une confirmation de livraison du courriel ou de rendez-vous.
+« Envoyer directement » transmet le résumé édité, le consentement et les images sélectionnées à FormSubmit, sans ouvrir une messagerie. Le site accepte jusqu'à **3 photos JPG, PNG ou WebP**, **5 Mo par fichier** et **9 Mo au total**. Cette limite garde une marge sous la limite de 10 Mo de FormSubmit. Les fichiers sont renommés `photo-1`, `photo-2`, etc., avec leur extension; les noms de fichiers d'origine ne sont pas transmis.
 
-Avant utilisation par les clients : vérifier le destinataire `solvonord@gmail.com`, les protections anti-spam et les limites du service, tester depuis l'adresse publique, puis passer `testMode` à `false` lorsque la réception est confirmée.
+Après une réponse positive du service, le questionnaire est remplacé par une confirmation visible, une référence de demande et le résumé envoyé. Le bouton d'envoi disparaît pour éviter les doublons. Une erreur ou une réponse incertaine conserve les réponses et les photos pour permettre leur récupération. La confirmation du service ne prouve pas la livraison dans la boîte de réception et ne confirme aucun rendez-vous.
 
-« Envoyer directement » transmet le résumé édité et le consentement à Formspree. « Ouvrir ma messagerie » prépare un courriel; le visiteur doit lui-même cliquer sur Envoyer dans sa messagerie. Un lien `mailto:` n'envoie pas de message depuis le site.
+« Ouvrir ma messagerie » prépare seulement un courriel; le visiteur doit ajouter ses photos et cliquer sur Envoyer dans sa messagerie. Un lien `mailto:` n'envoie pas de message depuis le site.
+
+L'ancien identifiant Formspree `mqpelgwz` reste disponible comme configuration de secours explicite, sans envoi parallèle ni bascule automatique. Pour l'utiliser, régler `provider: "formspree"`. Avec `formspreeUploads: false`, aucun sélecteur de photos ne promet un téléversement indisponible. Ne régler cette option à `true` que pour un formulaire dont l'abonnement prend réellement en charge les fichiers.
+
+Documentation du fournisseur : [envoi AJAX](https://formsubmit.co/ajax-documentation), [fichiers et configuration](https://formsubmit.co/documentation). Aucun secret ne doit être ajouté au site public.
 
 ## Confidentialité et fonctionnement
 
 Sept parcours : dépannage TI/réseau, Wi-Fi, câblage, imprimante, sécurité, devis et autre. Questions conditionnelles, validation, résumé modifiable, consentement avant envoi et version mobile.
 
-Les réponses restent en mémoire dans la page jusqu'à l'envoi. Aucun stockage persistant, cookie de suivi ou outil d'analyse n'est ajouté. Ne jamais demander de mots de passe, codes MFA, clés d'accès ou informations sensibles. Les photos sélectionnées sont uniquement des aperçus locaux : elles ne sont ni téléversées à Formspree ni jointes automatiquement au courriel.
+Les réponses et photos restent en mémoire dans la page jusqu'à l'envoi direct, qui les transmet au fournisseur indiqué dans la notice de confidentialité. Aucun stockage persistant, cookie de suivi ou outil d'analyse n'est ajouté par le site. Ne jamais demander de mots de passe, codes MFA, clés d'accès ou informations sensibles. Les visiteurs doivent éviter les documents confidentiels et les données sensibles dans leurs photos.
 
-Le formulaire applique un champ piège, un délai minimal et une limitation des envois répétés. Les protections du service Formspree restent nécessaires; les contrôles du navigateur ne constituent pas une protection serveur.
+Le formulaire applique un champ piège, un délai minimal, une limitation des envois répétés et un verrou pendant/après l'envoi. Les protections du fournisseur restent nécessaires; les contrôles du navigateur ne constituent pas une protection serveur. Aucune protection du fournisseur n'est désactivée par la configuration.
 
 ## Modifier le contenu
 
@@ -43,7 +47,7 @@ Le formulaire applique un champ piège, un délai minimal et une limitation des 
 - `site.css` : apparence du portfolio.
 - `assistant/content.js` : questions, messages et traductions.
 - `assistant/app.js` : questionnaire, validation et envoi.
-- `assistant/config.js` : identifiant public Formspree, courriel et bandeau de test; ne jamais y ajouter de secret.
+- `assistant/config.js` : fournisseur actif, activation, configuration Formspree de secours et bandeau de test; ne jamais y ajouter de secret.
 
 `assistant/index.html` et les fichiers `widget*` fournissent aussi des présentations facultatives du même questionnaire. Le portfolio principal contient déjà le formulaire complet.
 
@@ -51,4 +55,4 @@ Le formulaire applique un champ piège, un délai minimal et une limitation des 
 
 A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
 
-The owner's test Formspree endpoint is configured. Formspree accepted a local test, reference **SN-20261011-01**, and a public-site test, reference **SN-PUBLIC-20261011-01**; inbox delivery still needs owner verification. Keep test mode enabled until delivery is confirmed. The email-app option only prepares a message. Photos remain local and are not attached automatically.
+Direct requests use the owner's activated **FormSubmit** address, `solvonord@gmail.com`, including up to three actual JPG/PNG/WebP files (5 MB each, 9 MB combined). After service acceptance, a dedicated confirmation replaces the form and displays the request reference, uploaded photo count and exact submitted summary. Duplicate submission is blocked. Service acceptance does not guarantee inbox delivery or confirm an appointment. The email-app option only prepares a message; visitors must attach photos themselves when using that option. Formspree remains an explicitly configurable fallback, with uploads disabled unless the selected plan supports them.
