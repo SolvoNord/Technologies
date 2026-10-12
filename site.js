@@ -33,7 +33,7 @@
     "servicesIntro": "Maison, bureau, commerce, restaurant ou Airbnb : nous adaptons le réseau à votre espace et à vos usages. Dépannage ponctuel, câblage ou nouvelle installation, définissons ensemble les travaux utiles.",
     "projectsEyebrow": "LE PORTFOLIO",
     "projectsTitle": "Du concret, sur le terrain.",
-    "projectsIntro": "Découvrez des installations réalisées en réseaux, téléphonie et équipements connectés. Des besoins précis, une mise en œuvre sur le terrain.",
+    "projectsIntro": "Des réalisations en réseaux, télécommunications, vidéosurveillance et sécurité. De l’analyse du trafic à la mise en service des équipements, une expertise appliquée sur le terrain.",
     "projectCta": "Vous avez un projet similaire? Parlons-en ↗",
     "aboutEyebrow": "L’EXPERTISE DERRIÈRE SOLVONORD",
     "aboutRole": "Spécialiste en réseaux, télécommunications et sécurité",
@@ -130,6 +130,49 @@
           "Ajax Home Security System",
           "Sonos"
         ]
+      },
+      {
+        "sector": "VIDÉOSURVEILLANCE",
+        "title": "Gestion des flux vidéo et de l’archivage.",
+        "description": "Gestion des flux de vidéosurveillance sous Genetec avec serveur d’archivage. Intervention également sur des caméras Cisco Meraki, dans le cadre d’installations de sécurité vidéo.",
+        "tags": [
+          "Genetec",
+          "Serveur d’archivage",
+          "Cisco Meraki",
+          "CCTV"
+        ]
+      },
+      {
+        "sector": "CLINIQUE DENTAIRE",
+        "title": "Un diagnostic réseau ciblé, jusqu’aux paquets.",
+        "description": "Diagnostic approfondi de problèmes de connexion Wi-Fi affectant les imprimantes d’une clinique dentaire. Analyse des échanges réseau avec Wireshark et investigation de la connectivité sur une infrastructure sans fil Aruba.",
+        "tags": [
+          "Wireshark",
+          "Aruba",
+          "Imprimantes Wi-Fi",
+          "Diagnostic réseau"
+        ]
+      },
+      {
+        "sector": "TÉLÉCOMMUNICATIONS INDUSTRIELLES",
+        "title": "Un réseau industriel installé et configuré.",
+        "description": "Installation et configuration de points d’accès Wi-Fi et de commutateurs industriels durcis. Déploiement d’équipements Fortinet pour la connectivité des installations industrielles.",
+        "tags": [
+          "Fortinet",
+          "FortiAP 432FR",
+          "FortiSwitch Rugged FSR-108F"
+        ]
+      },
+      {
+        "sector": "VPN & INTERCONNEXION",
+        "title": "Des accès distants et des sites interconnectés.",
+        "description": "Déploiement et configuration de VPN d’accès distant et de liaisons VPN site à site sur des équipements Cisco Meraki et FortiGate. Mise en place des connexions pour accéder au réseau à distance et relier plusieurs sites.",
+        "tags": [
+          "Cisco Meraki",
+          "FortiGate",
+          "Accès distant",
+          "Site à site"
+        ]
       }
     ],
     "heroSignature": "RÉSEAUX · TÉLÉCOMMUNICATIONS · SÉCURITÉ",
@@ -175,7 +218,7 @@
     "servicesIntro": "Homes, offices, shops, restaurants and Airbnbs: we adapt your network to your space and how you use it. From troubleshooting to cabling and new installations, let’s define the work that makes a difference.",
     "projectsEyebrow": "THE PORTFOLIO",
     "projectsTitle": "Practical work. Real settings.",
-    "projectsIntro": "Explore completed network, telephony and connected-device installations. Specific needs, hands-on implementation.",
+    "projectsIntro": "Projects in networking, telecommunications, video surveillance and security. From traffic analysis to equipment deployment, technical expertise put into practice.",
     "projectCta": "Planning something similar? Let’s talk ↗",
     "aboutEyebrow": "THE EXPERTISE BEHIND SOLVONORD",
     "aboutRole": "Networks, telecommunications and security specialist",
@@ -272,6 +315,49 @@
           "Ajax Home Security System",
           "Sonos"
         ]
+      },
+      {
+        "sector": "VIDEO SURVEILLANCE",
+        "title": "Managing video streams and archiving.",
+        "description": "Managed video surveillance streams in Genetec with an archiving server. Also worked with Cisco Meraki cameras as part of video security installations.",
+        "tags": [
+          "Genetec",
+          "Archiving server",
+          "Cisco Meraki",
+          "CCTV"
+        ]
+      },
+      {
+        "sector": "DENTAL CLINIC",
+        "title": "Network diagnostics, down to the packets.",
+        "description": "Performed an in-depth diagnosis of Wi-Fi connectivity issues affecting printers in a dental clinic. Analyzed network traffic with Wireshark and investigated connectivity across an Aruba wireless infrastructure.",
+        "tags": [
+          "Wireshark",
+          "Aruba",
+          "Wi-Fi printers",
+          "Network diagnostics"
+        ]
+      },
+      {
+        "sector": "INDUSTRIAL TELECOMMUNICATIONS",
+        "title": "Industrial networking, installed and configured.",
+        "description": "Installed and configured Wi-Fi access points and rugged industrial switches. Deployed Fortinet equipment to provide connectivity for industrial installations.",
+        "tags": [
+          "Fortinet",
+          "FortiAP 432FR",
+          "FortiSwitch Rugged FSR-108F"
+        ]
+      },
+      {
+        "sector": "VPN & INTERCONNECTION",
+        "title": "Remote access and connected sites.",
+        "description": "Deployed and configured remote-access and site-to-site VPNs on Cisco Meraki and FortiGate equipment. Set up connections for remote network access and communication between sites.",
+        "tags": [
+          "Cisco Meraki",
+          "FortiGate",
+          "Remote access",
+          "Site-to-site"
+        ]
       }
     ],
     "heroSignature": "NETWORKS · TELECOMMUNICATIONS · SECURITY",
@@ -301,7 +387,7 @@
     });
     const projects=document.getElementById('project-cards');projects.replaceChildren();
     c.projects.forEach((project,i)=>{
-      const card=make('article','project-item');const tags=make('div','project-tags');project.tags.forEach(tag=>tags.append(make('span','',tag)));
+      const card=make('article','project-item');card.id=`projet-${i+1}`;const tags=make('div','project-tags');project.tags.forEach(tag=>tags.append(make('span','',tag)));
       card.append(make('span','project-index',`0${i+1} / `+project.sector),make('h3','',project.title),make('p','',project.description),tags);projects.append(card);
     });
 
