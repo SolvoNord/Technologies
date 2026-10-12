@@ -25,11 +25,11 @@ Le fournisseur actif est **FormSubmit**, avec le destinataire `solvonord@gmail.c
 
 Le bouton unique « Envoyer ma demande » transmet le résumé édité et le consentement. Sans photo, l'envoi se fait en arrière-plan. Avec des photos, un formulaire natif `multipart/form-data` utilise `https://formsubmit.co/solvonord@gmail.com` : le visiteur termine la vérification anti-spam, puis revient directement au portfolio, section demande, où s'affiche la confirmation. Le formulaire n'affiche aucun détail technique sur ce transport. Ne pas envoyer les fichiers au point d'accès `/ajax/` : nos tests ont confirmé l'arrivée du texte sans les pièces jointes avec cette méthode.
 
-Le site accepte jusqu'à **3 photos JPG, PNG ou WebP**, **5 Mo par fichier** et **9 Mo au total**. Cette limite garde une marge sous la limite de 10 Mo de FormSubmit. Les fichiers sont renommés `photo-1`, `photo-2`, etc., avec leur extension; les noms de fichiers d'origine ne sont pas transmis. Le parcours intégré et la version assistant séparée utilisent la même page de retour. Dans un widget, le navigateur ouvre la vérification dans la page entière.
+Le site accepte jusqu'à **6 photos JPG, PNG ou WebP**, **5 Mo par fichier** et **9 Mo au total**. Cette limite garde une marge sous la limite de 10 Mo de FormSubmit. Les fichiers sont renommés `photo-1`, `photo-2`, etc., avec leur extension; les noms de fichiers d'origine ne sont pas transmis. Le parcours intégré et la version assistant séparée utilisent la même page de retour. Dans un widget, le navigateur ouvre la vérification dans la page entière.
 
 Une réponse positive remplace le questionnaire par une confirmation visible et une référence de demande sur la même page du portfolio. Le paramètre `_next` pointe explicitement vers `/Technologies/?lang=…&receipt=…#demande`. Aucun bouton ne renvoie la même demande depuis la confirmation. Le retour exige le jeton de la demande en cours et refuse les références absentes ou périmées après 30 minutes. Le résumé envoyé reste consultable pour les envois sans navigation; il n'est pas stocké entre les pages. L'ancienne page `assistant/thanks.html` redirige les anciennes confirmations valides vers le portfolio. La confirmation ne garantit pas chaque livraison future dans la boîte de réception et ne confirme aucun rendez-vous.
 
-Le bouton « Ouvrir ma messagerie » a été supprimé du questionnaire. Le lien de contact par courriel reste disponible à côté du formulaire et dans le pied de page. Copier ou télécharger le résumé reste possible dans la section repliable « Conserver une copie ».
+Le bouton « Ouvrir ma messagerie » a été supprimé du questionnaire. Les coordonnées de contact restent disponibles dans le pied de page. Copier ou télécharger le résumé reste possible dans la section repliable « Conserver une copie ».
 
 Le seul fournisseur configuré est FormSubmit. L'ancien identifiant Formspree a été retiré; aucun envoi parallèle, lien vers un compte Formspree ni basculement automatique n'est utilisé. Le code conserve la possibilité de configurer explicitement un autre formulaire Formspree à l'avenir.
 
@@ -57,6 +57,20 @@ Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et
 
 ## Modifier le contenu
 
+### Google Search Console et Google Analytics 4
+
+La propriété Search Console utilise le préfixe `https://solvonord.github.io/Technologies/`, la balise de vérification de `index.html` et `sitemap.xml`. Conserver la balise après validation. Aucun accès DNS au domaine `github.io` n’est nécessaire. L’inscription et le sitemap ne garantissent pas l’indexation ni une position dans les résultats Google.
+
+Le flux GA4 **Portfolio SolvoNord Technologies** utilise l’identifiant public **G-8HCFSX3ZVC** dans le compte du propriétaire. La configuration initiale utilise le Canada, le fuseau de Toronto et le dollar canadien. Les mesures améliorées automatiques ont été désactivées. Ne pas activer les fonctions publicitaires ou les mesures automatiques de formulaires sans revoir la confidentialité.
+
+`analytics.js` charge Google uniquement après un accord explicite ou un accord enregistré encore valide. Le choix peut être modifié dans le pied de page et la notice de confidentialité. Le refus n’empêche pas le formulaire de fonctionner. La préférence expire après 180 jours; les cookies Analytics sont limités au domaine hôte et au chemin `/Technologies/`, avec une durée de 30 jours. Le retrait du consentement bloque les événements et supprime les cookies de cette intégration. Les aperçus locaux ne transmettent rien à GA4.
+
+Les événements sont `page_view`, `contact_click` (seulement le moyen : courriel/téléphone/LinkedIn), `request_start` et `generate_lead` après confirmation. Aucun contenu de formulaire, nom de fichier, adresse courriel, téléphone, référence ou jeton de retour n’est ajouté aux événements. L’adresse de page transmise est fixe, sans paramètres ni fragment; le référent est réduit à son origine. Les événements avant consentement ne sont pas rejoués. Les statistiques peuvent donc différer de Cloudflare ou du nombre réel de demandes.
+
+Vérification locale du 12 octobre 2026 : six fichiers multipart transmis au simulateur local, retour de confirmation FR/EN, rejet du septième fichier et d’un total supérieur à 9 Mo; contrôles automatisés de consentement, retrait, persistance, absence de données de formulaire et isolation des aperçus. Aucun nouvel envoi de test à Gmail n’a été nécessaire. La réception des six pièces jointes ensemble n’a pas été retestée dans Gmail; le transport natif déjà validé par le propriétaire est conservé.
+
+Documentation : [configuration GA4](https://developers.google.com/analytics/devguides/collection/ga4/reference/config), [consentement Google](https://developers.google.com/tag-platform/security/guides/consent), [vérification Search Console](https://support.google.com/webmasters/answer/9008080).
+
 - `index.html` : structure et métadonnées de la page.
 - `site.js` : textes du portfolio FR/EN.
 - `site.css` : apparence du portfolio.
@@ -71,7 +85,7 @@ Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et
 
 A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
 
-The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `solvonord@gmail.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: three JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.
+The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `solvonord@gmail.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: six JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.
 
 ## Identité visuelle
 

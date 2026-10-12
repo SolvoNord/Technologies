@@ -2,7 +2,7 @@
   "use strict";
   const key="solvonord-upload-receipt",token=new URLSearchParams(location.search).get("receipt");
   let record;try{record=JSON.parse(sessionStorage.getItem(key));}catch{}
-  const valid=!!record&&token===record.token&&/^[a-f0-9-]{36}$/i.test(token||"")&&/^SN-[0-9]{8}-[A-Z0-9]{7}$/.test(record.reference||"")&&Number.isInteger(record.count)&&record.count>=1&&record.count<=3&&Date.now()-record.createdAt>=0&&Date.now()-record.createdAt<30*60*1000;
+  const valid=!!record&&token===record.token&&/^[a-f0-9-]{36}$/i.test(token||"")&&/^SN-[0-9]{8}-[A-Z0-9]{7}$/.test(record.reference||"")&&Number.isInteger(record.count)&&record.count>=1&&record.count<=6&&Date.now()-record.createdAt>=0&&Date.now()-record.createdAt<30*60*1000;
   // Older submissions may still return here; preserve their receipt on the main page.
   if(valid){const next=new URL('../',location.href);next.searchParams.set('lang',record.lang==='en'?'en':'fr');next.searchParams.set('receipt',token);next.hash='demande';location.replace(next.href);return;}
   let lang=valid&&record.lang==="en"?"en":"fr";

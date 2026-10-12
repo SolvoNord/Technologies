@@ -12,6 +12,7 @@
   // Return photo submissions to the portfolio, including from the optional widget.
   const receiptUrl = new URL("../",document.currentScript.src);
   const receiptKey = "solvonord-upload-receipt";
+  const maxPhotos = 6;
   const recipient = "solvonord@gmail.com";
   const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
   let statusKey = "";
@@ -309,6 +310,7 @@
       const accepted=provider==="formsubmit"?(data?.success===true||data?.success==="true"):(data?.ok!==false&&!data?.errors?.length);
       if(!response.ok || !accepted)throw new Error("Unconfirmed submission");
       state.submitted=true;statusKey="";
+      document.dispatchEvent(new Event("solvonord:request-sent"));
     } catch {state.nativePending=false;statusKey="sendError";}
     finally {clearTimeout(timeout);if(!state.nativePending){state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}}
   }
@@ -323,7 +325,7 @@
   });
   async function addPhotos(input) {
     const files=Array.from(input.files||[]),accepted=[],epoch=++photoEpoch;
-    if(state.photos.length+files.length>3)return error(t().photoError,input);
+    if(state.photos.length+files.length>maxPhotos)return error(t().photoError,input);
     if([...state.photos.map(p=>p.file),...files].reduce((total,file)=>total+file.size,0)>9*1024*1024)return error(t().photoTotalError,input);
     // Validate actual image decoding as well as file type and size.
     try {
@@ -340,7 +342,7 @@
     const service=event.detail?.service;
     if(state.busy||state.step!==0||!Object.hasOwn(t().services,service))return;
     if(state.answers.service!==service)(details()?.fields||[]).forEach(([key])=>delete state.answers[key]);
-    state.answers.service=service;state.summary="";state.summaryDirty=false;state.consent=false;state.step=1;statusKey="";render(true);
+    state.answers.service=service;state.summary="";state.summaryDirty=false;state.consent=false;state.step=1;statusKey="";document.dispatchEvent(new Event("solvonord:request-started"));render(true);
   });
   $("intake").addEventListener("input",event=>{
     const input=event.target;
@@ -359,7 +361,7 @@
       render();$("answer-method").focus();
     }
   });
-  $("intake").addEventListener("submit",event=>{event.preventDefault();if(state.busy||state.step===7||!validate())return;state.step++;statusKey="";render(true);});
+  $("intake").addEventListener("submit",event=>{event.preventDefault();if(state.busy||state.step===7||!validate())return;if(state.step===0)document.dispatchEvent(new Event("solvonord:request-started"));state.step++;statusKey="";render(true);});
   $("back").onclick=()=>{if(state.busy)return;state.step=Math.max(0,state.step-1);statusKey="";render(true);};
   document.querySelectorAll("[data-lang]").forEach(button=>button.onclick=()=>{
     if(state.busy)return;lang=button.dataset.lang;state.consent=false;
@@ -382,12 +384,14 @@
     const token=params.get("receipt");if(!token)return false;
     let receipt;try{receipt=JSON.parse(sessionStorage.getItem(receiptKey));}catch{}
     const age=Date.now()-receipt?.createdAt;
-    const valid=receipt&&token===receipt.token&&/^[a-f0-9-]{36}$/i.test(token)&&/^SN-[0-9]{8}-[A-Z0-9]{7}$/.test(receipt.reference||"")&&Number.isInteger(receipt.count)&&receipt.count>=1&&receipt.count<=3&&["pending","confirmed"].includes(receipt.status)&&age>=0&&age<30*60*1000;
+    const valid=receipt&&token===receipt.token&&/^[a-f0-9-]{36}$/i.test(token)&&/^SN-[0-9]{8}-[A-Z0-9]{7}$/.test(receipt.reference||"")&&Number.isInteger(receipt.count)&&receipt.count>=1&&receipt.count<=maxPhotos&&["pending","confirmed"].includes(receipt.status)&&age>=0&&age<30*60*1000;
     if(!valid){statusKey="receiptUnconfirmed";return false;}
     lang=["fr","en"].includes(params.get("lang"))?params.get("lang"):receipt.lang;
     if(!["fr","en"].includes(lang))lang="fr";
+    const newlyConfirmed=receipt.status==="pending";
     receipt.status="confirmed";try{sessionStorage.setItem(receiptKey,JSON.stringify(receipt));}catch{}
     Object.assign(state,{step:7,submitted:true,reference:receipt.reference,lastSend:Date.now()});
+    if(newlyConfirmed)document.dispatchEvent(new Event("solvonord:request-sent"));
     return true;
   }
   render(restoreReceipt());
