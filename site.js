@@ -53,9 +53,10 @@
     "requestTitle": "Un problème à régler?\nUn projet à concrétiser?",
     "requestText": "Décrivez-nous la situation. L’assistant vous aide à préparer une demande claire, puis nous vous contactons pour discuter de la suite.",
     "emailLabel": "Courriel",
-    "phoneLabel": "Téléphone",
+    "phoneLabel": "Cellulaire",
     "requestDisclosure": "Nous vous contacterons pour convenir de la suite et, au besoin, d’un rendez-vous.",
-    "footerLocation": "Montréal et région · FR / EN",
+    "footerLocation": "Québec, Montréal et environs · FR / EN",
+    "footerLinkedin": "Voir le profil ↗",
     "services": [
       [
         "it",
@@ -194,9 +195,10 @@
     "requestTitle": "A problem to solve?\nA project to bring to life?",
     "requestText": "Tell us what’s happening. The assistant helps you prepare a clear request, then we contact you to discuss the next steps.",
     "emailLabel": "Email",
-    "phoneLabel": "Phone",
+    "phoneLabel": "Mobile",
     "requestDisclosure": "We’ll contact you to discuss the next steps and arrange an appointment if needed.",
-    "footerLocation": "Montréal & surrounding area · FR / EN",
+    "footerLocation": "Québec, Montréal & surrounding areas · FR / EN",
+    "footerLinkedin": "View profile ↗",
     "services": [
       [
         "it",
