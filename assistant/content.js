@@ -29,7 +29,7 @@ window.SN_CONTENT = {
     "privacyTitle": "Vos informations, votre choix.",
     "privacyBody": "Vos informations servent uniquement à traiter votre demande et à vous recontacter. Une ville ou un secteur suffit. Ne transmettez pas de mots de passe ni de codes de connexion.",
     "privacyPhotos": "Les photos sont facultatives. En mode courriel séparé, aucun fichier n’est téléversé par ce formulaire. Vous choisissez vous-même les pièces jointes dans votre messagerie.",
-    "privacyService": "Lors de l’envoi, vos réponses, vos coordonnées et les photos choisies passent par {service} pour parvenir à SolvoNord Technologies. Elles ne sont pas utilisées pour des envois marketing.",
+    "privacyService": "Lors de l’envoi, vos réponses, vos coordonnées et les photos choisies passent par {service} pour parvenir à SolvoNord Technologies (9512-6173 Québec inc.). Elles ne sont pas utilisées pour des envois marketing.",
     "steps": [
       "Votre besoin",
       "En quelques mots",
@@ -386,7 +386,7 @@ window.SN_CONTENT = {
     "privacyTitle": "Your information. Your choice.",
     "privacyBody": "Your information is used only to handle your request and contact you. A city or area is enough. Do not share passwords or login codes.",
     "privacyPhotos": "Photos are optional. In separate-email mode, this form does not upload files. You choose the attachments yourself in your email app.",
-    "privacyService": "When you submit, your answers, contact details and selected photos pass through {service} to reach SolvoNord Technologies. They are not used for marketing emails.",
+    "privacyService": "When you submit, your answers, contact details and selected photos pass through {service} to reach SolvoNord Technologies (9512-6173 Québec inc.). They are not used for marketing emails.",
     "steps": [
       "Your needs",
       "In a few words",

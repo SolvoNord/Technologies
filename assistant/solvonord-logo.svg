@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 160" role="img" aria-labelledby="title description">
+  <title id="title">SolvoNord Technologies</title>
+  <desc id="description">Un N formé de connexions réseau et d’une flèche vers le nord, accompagné du nom SolvoNord Technologies.</desc>
+  <g transform="translate(20 20) scale(2.5)">
+    <rect width="48" height="48" rx="14" fill="#173f38"/>
+    <path d="M14 34V14l20 20V13m-5 5 5-5 5 5" fill="none" stroke="#c8ef96" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="14" cy="14" r="3.5" fill="#f6f7f1"/>
+    <circle cx="14" cy="34" r="3.5" fill="#c8ef96"/>
+    <circle cx="34" cy="34" r="3.5" fill="#f6f7f1"/>
+  </g>
+  <text x="166" y="86" font-family="Segoe UI,Arial,sans-serif" font-size="64" fill="#173f38" letter-spacing=".2"><tspan font-weight="700">solvo</tspan><tspan font-weight="400">nord</tspan></text>
+  <text x="169" y="121" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#173f38" letter-spacing="7">TECHNOLOGIES</text>
+</svg>

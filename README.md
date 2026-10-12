@@ -5,6 +5,7 @@ Portfolio bilingue français/anglais et assistant guidé de demande de service, 
 - Compte GitHub : **SolvoNord**
 - Dépôt de destination : **https://github.com/SolvoNord/Technologies**
 - Courriel : **solvonord@gmail.com**
+- Dénomination de la société confirmée par le propriétaire : **9512-6173 Québec inc.** (distincte d’un NEQ).
 - Site public : **https://solvonord.github.io/Technologies/**
 
 Site publié et vérifié le 11 octobre 2026, en français et en anglais. GitHub Pages utilise la branche `main`, dossier racine, avec HTTPS activé. Ce dépôt est indépendant de l'ancien portfolio.
@@ -61,3 +62,7 @@ Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et
 A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
 
 The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `solvonord@gmail.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: three JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.
+
+## Identité visuelle
+
+`assistant/mark.svg` est le symbole vectoriel SolvoNord : un N composé de connexions, prolongé par une flèche vers le nord. Le vert profond reprend la couleur principale du site; le vert clair met en valeur le chemin du réseau. Ce fichier sert aussi de favicon. Les contenus de présentation sont originaux et limités aux services déclarés par le propriétaire; les sites de référence n’ont fourni aucun témoignage, chiffre, logo de partenaire ou engagement de disponibilité.
