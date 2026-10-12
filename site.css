@@ -7,3 +7,4 @@
 @media(max-width:800px){html{scroll-padding-top:150px}.portfolio-page #question{scroll-margin-top:160px}.portfolio-page .hero-board h2{font-size:27px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .site-service{min-width:0;overflow-wrap:anywhere}.site-service h3{hyphens:auto}
+@media(min-width:801px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 40px}}

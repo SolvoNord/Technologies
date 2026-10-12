@@ -9,7 +9,8 @@
   const provider = config.provider === "formsubmit" ? "formsubmit" : "formspree";
   const deliveryConfigured = provider === "formsubmit" ? config.formsubmitActivated === true : !!formId;
   const uploadsEnabled = deliveryConfigured && (provider === "formsubmit" ? config.formsubmitUploadMode === "native" : config.formspreeUploads === true);
-  const receiptUrl = new URL("thanks.html",document.currentScript.src);
+  // Return photo submissions to the portfolio, including from the optional widget.
+  const receiptUrl = new URL("../",document.currentScript.src);
   const receiptKey = "solvonord-upload-receipt";
   const recipient = "solvonord@gmail.com";
   const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
@@ -174,7 +175,7 @@
         remove.onclick=()=>{URL.revokeObjectURL(p.url);state.photos.splice(i,1);state.summaryDirty=false;state.summary="";state.consent=false;render(true);};
         fig.append(remove);grid.append(fig);
       });
-      f.append(grid,el("p",{class:"note"},c.photoUploadNotice));
+      f.append(grid);
     }
     if (state.step===6) {
       f.append(field("name",c.name,c.namePlaceholder,{min:2,max:80,autocomplete:"name"}),field("method",c.method,c.methods));
@@ -196,14 +197,13 @@
     box.append(el("div",{class:"success-mark","aria-hidden":"true"},"✓"),el("p",{class:"success-message"},c.successBody));
     const reference=el("p",{class:"request-reference"});reference.append(el("span",{},c.referenceLabel),el("strong",{},state.reference));box.append(reference);
     box.append(el("p",{class:"success-detail"},c.successNext));
-    if(uploadsEnabled&&state.photos.length)box.append(el("p",{class:"note"},`${state.photos.length} ${c.photosUploaded}`));
     if(!uploadsEnabled){
       const photos=el("div",{class:"success-photos"});photos.append(el("p",{},c.successPhotos));
       const subject=`SolvoNord — Photos — ${state.reference}`;
       const body=`${c.photoEmailBody} ${state.reference}\n\n`;
       photos.append(el("a",{class:"secondary",id:"send-photos",href:`mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`},c.sendPhotos));box.append(photos);
     }
-    const saved=el("details",{class:"submitted-summary"});saved.append(el("summary",{},c.viewSubmitted),el("pre",{},state.summary));box.append(saved);
+    if(state.summary){const saved=el("details",{class:"submitted-summary"});saved.append(el("summary",{},c.viewSubmitted),el("pre",{},state.summary));box.append(saved);}
     const next=el("button",{type:"button",class:"primary",id:"new-request"},c.newRequest);next.onclick=()=>$("reset-dialog").showModal();box.append(next);
   }
   function renderReview(f) {
@@ -215,17 +215,13 @@
     const label=el("label",{class:"check",for:"consent"});const check=el("input",{type:"checkbox",id:"consent"});check.checked=state.consent;
     label.append(check,el("span",{},c.consent));f.append(label);
     const actions=el("div",{class:"review-actions"});
-    const email=el("button",{type:"button",class:"secondary",id:"send-email","aria-describedby":"email-help"},c.emailSend);email.onclick=sendEmail;
-    const nativePhotos=provider==="formsubmit"&&uploadsEnabled&&state.photos.length>0;
-    const auto=el("button",{type:"button",class:"primary delivery-primary",id:"send-direct","aria-describedby":"delivery-note"},state.busy?c.sending:(deliveryConfigured?(nativePhotos?c.nativeSend:c.autoSend):c.autoDisabled));auto.disabled=!deliveryConfigured;auto.onclick=sendDirect;
+    const auto=el("button",{type:"button",class:"primary delivery-primary",id:"send-direct"},state.busy?c.sending:(deliveryConfigured?c.autoSend:c.autoDisabled));auto.disabled=!deliveryConfigured;auto.onclick=sendDirect;
     const small=el("div",{class:"small-actions"});
     const copy=el("button",{type:"button",class:"secondary",id:"copy-summary"},c.copy);
     copy.onclick=async()=>{if(!checkSummary())return;try{await navigator.clipboard.writeText(state.summary);showStatus("copied");}catch{showStatus("copyError");}};
     const download=el("button",{type:"button",class:"secondary",id:"download-summary"},c.download);download.onclick=()=>{if(!checkSummary())return;const url=URL.createObjectURL(new Blob([state.summary],{type:"text/plain;charset=utf-8"}));const link=el("a",{href:url,download:"demande-solvonord.txt"});document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showStatus("downloaded");};
-    const emailHelp=el("p",{class:"delivery-help",id:"email-help"},c.emailHelp);
-    const deliveryNote=(deliveryConfigured?(nativePhotos?c.nativeNote:(uploadsEnabled?c.autoReadyUpload:c.autoReady)):c.autoNote).replaceAll("{service}",provider==="formsubmit"?"FormSubmit":"Formspree");
-    small.append(copy,download);actions.append(auto,el("p",{class:"note delivery-note",id:"delivery-note"},deliveryNote),email,emailHelp,small);f.append(actions);
-    if(state.photos.length) f.append(el("p",{class:"note"},c.photoUploadNotice));
+    small.append(copy,download);const utilities=el("details",{class:"summary-utilities"});utilities.append(el("summary",{},c.saveCopy),small);
+    actions.append(auto,utilities);f.append(actions);
   }
   // An extra guard for obvious secrets; this is not a complete DLP system.
   function containsSensitive(value) {
@@ -267,18 +263,6 @@
     $("error").hidden=true;return true;
   }
   function showStatus(key){statusKey=key;$("status").textContent=t()[key];$("status").hidden=false;}
-  function sendEmail() {
-    if(!readyToSend())return;
-    const subject=`SolvoNord — ${t().services[state.answers.service][0]}`;
-    const body=`${state.summary}\n\n${t().consentRecorded}`;
-    const href=`mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    if(href.length>6000) {
-      showStatus("mailLong");
-      const link=el("a",{href:`mailto:${recipient}?subject=${encodeURIComponent(subject)}`},recipient);
-      $("status").append(document.createTextNode(" "),link);return;
-    }
-    const link=el("a",{href});document.body.append(link);link.click();link.remove();showStatus("mailOpened");
-  }
   async function sendDirect() {
     if(state.submitted || !deliveryConfigured || state.busy || !readyToSend())return;
     if(state.lastSend && Date.now()-state.lastSend<60000)return error(t().rateError);
@@ -287,7 +271,7 @@
     const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);
     try {
       // The edited summary is authoritative: do not silently resend old contact fields.
-      const payload={message:state.summary,request_reference:state.reference,language:lang,consent:t().consentRecorded,consent_version:"2026-10-11",consent_at:new Date().toISOString(),_subject:`SolvoNord — ${t().services[state.answers.service][0]} — ${state.reference}`,_gotcha:$("website").value};
+      const payload={message:state.summary,request_reference:state.reference,language:lang,consent:t().consentRecorded,consent_version:"2026-10-11-v2",consent_at:new Date().toISOString(),_subject:`SolvoNord — ${t().services[state.answers.service][0]} — ${state.reference}`,_gotcha:$("website").value};
       if(provider==="formsubmit"){
         payload._honey=payload._gotcha;delete payload._gotcha;
         payload._url=`${location.origin}${location.pathname}`;payload._template="table";
@@ -298,10 +282,11 @@
         const token=crypto.randomUUID();
         const receipt={reference:state.reference,lang,count:state.photos.length,token,createdAt:Date.now(),status:"pending"};
         sessionStorage.setItem(receiptKey,JSON.stringify(receipt));
-        const target=new URL(receiptUrl);target.searchParams.set("receipt",token);
+        const target=new URL(receiptUrl);target.searchParams.set("lang",lang);target.searchParams.set("receipt",token);target.hash="demande";
         const form=el("form",{method:"post",action:`https://formsubmit.co/${recipient}`,target:"_top",enctype:"multipart/form-data",hidden:""});
         payload._next=target.href;
         Object.entries(payload).forEach(([name,value])=>form.append(el("input",{type:"hidden",name,value})));
+        if(form.elements.namedItem("_next")?.value!==target.href)throw new Error("Missing return address");
         state.photos.forEach((photo,index)=>{
           const input=el("input",{type:"file",name:index===0?"attachment":`attachment${index+1}`});
           const transfer=new DataTransfer();transfer.items.add(new File([photo.file],photoName(photo,index),{type:photo.file.type}));
@@ -389,8 +374,21 @@
     photoEpoch++;
     state.photos.forEach(p=>URL.revokeObjectURL(p.url));
     Object.assign(state,{step:0,answers:{},photos:[],summary:"",summaryDirty:false,consent:false,started:Date.now(),submitted:false,reference:"",photoFollowup:false});
+    try{sessionStorage.removeItem(receiptKey);const url=new URL(location.href);url.searchParams.delete("receipt");history.replaceState(null,"",url);}catch{}
     $("website").value="";statusKey="";$("reset-dialog").close();render(true);
   };
   document.addEventListener("keydown",event=>{if(event.key==="Escape"&&params.get("embed")==="1"&&!$("privacy-dialog").open&&!$("reset-dialog").open)window.parent.postMessage({type:"solvonord-close"},location.origin==="null"?"*":location.origin);});
-  render();
+  function restoreReceipt(){
+    const token=params.get("receipt");if(!token)return false;
+    let receipt;try{receipt=JSON.parse(sessionStorage.getItem(receiptKey));}catch{}
+    const age=Date.now()-receipt?.createdAt;
+    const valid=receipt&&token===receipt.token&&/^[a-f0-9-]{36}$/i.test(token)&&/^SN-[0-9]{8}-[A-Z0-9]{7}$/.test(receipt.reference||"")&&Number.isInteger(receipt.count)&&receipt.count>=1&&receipt.count<=3&&["pending","confirmed"].includes(receipt.status)&&age>=0&&age<30*60*1000;
+    if(!valid){statusKey="receiptUnconfirmed";return false;}
+    lang=["fr","en"].includes(params.get("lang"))?params.get("lang"):receipt.lang;
+    if(!["fr","en"].includes(lang))lang="fr";
+    receipt.status="confirmed";try{sessionStorage.setItem(receiptKey,JSON.stringify(receipt));}catch{}
+    Object.assign(state,{step:7,submitted:true,reference:receipt.reference,lastSend:Date.now()});
+    return true;
+  }
+  render(restoreReceipt());
 })();

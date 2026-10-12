@@ -51,10 +51,10 @@
     "approach3Text": "L’intervention se planifie après confirmation des détails et de votre accord.",
     "requestEyebrow": "UNE DEMANDE, UN POINT DE DÉPART",
     "requestTitle": "Parlons de votre besoin.",
-    "requestText": "Quelques questions pour préparer une demande claire. Vous pourrez relire et modifier le résumé avant de choisir comment nous le transmettre.",
-    "emailLabel": "Courriel de SolvoNord",
+    "requestText": "Quelques questions pour préparer votre demande. Relisez le résumé, puis envoyez-le.",
+    "emailLabel": "Courriel",
     "phoneLabel": "Téléphone",
-    "requestDisclosure": "Sans mots de passe ni codes MFA. Aucun rendez-vous n’est confirmé par ce questionnaire.",
+    "requestDisclosure": "Nous vous contacterons pour convenir de la suite et, au besoin, d’un rendez-vous.",
     "deliveryTitle": "Envoi par messagerie pour le moment",
     "deliveryText": "Le bouton courriel ouvre votre application : vous devez ensuite y envoyer le message. L’envoi direct depuis cette page n’est pas encore activé.",
     "deliveryReadyTitle": "Envoyez votre demande ici",
@@ -73,8 +73,8 @@
       ],
       [
         "cabling",
-        "Câblage & infrastructure",
-        "Prises réseau, équipements et déploiements adaptés à votre espace et à vos usages."
+        "Câblage & gestion des câbles",
+        "Installation de câbles CAT6 et de prises réseau. Organisation, repérage et rangement des câbles pour une infrastructure propre et facile à entretenir."
       ],
       [
         "printer",
@@ -121,6 +121,17 @@
           "Déploiement réseau",
           "Routage",
           "Adressage IP"
+        ]
+      },
+      {
+        "sector": "RÉSIDENTIEL · MX SECURITY",
+        "title": "Une résidence connectée, du câblage aux équipements.",
+        "description": "Réalisation avec Mark de MX Security : installation et organisation de câbles CAT6 et HDMI dans une résidence, ainsi que mise en place des équipements Ajax Home Security System et Sonos pour la sécurité et l’audio.",
+        "tags": [
+          "CAT6 & HDMI",
+          "Gestion des câbles",
+          "Ajax Home Security System",
+          "Sonos"
         ]
       }
     ]
@@ -175,10 +186,10 @@
     "approach3Text": "The work is scheduled once the details and your agreement are confirmed.",
     "requestEyebrow": "A REQUEST. A STARTING POINT.",
     "requestTitle": "Let’s talk about your needs.",
-    "requestText": "A few questions to prepare a clear request. You can review and edit your summary before choosing how to share it with us.",
-    "emailLabel": "SolvoNord email",
+    "requestText": "A few questions to prepare your request. Review the summary, then send it.",
+    "emailLabel": "Email",
     "phoneLabel": "Phone",
-    "requestDisclosure": "No passwords or MFA codes. This questionnaire does not confirm an appointment.",
+    "requestDisclosure": "We’ll contact you to discuss the next steps and arrange an appointment if needed.",
     "deliveryTitle": "Email app required for now",
     "deliveryText": "The email button opens your app: you still need to send the message there. Direct submission from this page has not been activated yet.",
     "deliveryReadyTitle": "Submit your request here",
@@ -197,8 +208,8 @@
       ],
       [
         "cabling",
-        "Cabling & infrastructure",
-        "Network outlets, equipment and installations suited to your space and how you use it."
+        "Cabling & cable management",
+        "CAT6 cabling and network outlet installation. Cable routing, labelling and organization for a tidy infrastructure that is easy to maintain."
       ],
       [
         "printer",
@@ -245,6 +256,17 @@
           "Network deployment",
           "Routing",
           "IP addressing"
+        ]
+      },
+      {
+        "sector": "RESIDENTIAL · MX SECURITY",
+        "title": "A connected home, from cabling to equipment.",
+        "description": "Completed with Mark from MX Security: installed and organized CAT6 and HDMI cabling in a residence, along with Ajax Home Security System and Sonos equipment for home security and audio.",
+        "tags": [
+          "CAT6 & HDMI",
+          "Cable management",
+          "Ajax Home Security System",
+          "Sonos"
         ]
       }
     ]

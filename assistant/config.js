@@ -3,7 +3,7 @@ window.SOLVONORD_CONFIG = Object.freeze({
   provider: "formsubmit",
   formsubmitActivated: true, // Email activation confirmed by the owner.
   formsubmitUploadMode: "native", // Owner confirmed receipt of the native-upload test image.
-  formspreeId: "mqpelgwz", // Previous provider, retained for an explicit fallback configuration.
+  formspreeId: "", // No second live delivery destination.
   formspreeUploads: false,
   testMode: false,
   email: "solvonord@gmail.com"
