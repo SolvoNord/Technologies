@@ -27,9 +27,9 @@ window.SN_CONTENT = {
     "resetTitle": "Recommencer votre demande?",
     "resetBody": "Vos réponses, votre résumé et les aperçus photo seront effacés de cette page.",
     "privacyTitle": "Vos informations, votre choix.",
-    "privacyBody": "Ne communiquez pas de mots de passe, codes de connexion, pièces d’identité ou coordonnées bancaires. Une ville ou un secteur suffit : aucune adresse précise n’est demandée. Les réponses et les fichiers restent dans cet onglet jusqu’à l’envoi. Une référence, la langue et le nombre de photos sont conservés pendant la session pour afficher la confirmation; aucun texte de demande, coordonnée ou fichier n’est enregistré dans ce stockage.",
+    "privacyBody": "Vos informations servent uniquement à traiter votre demande et à vous recontacter. Une ville ou un secteur suffit. Ne transmettez pas de mots de passe ni de codes de connexion.",
     "privacyPhotos": "Les photos sont facultatives. En mode courriel séparé, aucun fichier n’est téléversé par ce formulaire. Vous choisissez vous-même les pièces jointes dans votre messagerie.",
-    "privacyService": "Vos réponses, vos coordonnées et les photos choisies sont transmises à {service}, puis à SolvoNord Technologies pour traiter votre demande. Aucun consentement marketing n’est demandé. Pour corriger ou supprimer vos informations, écrivez à solvonord@gmail.com.",
+    "privacyService": "Lors de l’envoi, vos réponses, vos coordonnées et les photos choisies passent par {service} pour parvenir à SolvoNord Technologies. Elles ne sont pas utilisées pour des envois marketing.",
     "steps": [
       "Votre besoin",
       "En quelques mots",
@@ -119,7 +119,7 @@ window.SN_CONTENT = {
     "availabilityPlaceholder": "Ex. Mardi ou jeudi après 15 h (heure de l’Est)",
     "urgentNote": "Un besoin urgent? Ce formulaire n’est pas surveillé en continu et ne garantit pas une intervention immédiate.",
     "photoLabel": "Choisir jusqu’à 3 photos (facultatif)",
-    "photoHint": "JPG, PNG ou WebP. 5 Mo par image, 9 Mo au total. Masquez les informations privées avant l’envoi.",
+    "photoHint": "JPG, PNG ou WebP. 5 Mo par image, 9 Mo au total.",
     "remove": "Retirer",
     "photoError": "Choisissez au maximum 3 images JPG, PNG ou WebP valides de 5 Mo ou moins.",
     "photoCount": "photo(s) sélectionnée(s)",
@@ -351,9 +351,11 @@ window.SN_CONTENT = {
     "noPhotosSent": "Aucun fichier transmis.",
     "photoUploadHint": "Ajoutez des photos pour nous aider à comprendre votre besoin. Cette étape est facultative.",
     "photoTotalError": "Les photos dépassent 9 Mo au total. Retirez une image ou choisissez des fichiers plus légers.",
-    "privacyPhotosUpload": "Les photos sont facultatives. Avant l’envoi, masquez les informations personnelles visibles sur les écrans, documents et étiquettes.",
+    "privacyPhotosUpload": "L’ajout de photos est facultatif. Votre navigateur conserve uniquement des détails temporaires de confirmation, sans vos réponses, coordonnées ou fichiers.",
     "saveCopy": "Conserver une copie",
-    "receiptUnconfirmed": "Nous ne pouvons pas afficher la confirmation de cette demande. Si vous l’avez déjà envoyée, contactez-nous par courriel avant de la renvoyer."
+    "receiptUnconfirmed": "Nous ne pouvons pas afficher la confirmation de cette demande. Si vous l’avez déjà envoyée, contactez-nous par courriel avant de la renvoyer.",
+    "privacyContactIntro": "Pour corriger ou supprimer vos informations,",
+    "privacyContactLink": "veuillez nous contacter"
   },
   "en": {
     "directEmail": "Email us directly",
@@ -382,9 +384,9 @@ window.SN_CONTENT = {
     "resetTitle": "Start a new request?",
     "resetBody": "Your answers, summary and photo previews will be cleared from this page.",
     "privacyTitle": "Your information. Your choice.",
-    "privacyBody": "Do not share passwords, sign-in codes, identity documents or banking details. A city or area is enough; no exact address is requested. Answers and files stay in this tab until submission. A reference, language and photo count are kept for the session to display your confirmation; no request text, contact details or files are saved in that storage.",
+    "privacyBody": "Your information is used only to handle your request and contact you. A city or area is enough. Do not share passwords or login codes.",
     "privacyPhotos": "Photos are optional. In separate-email mode, this form does not upload files. You choose the attachments yourself in your email app.",
-    "privacyService": "Your answers, contact details and selected photos are sent to {service}, then to SolvoNord Technologies to handle your request. No marketing consent is requested. To correct or delete your information, email solvonord@gmail.com.",
+    "privacyService": "When you submit, your answers, contact details and selected photos pass through {service} to reach SolvoNord Technologies. They are not used for marketing emails.",
     "steps": [
       "Your needs",
       "In a few words",
@@ -474,7 +476,7 @@ window.SN_CONTENT = {
     "availabilityPlaceholder": "E.g. Tuesday or Thursday after 3 p.m. (Eastern time)",
     "urgentNote": "Urgent request? This form is not continuously monitored and does not guarantee immediate assistance.",
     "photoLabel": "Select up to 3 photos (optional)",
-    "photoHint": "JPG, PNG or WebP. 5 MB per image, 9 MB combined. Hide private information before sending.",
+    "photoHint": "JPG, PNG or WebP. 5 MB per image, 9 MB combined.",
     "remove": "Remove",
     "photoError": "Choose up to 3 valid JPG, PNG or WebP images of 5 MB or less.",
     "photoCount": "selected photo(s)",
@@ -706,8 +708,10 @@ window.SN_CONTENT = {
     "noPhotosSent": "No files transmitted.",
     "photoUploadHint": "Add photos to help us understand your needs. This step is optional.",
     "photoTotalError": "The photos exceed 9 MB combined. Remove an image or choose smaller files.",
-    "privacyPhotosUpload": "Photos are optional. Before submitting, hide personal information visible on screens, documents and labels.",
+    "privacyPhotosUpload": "Photos are optional. Your browser keeps only temporary confirmation details, without your answers, contact details or files.",
     "saveCopy": "Keep a copy",
-    "receiptUnconfirmed": "We cannot display confirmation for this request. If you have already sent it, email us before submitting it again."
+    "receiptUnconfirmed": "We cannot display confirmation for this request. If you have already sent it, email us before submitting it again.",
+    "privacyContactIntro": "To correct or delete your information,",
+    "privacyContactLink": "please contact us"
   }
 };

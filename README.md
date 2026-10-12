@@ -42,6 +42,8 @@ Les réponses et photos restent en mémoire dans la page jusqu'à l'envoi direct
 
 Le formulaire applique un champ piège, un délai minimal, une limitation des envois répétés et un verrou pendant/après l'envoi. Les protections du fournisseur restent nécessaires; les contrôles du navigateur ne constituent pas une protection serveur. Aucune protection du fournisseur n'est désactivée par la configuration.
 
+Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et le suffixe est un nombre aléatoire de 32 bits issu de `crypto.getRandomValues`, encodé en base 36 sur sept caractères. Il sert au suivi des demandes et ne constitue ni un numéro de facture ni une preuve d’authenticité.
+
 ## Modifier le contenu
 
 - `index.html` : structure et métadonnées de la page.
@@ -49,7 +51,7 @@ Le formulaire applique un champ piège, un délai minimal, une limitation des en
 - `site.css` : apparence du portfolio.
 - `assistant/content.js` : questions, messages et traductions.
 - `assistant/app.js` : questionnaire, validation et envoi.
-- `assistant/config.js` : fournisseur actif, activation, configuration Formspree de secours et bandeau de test; ne jamais y ajouter de secret.
+- `assistant/config.js` : fournisseur actif, activation, configuration Formspree facultative et mode de test; ne jamais y ajouter de secret.
 - `assistant/thanks.html`, `thanks.js`, `thanks.css` : confirmation bilingue après vérification des demandes avec photos.
 
 `assistant/index.html` et les fichiers `widget*` fournissent aussi des présentations facultatives du même questionnaire. Le portfolio principal contient déjà le formulaire complet.
@@ -58,4 +60,4 @@ Le formulaire applique un champ piège, un délai minimal, une limitation des en
 
 A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
 
-The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `solvonord@gmail.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: three JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project with Mark from MX Security, featuring CAT6, HDMI, Ajax Home Security System and Sonos.
+The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `solvonord@gmail.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: three JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.

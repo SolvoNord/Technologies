@@ -3,7 +3,7 @@
   const copy={
   "fr": {
     "title": "SolvoNord Technologies | Réseaux, télécommunications et sécurité",
-    "description": "Services en réseaux, télécommunications et sécurité à Montréal : déploiement, configuration, Wi-Fi, téléphonie IP, câblage et soutien technique.",
+    "description": "Wi-Fi lent, coupures, équipements mal configurés? SolvoNord Technologies installe, configure et dépanne vos réseaux à Montréal : Wi-Fi, Cat6/Cat6A, télécoms et sécurité.",
     "skip": "Aller à la demande d’aide",
     "navServices": "Services",
     "navProjects": "Réalisations",
@@ -12,7 +12,7 @@
     "heroEyebrow": "MONTRÉAL ET RÉGION · PARTICULIERS ET ENTREPRISES",
     "heroTitle": "Votre technologie.",
     "heroAccent": "En confiance.",
-    "heroDescription": "Réseaux, télécommunications et sécurité : des solutions configurées, intégrées et déployées pour votre maison ou votre entreprise.",
+    "heroDescription": "Wi-Fi lent, coupures ou équipements mal configurés? Je trouve la cause et remets votre réseau en ordre. Installation soignée, câblage organisé et appareils bien connectés : des solutions concrètes pour votre maison ou votre entreprise.",
     "heroRequest": "Préparer ma demande ↗",
     "heroPortfolio": "Découvrir le portfolio ↓",
     "boardLabel": "LE BON POINT DE DÉPART",
@@ -30,7 +30,7 @@
     "strip4": "Sécurité & soutien TI",
     "servicesEyebrow": "NOS SERVICES",
     "servicesTitle": "Des solutions adaptées à votre quotidien.",
-    "servicesIntro": "À la maison, au bureau ou dans votre commerce : on part de votre besoin, puis on précise la bonne intervention.",
+    "servicesIntro": "Maison, bureau, commerce, restaurant ou Airbnb : un réseau fiable pour travailler, accueillir vos clients et profiter de vos équipements. Du télétravail aux nouvelles installations, je prends en charge la configuration et le dépannage.",
     "projectsEyebrow": "LE PORTFOLIO",
     "projectsTitle": "Du concret, sur le terrain.",
     "projectsIntro": "Des systèmes réseau et télécoms configurés, intégrés et mis en service sur le terrain.",
@@ -55,36 +55,32 @@
     "emailLabel": "Courriel",
     "phoneLabel": "Téléphone",
     "requestDisclosure": "Nous vous contacterons pour convenir de la suite et, au besoin, d’un rendez-vous.",
-    "deliveryTitle": "Envoi par messagerie pour le moment",
-    "deliveryText": "Le bouton courriel ouvre votre application : vous devez ensuite y envoyer le message. L’envoi direct depuis cette page n’est pas encore activé.",
-    "deliveryReadyTitle": "Envoyez votre demande ici",
-    "deliveryReadyText": "Décrivez votre besoin et vérifiez le résumé. Une confirmation avec une référence apparaîtra après l’envoi.",
     "footerLocation": "Montréal et région · FR / EN",
     "services": [
       [
         "it",
         "Dépannage TI",
-        "Ordinateurs, lenteurs, connexions : comprendre le problème et rétablir le fonctionnement."
+        "Diagnostic des lenteurs, des coupures et des équipements mal configurés. Identification de la cause et remise en service de votre installation."
       ],
       [
         "wifi",
         "Réseaux & Wi-Fi",
-        "Diagnostic des coupures, de la couverture et des interférences. Configuration et optimisation."
+        "Installation et configuration de routeurs, commutateurs (switches), points d’accès, réseaux Mesh et amplificateurs Wi-Fi. Une couverture adaptée à vos espaces."
       ],
       [
         "cabling",
         "Câblage & gestion des câbles",
-        "Installation de câbles CAT6 et de prises réseau. Organisation, repérage et rangement des câbles pour une infrastructure propre et facile à entretenir."
+        "Câblage réseau structuré Cat6/Cat6A et installation de prises. Organisation, repérage et rangement des câbles pour une installation propre et facile à entretenir."
       ],
       [
         "printer",
         "Imprimantes & périphériques",
-        "Connexion des imprimantes, téléviseurs et autres équipements à votre environnement."
+        "Connexion et configuration de vos imprimantes, téléviseurs, caméras et systèmes Sonos pour qu’ils fonctionnent avec votre réseau."
       ],
       [
         "security",
         "Cybersécurité",
-        "Pare-feu, segmentation, gestion des accès et recommandations pour mieux protéger vos systèmes."
+        "Réseaux invités, VLAN et séparation des appareils. Configuration des pare-feu et des accès pour mieux protéger votre réseau."
       ],
       [
         "quote",
@@ -124,9 +120,9 @@
         ]
       },
       {
-        "sector": "RÉSIDENTIEL · MX SECURITY",
+        "sector": "RÉSIDENTIEL",
         "title": "Une résidence connectée, du câblage aux équipements.",
-        "description": "Réalisation avec Mark de MX Security : installation et organisation de câbles CAT6 et HDMI dans une résidence, ainsi que mise en place des équipements Ajax Home Security System et Sonos pour la sécurité et l’audio.",
+        "description": "Installation et organisation de câbles CAT6 et HDMI dans une résidence. Mise en place des équipements Ajax Home Security System et Sonos pour intégrer la sécurité et l’audio à l’environnement connecté de la maison.",
         "tags": [
           "CAT6 & HDMI",
           "Gestion des câbles",
@@ -138,7 +134,7 @@
   },
   "en": {
     "title": "SolvoNord Technologies | Networks, Telecommunications & Security",
-    "description": "Network, telecommunications and security services in Montréal: deployment, configuration, Wi-Fi, IP telephony, cabling and technical support.",
+    "description": "Slow Wi-Fi, dropouts or misconfigured equipment? SolvoNord Technologies installs, configures and troubleshoots networks in Montréal: Wi-Fi, Cat6/Cat6A, telecom and security.",
     "skip": "Skip to the help request",
     "navServices": "Services",
     "navProjects": "Projects",
@@ -147,7 +143,7 @@
     "heroEyebrow": "MONTRÉAL & AREA · HOMES & BUSINESSES",
     "heroTitle": "Your technology.",
     "heroAccent": "In good hands.",
-    "heroDescription": "Networks, telecommunications and security: solutions configured, integrated and deployed for your home or business.",
+    "heroDescription": "Slow Wi-Fi, connection dropouts or equipment that won’t work properly? I find the cause and get your network running smoothly. Careful installation, tidy cabling and connected devices: practical solutions for your home or business.",
     "heroRequest": "Prepare my request ↗",
     "heroPortfolio": "Explore the portfolio ↓",
     "boardLabel": "A GOOD PLACE TO START",
@@ -165,7 +161,7 @@
     "strip4": "Security & IT support",
     "servicesEyebrow": "OUR SERVICES",
     "servicesTitle": "Solutions for your everyday needs.",
-    "servicesIntro": "At home, at the office or in your store: we start with what you need, then determine the right next step.",
+    "servicesIntro": "Homes, offices, shops, restaurants and Airbnbs: reliable networks for working, serving customers and enjoying your devices. From remote work to new installations, I handle the setup and troubleshooting.",
     "projectsEyebrow": "THE PORTFOLIO",
     "projectsTitle": "Practical work. Real settings.",
     "projectsIntro": "Network and telecommunications systems configured, integrated and commissioned in the field.",
@@ -190,36 +186,32 @@
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "requestDisclosure": "We’ll contact you to discuss the next steps and arrange an appointment if needed.",
-    "deliveryTitle": "Email app required for now",
-    "deliveryText": "The email button opens your app: you still need to send the message there. Direct submission from this page has not been activated yet.",
-    "deliveryReadyTitle": "Submit your request here",
-    "deliveryReadyText": "Describe your needs and review the summary. A confirmation with a reference will appear after submission.",
     "footerLocation": "Montréal & surrounding area · FR / EN",
     "services": [
       [
         "it",
         "IT support",
-        "Computers, slowdowns and connection issues: understand what is wrong and restore normal operation."
+        "Troubleshoot slowdowns, disconnections and misconfigured equipment. Identify the cause and get your setup working again."
       ],
       [
         "wifi",
         "Networks & Wi-Fi",
-        "Diagnose dropouts, coverage gaps and interference. Configure and optimize your network."
+        "Install and configure routers, switches, access points, mesh networks and Wi-Fi extenders. Coverage suited to your space."
       ],
       [
         "cabling",
         "Cabling & cable management",
-        "CAT6 cabling and network outlet installation. Cable routing, labelling and organization for a tidy infrastructure that is easy to maintain."
+        "Structured Cat6/Cat6A cabling and network outlet installation. Cable routing, labelling and organization for a tidy setup that is easy to maintain."
       ],
       [
         "printer",
         "Printers & peripherals",
-        "Connect printers, televisions and other devices to your existing setup."
+        "Connect and configure printers, televisions, cameras and Sonos systems to work with your network."
       ],
       [
         "security",
         "Cybersecurity",
-        "Firewalls, segmentation, access management and recommendations to better protect your systems."
+        "Guest networks, VLANs and device separation. Firewall and access configuration to better protect your network."
       ],
       [
         "quote",
@@ -259,9 +251,9 @@
         ]
       },
       {
-        "sector": "RESIDENTIAL · MX SECURITY",
+        "sector": "RESIDENTIAL",
         "title": "A connected home, from cabling to equipment.",
-        "description": "Completed with Mark from MX Security: installed and organized CAT6 and HDMI cabling in a residence, along with Ajax Home Security System and Sonos equipment for home security and audio.",
+        "description": "Installed and organized CAT6 and HDMI cabling in a residence. Set up Ajax Home Security System and Sonos equipment to bring security and audio into the connected home.",
         "tags": [
           "CAT6 & HDMI",
           "Cable management",
@@ -290,14 +282,7 @@
       const card=make('article','project-item');const tags=make('div','project-tags');project.tags.forEach(tag=>tags.append(make('span','',tag)));
       card.append(make('span','project-index',`0${i+1} / `+project.sector),make('h3','',project.title),make('p','',project.description),tags);projects.append(card);
     });
-    if(window.SOLVONORD_CONFIG?.provider==='formsubmit'?window.SOLVONORD_CONFIG.formsubmitActivated===true:/^[a-z0-9]{6,32}$/.test(window.SOLVONORD_CONFIG?.formspreeId||'')){
-      document.querySelector('[data-site="deliveryTitle"]').textContent=c.deliveryReadyTitle;
-      document.querySelector('[data-site="deliveryText"]').textContent=c.deliveryReadyText;
-      if(window.SOLVONORD_CONFIG.testMode){
-        document.querySelector('[data-site="deliveryTitle"]').textContent=lang==='fr'?'Formulaire de test connecté':'Test form connected';
-        document.querySelector('[data-site="deliveryText"]').textContent=lang==='fr'?'Utilisez des informations fictives. Le bouton « Envoyer directement » transmet réellement votre résumé au formulaire de test SolvoNord, sans ouvrir votre messagerie. La réception du courriel reste à vérifier.':'Use sample information. “Send directly” submits your summary to the SolvoNord test form without opening your email app. Email receipt still needs to be verified.';
-      }
-    }
+
   }
   document.addEventListener('solvonord:language',e=>render(e.detail.lang));
   document.addEventListener('click',e=>{const link=e.target.closest('[data-service-link]');if(link)document.dispatchEvent(new CustomEvent('solvonord:service',{detail:{service:link.dataset.serviceLink}}));});
