@@ -2,7 +2,7 @@
 window.SOLVONORD_CONFIG = Object.freeze({
   provider: "formsubmit",
   formsubmitActivated: true, // Email activation confirmed by the owner.
-  formsubmitUploadMode: "email", // Switch to native only after inbox attachment verification.
+  formsubmitUploadMode: "native", // Owner confirmed receipt of the native-upload test image.
   formspreeId: "mqpelgwz", // Previous provider, retained for an explicit fallback configuration.
   formspreeUploads: false,
   testMode: false,

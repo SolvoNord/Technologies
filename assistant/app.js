@@ -216,13 +216,14 @@
     label.append(check,el("span",{},c.consent));f.append(label);
     const actions=el("div",{class:"review-actions"});
     const email=el("button",{type:"button",class:"secondary",id:"send-email","aria-describedby":"email-help"},c.emailSend);email.onclick=sendEmail;
-    const auto=el("button",{type:"button",class:"primary delivery-primary",id:"send-direct","aria-describedby":"delivery-note"},state.busy?c.sending:(deliveryConfigured?c.autoSend:c.autoDisabled));auto.disabled=!deliveryConfigured;auto.onclick=sendDirect;
+    const nativePhotos=provider==="formsubmit"&&uploadsEnabled&&state.photos.length>0;
+    const auto=el("button",{type:"button",class:"primary delivery-primary",id:"send-direct","aria-describedby":"delivery-note"},state.busy?c.sending:(deliveryConfigured?(nativePhotos?c.nativeSend:c.autoSend):c.autoDisabled));auto.disabled=!deliveryConfigured;auto.onclick=sendDirect;
     const small=el("div",{class:"small-actions"});
     const copy=el("button",{type:"button",class:"secondary",id:"copy-summary"},c.copy);
     copy.onclick=async()=>{if(!checkSummary())return;try{await navigator.clipboard.writeText(state.summary);showStatus("copied");}catch{showStatus("copyError");}};
     const download=el("button",{type:"button",class:"secondary",id:"download-summary"},c.download);download.onclick=()=>{if(!checkSummary())return;const url=URL.createObjectURL(new Blob([state.summary],{type:"text/plain;charset=utf-8"}));const link=el("a",{href:url,download:"demande-solvonord.txt"});document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showStatus("downloaded");};
     const emailHelp=el("p",{class:"delivery-help",id:"email-help"},c.emailHelp);
-    const deliveryNote=(deliveryConfigured?(uploadsEnabled?c.autoReadyUpload:c.autoReady):c.autoNote).replaceAll("{service}",provider==="formsubmit"?"FormSubmit":"Formspree");
+    const deliveryNote=(deliveryConfigured?(nativePhotos?c.nativeNote:(uploadsEnabled?c.autoReadyUpload:c.autoReady)):c.autoNote).replaceAll("{service}",provider==="formsubmit"?"FormSubmit":"Formspree");
     small.append(copy,download);actions.append(auto,el("p",{class:"note delivery-note",id:"delivery-note"},deliveryNote),email,emailHelp,small);f.append(actions);
     if(state.photos.length) f.append(el("p",{class:"note"},c.photoUploadNotice));
   }
@@ -298,7 +299,7 @@
         const receipt={reference:state.reference,lang,count:state.photos.length,token,createdAt:Date.now(),status:"pending"};
         sessionStorage.setItem(receiptKey,JSON.stringify(receipt));
         const target=new URL(receiptUrl);target.searchParams.set("receipt",token);
-        const form=el("form",{method:"post",action:`https://formsubmit.co/${recipient}`,enctype:"multipart/form-data",hidden:""});
+        const form=el("form",{method:"post",action:`https://formsubmit.co/${recipient}`,target:"_top",enctype:"multipart/form-data",hidden:""});
         payload._next=target.href;
         Object.entries(payload).forEach(([name,value])=>form.append(el("input",{type:"hidden",name,value})));
         state.photos.forEach((photo,index)=>{
@@ -323,7 +324,7 @@
       const accepted=provider==="formsubmit"?(data?.success===true||data?.success==="true"):(data?.ok!==false&&!data?.errors?.length);
       if(!response.ok || !accepted)throw new Error("Unconfirmed submission");
       state.submitted=true;statusKey="";
-    } catch {statusKey="sendError";}
+    } catch {state.nativePending=false;statusKey="sendError";}
     finally {clearTimeout(timeout);if(!state.nativePending){state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}}
   }
   window.addEventListener("pageshow",event=>{
