@@ -55,21 +55,17 @@ Le formulaire applique un champ piège, un délai minimal, une limitation des en
 
 Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et le suffixe est un nombre aléatoire de 32 bits issu de `crypto.getRandomValues`, encodé en base 36 sur sept caractères. Il sert au suivi des demandes et ne constitue ni un numéro de facture ni une preuve d’authenticité.
 
+## Google Search Console et statistiques sans bannière
+
+La propriété Search Console est validée pour `https://solvonord.github.io/Technologies/`. Conserver la balise de vérification de `index.html` et `sitemap.xml`. Google a accepté la demande d’indexation de la page le 12 octobre 2026; cela ne garantit pas sa présence ni sa position dans les résultats.
+
+À la demande du propriétaire, le bandeau « Accepter / Refuser » et les préférences de cookies ont été retirés. **Cloudflare Web Analytics est le seul outil de mesure chargé**, en arrière-plan et sans cookies de suivi. La notice de confidentialité FR/EN le décrit. Le script Google n’est plus chargé et la CSP n’autorise plus ses domaines.
+
+Le compte GA4 créé précédemment reste disponible pour ses anciennes données, mais le site ne lui transmet plus de nouvelles visites, villes ou actions. `analytics.js` est désormais uniquement une migration locale : elle désactive l’ancien identifiant de mesure, retire sa préférence enregistrée et efface ses cookies préfixés `sn_ga`. Elle ne transmet rien et ne touche pas aux réponses, photos ou références des demandes.
+
+Le formulaire conserve six photos maximum, les mêmes limites de taille et le même transport FormSubmit. Aucun service d’envoi, hébergement, compte ou abonnement n’a été remplacé.
+
 ## Modifier le contenu
-
-### Google Search Console et Google Analytics 4
-
-La propriété Search Console utilise le préfixe `https://solvonord.github.io/Technologies/`, la balise de vérification de `index.html` et `sitemap.xml`. Conserver la balise après validation. Aucun accès DNS au domaine `github.io` n’est nécessaire. L’inscription et le sitemap ne garantissent pas l’indexation ni une position dans les résultats Google.
-
-Le flux GA4 **Portfolio SolvoNord Technologies** utilise l’identifiant public **G-8HCFSX3ZVC** dans le compte du propriétaire. La configuration initiale utilise le Canada, le fuseau de Toronto et le dollar canadien. Les mesures améliorées automatiques ont été désactivées. Ne pas activer les fonctions publicitaires ou les mesures automatiques de formulaires sans revoir la confidentialité.
-
-`analytics.js` charge Google uniquement après un accord explicite ou un accord enregistré encore valide. Le choix peut être modifié dans le pied de page et la notice de confidentialité. Le refus n’empêche pas le formulaire de fonctionner. La préférence expire après 180 jours; les cookies Analytics sont limités au domaine hôte et au chemin `/Technologies/`, avec une durée de 30 jours. Le retrait du consentement bloque les événements et supprime les cookies de cette intégration. Les aperçus locaux ne transmettent rien à GA4.
-
-Les événements sont `page_view`, `contact_click` (seulement le moyen : courriel/téléphone/LinkedIn), `request_start` et `generate_lead` après confirmation. Aucun contenu de formulaire, nom de fichier, adresse courriel, téléphone, référence ou jeton de retour n’est ajouté aux événements. L’adresse de page transmise est fixe, sans paramètres ni fragment; le référent est réduit à son origine. Les événements avant consentement ne sont pas rejoués. Les statistiques peuvent donc différer de Cloudflare ou du nombre réel de demandes.
-
-Vérification locale du 12 octobre 2026 : six fichiers multipart transmis au simulateur local, retour de confirmation FR/EN, rejet du septième fichier et d’un total supérieur à 9 Mo; contrôles automatisés de consentement, retrait, persistance, absence de données de formulaire et isolation des aperçus. Aucun nouvel envoi de test à Gmail n’a été nécessaire. La réception des six pièces jointes ensemble n’a pas été retestée dans Gmail; le transport natif déjà validé par le propriétaire est conservé.
-
-Documentation : [configuration GA4](https://developers.google.com/analytics/devguides/collection/ga4/reference/config), [consentement Google](https://developers.google.com/tag-platform/security/guides/consent), [vérification Search Console](https://support.google.com/webmasters/answer/9008080).
 
 - `index.html` : structure et métadonnées de la page.
 - `site.js` : textes du portfolio FR/EN.

@@ -310,7 +310,6 @@
       const accepted=provider==="formsubmit"?(data?.success===true||data?.success==="true"):(data?.ok!==false&&!data?.errors?.length);
       if(!response.ok || !accepted)throw new Error("Unconfirmed submission");
       state.submitted=true;statusKey="";
-      document.dispatchEvent(new Event("solvonord:request-sent"));
     } catch {state.nativePending=false;statusKey="sendError";}
     finally {clearTimeout(timeout);if(!state.nativePending){state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}}
   }
@@ -342,7 +341,7 @@
     const service=event.detail?.service;
     if(state.busy||state.step!==0||!Object.hasOwn(t().services,service))return;
     if(state.answers.service!==service)(details()?.fields||[]).forEach(([key])=>delete state.answers[key]);
-    state.answers.service=service;state.summary="";state.summaryDirty=false;state.consent=false;state.step=1;statusKey="";document.dispatchEvent(new Event("solvonord:request-started"));render(true);
+    state.answers.service=service;state.summary="";state.summaryDirty=false;state.consent=false;state.step=1;statusKey="";render(true);
   });
   $("intake").addEventListener("input",event=>{
     const input=event.target;
@@ -361,7 +360,7 @@
       render();$("answer-method").focus();
     }
   });
-  $("intake").addEventListener("submit",event=>{event.preventDefault();if(state.busy||state.step===7||!validate())return;if(state.step===0)document.dispatchEvent(new Event("solvonord:request-started"));state.step++;statusKey="";render(true);});
+  $("intake").addEventListener("submit",event=>{event.preventDefault();if(state.busy||state.step===7||!validate())return;state.step++;statusKey="";render(true);});
   $("back").onclick=()=>{if(state.busy)return;state.step=Math.max(0,state.step-1);statusKey="";render(true);};
   document.querySelectorAll("[data-lang]").forEach(button=>button.onclick=()=>{
     if(state.busy)return;lang=button.dataset.lang;state.consent=false;
@@ -388,10 +387,8 @@
     if(!valid){statusKey="receiptUnconfirmed";return false;}
     lang=["fr","en"].includes(params.get("lang"))?params.get("lang"):receipt.lang;
     if(!["fr","en"].includes(lang))lang="fr";
-    const newlyConfirmed=receipt.status==="pending";
     receipt.status="confirmed";try{sessionStorage.setItem(receiptKey,JSON.stringify(receipt));}catch{}
     Object.assign(state,{step:7,submitted:true,reference:receipt.reference,lastSend:Date.now()});
-    if(newlyConfirmed)document.dispatchEvent(new Event("solvonord:request-sent"));
     return true;
   }
   render(restoreReceipt());
