@@ -55,13 +55,15 @@ Le formulaire applique un champ piège, un délai minimal, une limitation des en
 
 Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et le suffixe est un nombre aléatoire de 32 bits issu de `crypto.getRandomValues`, encodé en base 36 sur sept caractères. Il sert au suivi des demandes et ne constitue ni un numéro de facture ni une preuve d’authenticité.
 
-## Google Search Console et statistiques sans bannière
+## Google Search Console et statistiques
 
 La propriété Search Console est validée pour `https://solvonord.github.io/Technologies/`. Conserver la balise de vérification de `index.html` et `sitemap.xml`. Google a accepté la demande d’indexation de la page le 12 octobre 2026; cela ne garantit pas sa présence ni sa position dans les résultats.
 
-À la demande du propriétaire, le bandeau « Accepter / Refuser » et les préférences de cookies ont été retirés. **Cloudflare Web Analytics est le seul outil de mesure chargé**, en arrière-plan et sans cookies de suivi. La notice de confidentialité FR/EN le décrit. Le script Google n’est plus chargé et la CSP n’autorise plus ses domaines.
+À la demande du propriétaire, Google Analytics 4 est réactivé avec une petite carte FR/EN : « Nous utilisons Google Analytics pour comprendre les visites du site. Acceptez-vous ces cookies? », puis deux boutons de même visibilité, **Accepter** et **Refuser**. Le formulaire reste utilisable dans les deux cas. Cloudflare Web Analytics continue de fonctionner sans cookies de suivi.
 
-Le compte GA4 créé précédemment reste disponible pour ses anciennes données, mais le site ne lui transmet plus de nouvelles visites, villes ou actions. `analytics.js` est désormais uniquement une migration locale : elle désactive l’ancien identifiant de mesure, retire sa préférence enregistrée et efface ses cookies préfixés `sn_ga`. Elle ne transmet rien et ne touche pas aux réponses, photos ou références des demandes.
+Le flux GA4 `G-8HCFSX3ZVC` ne charge son script qu’après accord explicite ou lecture d’un accord enregistré encore valide. La préférence `solvonord-analytics-choice-v2` expire après 180 jours. Aucun accord n’est présumé à partir de l’ancienne intégration retirée. Les cookies de cette intégration sont limités au domaine hôte et au chemin `/Technologies/`, avec une durée de 30 jours. Le refus arrête la mesure Google et supprime ces cookies. Le choix reste modifiable dans le pied de page et dans Confidentialité. Les aperçus locaux ne transmettent rien à GA4.
+
+La mesure couvre les visites et des actions générales : clic de contact, début de demande et confirmation d’envoi. Aucun contenu de formulaire, coordonnée, nom de fichier, référence ou jeton de retour n’est inclus dans les événements. L’URL transmise est fixe, sans paramètres ni fragment; le référent est réduit à son origine. Les fonctions publicitaires et Google Signals sont désactivés. Les mesures améliorées du flux ont été désactivées lors de sa création. Les événements antérieurs à l’accord ne sont pas rejoués.
 
 Le formulaire conserve six photos maximum, les mêmes limites de taille et le même transport FormSubmit. Aucun service d’envoi, hébergement, compte ou abonnement n’a été remplacé.
 
