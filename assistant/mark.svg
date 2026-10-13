@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><title>SolvoNord — réseau et direction nord</title><rect width="48" height="48" rx="14" fill="#173f38"/><path d="M14 34V14l20 20V13m-5 5 5-5 5 5" fill="none" stroke="#c8ef96" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="14" r="3.5" fill="#f6f7f1"/><circle cx="14" cy="34" r="3.5" fill="#c8ef96"/><circle cx="34" cy="34" r="3.5" fill="#f6f7f1"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="sn-title sn-desc">
+  <title id="sn-title">SN — SolvoNord Technologies</title>
+  <desc id="sn-desc">Monogramme SN : S ivoire et N vert clair dans un carré vert profond aux angles arrondis.</desc>
+  <rect width="64" height="64" rx="17" fill="#173f38"/>
+  <g fill="none" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 21h-8c-4 0-6.5 2.3-6.5 5.8S16 32 20.5 32H22c4 0 6.5 2 6.5 5.8S25.8 44 21.5 44h-8" stroke="#f6f7f1"/>
+    <path d="M36 44V21l15 23V21" stroke="#c8ef96"/>
+  </g>
+</svg>
