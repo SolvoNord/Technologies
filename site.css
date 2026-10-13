@@ -41,3 +41,8 @@
 .footer-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px 28px;border-top:1px solid #d4decf;margin-top:30px;padding-top:21px;font-size:11px;line-height:1.7}
 @media(max-width:1050px){.footer-main{grid-template-columns:1fr;gap:28px}.footer-contacts{grid-template-columns:1fr 1fr 1.4fr}}
 @media(max-width:600px){.site-footer{padding-top:32px}.footer-contacts{grid-template-columns:1fr;gap:20px}.footer-contact{min-height:54px;gap:5px}.footer-meta{flex-direction:column;gap:8px;margin-top:26px;padding-top:18px}}
+
+/* The complete approved logo anchors the contact footer. */
+.footer-identity .brand-full{max-width:100%}.footer-identity .brand-full .brand-artwork{width:280px;height:auto;border-radius:14px}.footer-main{grid-template-columns:minmax(240px,1fr) minmax(0,2fr);align-items:center}.footer-identity .company-name{padding-left:2px}
+@media(max-width:1050px){.footer-main{grid-template-columns:1fr;gap:28px}}
+@media(min-width:801px) and (max-width:1050px){.site-header .brand .brand-artwork{width:230px}}

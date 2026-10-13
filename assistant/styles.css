@@ -15,5 +15,8 @@
 /* Keep contact links on one shared baseline with equal touch targets. */
 .assistant-foot{display:block;font-size:12px}.assistant-foot-note{display:flex;align-items:flex-start;gap:8px;margin:0;line-height:1.6}.assistant-foot-note>span:first-child{flex-shrink:0}.assistant-foot-links{display:flex;align-items:center;flex-wrap:wrap;column-gap:22px;margin-top:6px}.assistant-foot-links>a,.assistant-foot-links>button{display:inline-flex;align-items:center;justify-content:flex-start;min-height:44px;margin:0;padding:0;border:0;border-radius:0;background:none;color:var(--ink);font:inherit;line-height:1.5;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 
-/* Shared SolvoNord wordmark: preserve the S/N capitals and optical alignment. */
-.brand{align-items:center;white-space:nowrap;letter-spacing:-.65px}.brand-light{font-weight:600}.brand img{flex-shrink:0}.brand small{letter-spacing:3.3px}
+
+/* Owner-supplied globe and shield artwork. The source pixels stay intact. */
+.brand{align-items:center;flex-shrink:0}.brand .brand-artwork{display:block;width:280px;height:auto;max-width:100%;border-radius:9px}.avatar img{display:block;width:42px;height:42px;border-radius:13px}.receipt-header .brand .brand-artwork{width:280px;height:auto}
+@media(max-width:600px){.brand .brand-artwork,.receipt-header .brand .brand-artwork{width:200px}.topbar{flex-wrap:wrap;gap:16px}.topbar .top-actions{margin-left:auto}}
+@media(max-width:360px){.brand .brand-artwork,.receipt-header .brand .brand-artwork{width:172px}}
