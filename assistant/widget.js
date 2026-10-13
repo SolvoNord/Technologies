@@ -8,7 +8,7 @@
   const en = lang === "en";
   const host = document.createElement("div"); host.id = "solvonord-widget";
   const root = host.attachShadow({mode:"open"});
-  const style = document.createElement("link"); style.rel="stylesheet";style.href=new URL("widget.css",base).href;
+  const style = document.createElement("link"); style.rel="stylesheet";style.href=new URL("widget.css?v=20261013-unified",base).href;
   const welcome = document.createElement("div"); welcome.className="welcome";
   const message=document.createElement("p");message.textContent=en?"Hello! Need IT help or a quote?":"Bonjour! Un besoin TI ou un devis?";
   const direct=document.createElement("a");direct.href="mailto:solvonord@gmail.com";direct.textContent=en?"Email us directly":"Nous écrire directement";

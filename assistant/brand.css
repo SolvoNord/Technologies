@@ -1,0 +1,15 @@
+/* SolvoNord's shared palette. All solid brand accents use this one green. */
+:root,:host {
+  --brand: #015f41;
+  --ink: var(--brand);
+  --accent: #fff;
+  --on-brand: #fff;
+  --paper: #f7f7f5;
+  --surface: #fff;
+  --surface-soft: #f0f0ee;
+  --muted: #595959;
+  --line: #dededb;
+  --field-border: #8b8b86;
+  --line-on-brand: rgb(255 255 255 / 28%);
+  --danger: #a32222;
+}
