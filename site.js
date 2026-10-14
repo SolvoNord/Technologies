@@ -7,43 +7,29 @@
     "skip": "Aller à la demande d’aide",
     "navServices": "Services",
     "navProjects": "Réalisations",
-    "navRequest": "Demander de l’aide ↗",
     "heroEyebrow": "MONTRÉAL ET RÉGION · PARTICULIERS ET ENTREPRISES",
     "heroTitle": "Votre réseau.",
     "heroAccent": "Notre savoir-faire.",
-    "heroDescription": "Wi-Fi lent, coupures ou équipements mal configurés? SolvoNord prend en charge l’installation, l’optimisation et le dépannage de vos réseaux. Retrouvez une connexion fiable, des équipements bien intégrés et une installation soignée, à la maison comme en entreprise.",
+    "heroDescription": "Installation, configuration et dépannage de vos réseaux, du câblage aux équipements. Pour la maison, le bureau et les espaces professionnels.",
     "heroRequest": "Discutons de votre besoin ↗",
-    "heroPortfolio": "Voir nos réalisations ↓",
-    "boardLabel": "LE BON POINT DE DÉPART",
-    "boardTitle": "Qu’est-ce qu’on peut résoudre pour vous?",
-    "boardIt": "Un problème technique",
-    "boardItSub": "Ordinateur, connexion, imprimante",
-    "boardWifi": "Un réseau plus fiable",
-    "boardWifiSub": "Wi-Fi, couverture, performance",
-    "boardProject": "Un projet à préparer",
-    "boardProjectSub": "Installation, câblage, devis",
-    "boardFooter": "Assistant guidé en français et en anglais",
-    "strip1": "Réseaux & Wi-Fi",
-    "strip2": "Infrastructure & câblage",
-    "strip3": "Télécommunications",
-    "strip4": "Sécurité & soutien TI",
-    "servicesEyebrow": "NOS SERVICES",
-    "servicesTitle": "Les bons services.\nAu bon endroit.",
-    "servicesIntro": "Maison, bureau, commerce, restaurant ou Airbnb : nous adaptons le réseau à votre espace et à vos usages. Dépannage ponctuel, câblage ou nouvelle installation, définissons ensemble les travaux utiles.",
+    "heroPortfolio": "Découvrir nos réalisations ↗",
+    "servicesEyebrow": "NOTRE EXPERTISE",
+    "servicesTitle": "Des services adaptés à vos besoins.",
+    "servicesIntro": "Un problème à résoudre ou une installation à préparer : nous vous accompagnons de l’analyse à la mise en service.",
     "projectsEyebrow": "LE PORTFOLIO",
-    "projectsTitle": "Du concret, sur le terrain.",
-    "projectsIntro": "Des réalisations en réseaux, télécommunications, vidéosurveillance et sécurité. De l’analyse du trafic à la mise en service des équipements, une expertise appliquée sur le terrain.",
+    "projectsTitle": "Nos réalisations.",
+    "projectsIntro": "Réseaux, communications et sécurité : découvrez les interventions et les équipements de chaque projet.",
     "projectCta": "Vous avez un projet similaire? Parlons-en ↗",
     "approachEyebrow": "COMMENT ÇA SE PASSE",
-    "approach1Title": "Comprendre votre besoin.",
-    "approach1Text": "Un problème à résoudre ou un projet à préparer : décrivez votre environnement, vos usages et vos priorités.",
-    "approach2Title": "Définir la solution.",
-    "approach2Text": "Nous précisons les travaux, les équipements et les disponibilités. Vous connaissez le périmètre avant de donner votre accord.",
-    "approach3Title": "Réaliser et vérifier.",
-    "approach3Text": "Installation, configuration ou dépannage : nous réalisons l’intervention et vérifions le fonctionnement avec vous.",
-    "requestEyebrow": "COMMENÇONS PAR VOTRE BESOIN",
-    "requestTitle": "Un problème à régler?\nUn projet à concrétiser?",
-    "requestText": "Décrivez-nous la situation. L’assistant vous aide à préparer une demande claire, puis nous vous contactons pour discuter de la suite.",
+    "approach1Title": "Échanger.",
+    "approach1Text": "Nous prenons le temps de comprendre votre environnement et votre besoin.",
+    "approach2Title": "Planifier.",
+    "approach2Text": "Nous précisons la solution, les travaux et les disponibilités avec vous.",
+    "approach3Title": "Réaliser.",
+    "approach3Text": "Nous réalisons l’intervention et vérifions le fonctionnement ensemble.",
+    "requestEyebrow": "CONTACT",
+    "requestTitle": "Parlons de votre projet.",
+    "requestText": "Dépannage ou nouvelle installation, décrivez votre besoin en quelques étapes. Nous vous recontacterons pour discuter de la suite.",
     "emailLabel": "Courriel",
     "phoneLabel": "Cellulaire",
     "requestDisclosure": "Nous vous contacterons pour convenir de la suite et, au besoin, d’un rendez-vous.",
@@ -168,15 +154,12 @@
       }
     ],
     "heroSignature": "RÉSEAUX · TÉLÉCOMMUNICATIONS · SÉCURITÉ",
-    "valueEyebrow": "L’APPROCHE SOLVONORD",
-    "valueTitle": "La technique au service de votre quotidien.",
-    "valueIntro": "Derrière chaque équipement, il y a un usage : travailler, communiquer, accueillir vos clients. Nous partons de cette réalité pour concevoir et mettre en place la bonne solution.",
-    "value1Title": "Moins d’interruptions.",
-    "value1Text": "Repérer l’origine des coupures, améliorer la couverture et ajuster les configurations pour un réseau sur lequel vous pouvez compter.",
-    "value2Title": "Une installation bien pensée.",
-    "value2Text": "Des câbles organisés, des appareils bien intégrés et des accès adaptés à vos usages. Une infrastructure plus claire et plus facile à faire évoluer.",
-    "value3Title": "Un interlocuteur impliqué.",
-    "value3Text": "De l’analyse à la mise en service, vous échangez avec la personne qui réalise l’intervention. Des explications claires à chaque étape."
+    "navHome": "Accueil",
+    "navContact": "Contact",
+    "heroIllustration": "Visuel d’illustration",
+    "introLead": "Une technologie bien pensée.\nUne installation qui vous simplifie la vie.",
+    "projectMore": "Voir le projet",
+    "projectLess": "Réduire"
   },
   "en": {
     "title": "SolvoNord Technologies | Networks, Telecommunications & Security",
@@ -184,43 +167,29 @@
     "skip": "Skip to the help request",
     "navServices": "Services",
     "navProjects": "Projects",
-    "navRequest": "Request help ↗",
     "heroEyebrow": "MONTRÉAL & AREA · HOMES & BUSINESSES",
     "heroTitle": "Your network.",
     "heroAccent": "Our know-how.",
-    "heroDescription": "Slow Wi-Fi, connection dropouts or misconfigured equipment? SolvoNord handles network installation, optimization and troubleshooting. Get reliable connectivity, well-integrated devices and a tidy setup, at home or at work.",
+    "heroDescription": "Network installation, configuration and troubleshooting, from cabling to connected devices. For homes, offices and business spaces.",
     "heroRequest": "Let’s discuss your needs ↗",
-    "heroPortfolio": "Explore our projects ↓",
-    "boardLabel": "A GOOD PLACE TO START",
-    "boardTitle": "What can we help you solve?",
-    "boardIt": "A technical problem",
-    "boardItSub": "Computer, connection, printer",
-    "boardWifi": "A more reliable network",
-    "boardWifiSub": "Wi-Fi, coverage, performance",
-    "boardProject": "A project to plan",
-    "boardProjectSub": "Installation, cabling, quotes",
-    "boardFooter": "Guided assistant in French and English",
-    "strip1": "Networks & Wi-Fi",
-    "strip2": "Infrastructure & cabling",
-    "strip3": "Telecommunications",
-    "strip4": "Security & IT support",
-    "servicesEyebrow": "OUR SERVICES",
-    "servicesTitle": "The right services.\nWhere you need them.",
-    "servicesIntro": "Homes, offices, shops, restaurants and Airbnbs: we adapt your network to your space and how you use it. From troubleshooting to cabling and new installations, let’s define the work that makes a difference.",
+    "heroPortfolio": "Explore our projects ↗",
+    "servicesEyebrow": "OUR EXPERTISE",
+    "servicesTitle": "Services built around your needs.",
+    "servicesIntro": "An issue to resolve or an installation to plan: we support you from assessment to setup.",
     "projectsEyebrow": "THE PORTFOLIO",
-    "projectsTitle": "Practical work. Real settings.",
-    "projectsIntro": "Projects in networking, telecommunications, video surveillance and security. From traffic analysis to equipment deployment, technical expertise put into practice.",
+    "projectsTitle": "Our projects.",
+    "projectsIntro": "Networks, communications and security: explore the work and equipment involved in each project.",
     "projectCta": "Planning something similar? Let’s talk ↗",
     "approachEyebrow": "HOW IT WORKS",
-    "approach1Title": "Understand your needs.",
-    "approach1Text": "An issue to solve or a project to plan: tell us about your environment, how you use it and what matters most.",
-    "approach2Title": "Define the solution.",
-    "approach2Text": "We clarify the work, equipment and availability. You understand the scope before giving your approval.",
-    "approach3Title": "Implement and check.",
-    "approach3Text": "Installation, configuration or troubleshooting: we carry out the work and check that it functions with you.",
-    "requestEyebrow": "LET’S START WITH YOUR NEEDS",
-    "requestTitle": "A problem to solve?\nA project to bring to life?",
-    "requestText": "Tell us what’s happening. The assistant helps you prepare a clear request, then we contact you to discuss the next steps.",
+    "approach1Title": "Discuss.",
+    "approach1Text": "We take the time to understand your environment and your needs.",
+    "approach2Title": "Plan.",
+    "approach2Text": "We define the solution, the work and the schedule with you.",
+    "approach3Title": "Deliver.",
+    "approach3Text": "We carry out the work and check that everything functions together.",
+    "requestEyebrow": "CONTACT",
+    "requestTitle": "Let’s talk about your project.",
+    "requestText": "Troubleshooting or a new installation: describe what you need in a few steps. We’ll get back to you to discuss what comes next.",
     "emailLabel": "Email",
     "phoneLabel": "Mobile",
     "requestDisclosure": "We’ll contact you to discuss the next steps and arrange an appointment if needed.",
@@ -345,22 +314,28 @@
       }
     ],
     "heroSignature": "NETWORKS · TELECOMMUNICATIONS · SECURITY",
-    "valueEyebrow": "THE SOLVONORD APPROACH",
-    "valueTitle": "Technical expertise. Everyday value.",
-    "valueIntro": "Every device serves a purpose: working, communicating or welcoming customers. We start with how you use technology to design and implement the right solution.",
-    "value1Title": "Fewer interruptions.",
-    "value1Text": "Find the cause of dropouts, improve coverage and fine-tune configurations for a network you can count on.",
-    "value2Title": "A thoughtfully built setup.",
-    "value2Text": "Organized cabling, integrated devices and access suited to your needs. Infrastructure that is easier to understand and adapt as your needs change.",
-    "value3Title": "One involved specialist.",
-    "value3Text": "From assessment to deployment, you work with the person carrying out the installation. Clear explanations at every step."
+    "navHome": "Home",
+    "navContact": "Contact",
+    "heroIllustration": "Illustrative image",
+    "introLead": "Thoughtfully connected.\nTechnology that makes life easier.",
+    "projectMore": "View project",
+    "projectLess": "Show less"
   }
 };
+
   const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;};
   let currentLang;
+  function openLinkedProject(){
+    if(!/^#projet-\d+$/.test(location.hash))return;
+    const project=document.getElementById(location.hash.slice(1));
+    const details=project?.querySelector('details');
+    if(details)details.open=true;
+  }
   function render(lang){
-    if(!copy[lang]||currentLang===lang)return;currentLang=lang;const c=copy[lang];
-    document.querySelectorAll('[data-site]').forEach(n=>n.textContent=c[n.dataset.site]||"");
+    if(!copy[lang]||currentLang===lang)return;
+    currentLang=lang;const c=copy[lang];
+    const openProjects=new Set(Array.from(document.querySelectorAll('.project-item details[open]'),n=>n.closest('.project-item').id));
+    document.querySelectorAll('[data-site]').forEach(n=>n.textContent=c[n.dataset.site]||'');
     document.title=c.title;document.querySelector('meta[name="description"]').content=c.description;
     document.querySelector('meta[property="og:title"]').content=c.title;document.querySelector('meta[property="og:description"]').content=c.description;
     const services=document.getElementById('service-cards');services.replaceChildren();
@@ -371,12 +346,21 @@
     });
     const projects=document.getElementById('project-cards');projects.replaceChildren();
     c.projects.forEach((project,i)=>{
-      const card=make('article','project-item');card.id=`projet-${i+1}`;const tags=make('div','project-tags');project.tags.forEach(tag=>tags.append(make('span','',tag)));
-      card.append(make('span','project-index',`0${i+1} / `+project.sector),make('h3','',project.title),make('p','',project.description),tags);projects.append(card);
+      const card=make('article','project-item');card.id='projet-'+(i+1);
+      const top=make('div','project-top');top.append(make('span','project-number',String(i+1).padStart(2,'0')),make('span','project-sector',project.sector));
+      const heading=make('h3','',project.title);heading.id=card.id+'-title';
+      const details=make('details','project-details');details.open=openProjects.has(card.id);
+      const summary=make('summary','project-toggle');
+      summary.id=card.id+'-toggle';summary.setAttribute('aria-labelledby',summary.id+' '+heading.id);
+      const expand=make('span','when-closed',c.projectMore);const collapse=make('span','when-open',c.projectLess);const plus=make('span','project-plus','+');plus.setAttribute('aria-hidden','true');
+      summary.append(expand,collapse,plus);
+      const body=make('div','project-body');const tags=make('div','project-tags');project.tags.forEach(tag=>tags.append(make('span','',tag)));
+      body.append(make('p','',project.description),tags);details.append(summary,body);card.append(top,heading,details);projects.append(card);
     });
-
+    openLinkedProject();
   }
   document.addEventListener('solvonord:language',e=>render(e.detail.lang));
   document.addEventListener('click',e=>{const link=e.target.closest('[data-service-link]');if(link)document.dispatchEvent(new CustomEvent('solvonord:service',{detail:{service:link.dataset.serviceLink}}));});
+  window.addEventListener('hashchange',openLinkedProject);
   const query=new URLSearchParams(location.search).get('lang');render(['fr','en'].includes(query)?query:(navigator.language.toLowerCase().startsWith('en')?'en':'fr'));
 })();

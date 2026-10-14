@@ -14,11 +14,11 @@
   <link rel="icon" href="./assistant/mark.svg?v=20261013-approved" type="image/svg+xml">
   <link rel="stylesheet" href="./assistant/brand.css?v=20261013-unified">
   <link rel="stylesheet" href="./assistant/styles.css?v=20261013-clean-logo">
-  <link rel="stylesheet" href="./site.css?v=20261013-unified">
+  <link rel="stylesheet" href="./site.css?v=20261014-simple">
   <link rel="stylesheet" href="./analytics.css?v=20261013-privacy">
   <script src="./assistant/config.js?v=20261011-7" defer></script>
   <script src="./assistant/content.js?v=20261013-privacy" defer></script>
-  <script src="./site.js?v=20261013-privacy" defer></script>
+  <script src="./site.js?v=20261014-simple" defer></script>
   <script src="./analytics.js?v=20261013-privacy" defer></script>
   <script src="./assistant/app.js?v=20261012-4" defer></script>
 </head>
@@ -27,35 +27,26 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#accueil" aria-label="SolvoNord Technologies"><img class="brand-artwork" src="./assistant/solvonord-logo-horizontal.svg?v=20261013-green" alt="" width="600" height="120"></a>
-      <nav class="site-nav" aria-label="Navigation principale / Main navigation"><a href="#services" data-site="navServices">Services</a><a href="#projets" data-site="navProjects">Réalisations</a><a href="#demande" class="nav-request" data-site="navRequest">Demander de l’aide ↗</a></nav>
+      <nav class="site-nav" aria-label="Navigation principale / Main navigation"><a href="#accueil" data-site="navHome">Accueil</a><a href="#services" data-site="navServices">Services</a><a href="#projets" data-site="navProjects">Réalisations</a><a href="#demande" class="nav-request" data-site="navContact">Contact</a></nav>
       <nav class="language-picker" aria-label="Langue / Language"><button type="button" class="lang" data-lang="fr" lang="fr" aria-label="Français">FR</button><button type="button" class="lang" data-lang="en" lang="en" aria-label="English">EN</button></nav>
     </div>
   </header>
   <main>
-    <section id="accueil" class="site-hero site-container">
+    <section id="accueil" class="site-hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="./assets/network-hero.webp" alt="" width="1536" height="1024" fetchpriority="high">
       <div class="hero-copy">
         <span class="eyebrow" data-site="heroEyebrow">MONTRÉAL ET RÉGION · PARTICULIERS ET ENTREPRISES</span>
-        <h1><span data-site="heroTitle">Votre réseau.</span><em data-site="heroAccent">Notre savoir-faire.</em></h1>
-        <p class="hero-description" data-site="heroDescription">Wi-Fi lent, coupures ou équipements mal configurés? SolvoNord prend en charge l’installation, l’optimisation et le dépannage de vos réseaux. Retrouvez une connexion fiable, des équipements bien intégrés et une installation soignée, à la maison comme en entreprise.</p>
-        <p class="hero-signature" data-site="heroSignature"></p>
-        <div class="hero-actions"><a href="#demande" class="primary" data-site="heroRequest">Discutons de votre besoin ↗</a><a href="#projets" class="portfolio-link" data-site="heroPortfolio">Voir nos réalisations ↓</a></div>
+        <h1 id="hero-title"><span data-site="heroTitle">Votre réseau.</span><em data-site="heroAccent">Notre savoir-faire.</em></h1>
+        <p class="hero-signature" data-site="heroSignature">RÉSEAUX · TÉLÉCOMMUNICATIONS · SÉCURITÉ</p>
+        <a href="#projets" class="hero-link" data-site="heroPortfolio">Découvrir nos réalisations ↗</a>
       </div>
-      <div class="hero-board">
-        <div class="board-top"><span data-site="boardLabel">LE BON POINT DE DÉPART</span><span class="board-mark" aria-hidden="true">↗</span></div>
-        <h2 data-site="boardTitle">Qu’est-ce qu’on peut résoudre pour vous?</h2>
-        <a href="#demande" data-service-link="it" class="board-option"><span aria-hidden="true">01</span><div><strong data-site="boardIt">Un problème technique</strong><small data-site="boardItSub">Ordinateur, connexion, imprimante</small></div><b aria-hidden="true">↗</b></a>
-        <a href="#demande" data-service-link="wifi" class="board-option"><span aria-hidden="true">02</span><div><strong data-site="boardWifi">Un réseau plus fiable</strong><small data-site="boardWifiSub">Wi-Fi, couverture, performance</small></div><b aria-hidden="true">↗</b></a>
-        <a href="#demande" data-service-link="quote" class="board-option"><span aria-hidden="true">03</span><div><strong data-site="boardProject">Un projet à préparer</strong><small data-site="boardProjectSub">Installation, câblage, devis</small></div><b aria-hidden="true">↗</b></a>
-        <div class="board-footer"><span class="board-dot" aria-hidden="true"></span><span data-site="boardFooter">Assistant guidé en français et en anglais</span></div>
-      </div>
+      <span class="hero-caption" data-site="heroIllustration">Visuel d’illustration</span>
     </section>
-    <div class="expertise-strip"><div class="site-container"><span data-site="strip1">Réseaux & Wi-Fi</span><i aria-hidden="true">+</i><span data-site="strip2">Infrastructure & câblage</span><i aria-hidden="true">+</i><span data-site="strip3">Cybersécurité</span><i aria-hidden="true">+</i><span data-site="strip4">Support TI</span></div></div>
-    <section class="value-section" aria-labelledby="value-title"><div class="site-container content-section">
-      <div class="section-intro"><div><span class="eyebrow" data-site="valueEyebrow"></span><h2 id="value-title" data-site="valueTitle"></h2></div><p data-site="valueIntro"></p></div>
-      <div class="value-grid"><article class="value-card"><span class="value-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a17 17 0 0 1 24 0M8 14a11 11 0 0 1 16 0M12 19a5 5 0 0 1 8 0"/><circle cx="16" cy="25" r="1.8" fill="currentColor" stroke="none"/></svg></span><h3 data-site="value1Title"></h3><p data-site="value1Text"></p></article>
-        <article class="value-card"><span class="value-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="8" rx="2"/><path d="M9 8h.1M13 8h.1M16 12v7M7 24v-5h18v5"/><rect x="4" y="24" width="6" height="5" rx="1"/><rect x="22" y="24" width="6" height="5" rx="1"/></svg></span><h3 data-site="value2Title"></h3><p data-site="value2Text"></p></article>
-        <article class="value-card"><span class="value-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="5"/><path d="M6 28v-3a10 10 0 0 1 20 0v3M23 6l2 2 4-4"/></svg></span><h3 data-site="value3Title"></h3><p data-site="value3Text"></p></article></div>
-    </div></section>
+    <section class="intro-section site-container" aria-label="SolvoNord Technologies">
+      <p class="intro-lead" data-site="introLead"></p>
+      <p class="intro-description" data-site="heroDescription"></p>
+      <a href="#demande" class="portfolio-link" data-site="heroRequest">Discutons de votre besoin ↗</a>
+    </section>
     <section id="services" class="site-container content-section">
       <div class="section-intro"><div><span class="eyebrow" data-site="servicesEyebrow">NOS SERVICES</span><h2 data-site="servicesTitle">Les bons services.
 Au bon endroit.</h2></div><p data-site="servicesIntro">Maison, bureau, commerce, restaurant ou Airbnb : nous adaptons le réseau à votre espace et à vos usages. Dépannage ponctuel, câblage ou nouvelle installation, définissons ensemble les travaux utiles.</p></div>
@@ -92,7 +83,7 @@ Un projet à concrétiser?</h2><p data-site="requestText">Décrivez-nous la situ
   </main>
   <footer id="contact" class="site-footer"><div class="site-container">
     <div class="footer-main">
-      <div class="footer-identity"><a class="brand brand-full" href="#accueil" aria-label="SolvoNord Technologies"><img class="brand-artwork" src="./assistant/solvonord-logo.svg?v=20261013-approved" alt="" width="760" height="585" loading="lazy"></a><span class="company-name">9512-6173 Québec inc.</span></div>
+      <div class="footer-identity"><a class="brand brand-full" href="#accueil" aria-label="SolvoNord Technologies"><img class="brand-artwork" src="./assistant/solvonord-logo-horizontal.svg?v=20261013-green" alt="" width="600" height="120" loading="lazy"></a><span class="company-name">9512-6173 Québec inc.</span></div>
       <address class="footer-contacts">
         <a class="footer-contact" href="https://linkedin.com/in/abdoul-mazide-balde-05a909140" target="_blank" rel="noopener noreferrer"><span class="footer-label">LinkedIn</span><span class="footer-value" data-site="footerLinkedin">Voir le profil ↗</span></a>
         <a class="footer-contact" href="tel:+14388812259"><span class="footer-label" data-site="phoneLabel">Cellulaire</span><span class="footer-value">(438) 881-2259 <span aria-hidden="true">↗</span></span></a>
