@@ -13,7 +13,8 @@
   const receiptUrl = new URL("../",document.currentScript.src);
   const receiptKey = "solvonord-upload-receipt";
   const maxPhotos = 6;
-  const recipient = "solvonord@gmail.com";
+  const contactEmail = config.email || "support@solvonord.com";
+  const recipient = config.formsubmitRecipient || "solvonord@gmail.com";
   const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
   let statusKey = "";
   let photoEpoch = 0;
@@ -202,7 +203,7 @@
       const photos=el("div",{class:"success-photos"});photos.append(el("p",{},c.successPhotos));
       const subject=`SolvoNord — Photos — ${state.reference}`;
       const body=`${c.photoEmailBody} ${state.reference}\n\n`;
-      photos.append(el("a",{class:"secondary",id:"send-photos",href:`mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`},c.sendPhotos));box.append(photos);
+      photos.append(el("a",{class:"secondary",id:"send-photos",href:`mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`},c.sendPhotos));box.append(photos);
     }
     if(state.summary){const saved=el("details",{class:"submitted-summary"});saved.append(el("summary",{},c.viewSubmitted),el("pre",{},state.summary));box.append(saved);}
     const next=el("button",{type:"button",class:"primary",id:"new-request"},c.newRequest);next.onclick=()=>$("reset-dialog").showModal();box.append(next);

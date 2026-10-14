@@ -4,7 +4,7 @@ Portfolio bilingue français/anglais et assistant guidé de demande de service, 
 
 - Compte GitHub : **SolvoNord**
 - Dépôt de destination : **https://github.com/SolvoNord/Technologies**
-- Courriel : **solvonord@gmail.com**
+- Courriel public : **support@solvonord.com**
 - Dénomination de la société confirmée par le propriétaire : **9512-6173 Québec inc.** (distincte d’un NEQ).
 - Site public : **https://solvonord.github.io/Technologies/**
 
@@ -97,3 +97,10 @@ Navigation : Accueil, Services, Réalisations, Contact. La page propose un visue
 Le logo horizontal sans slogan est identique dans l’en-tête et le pied de page. Les boutons et accents restent au vert #015F41. Le texte blanc de l’accueil est placé sur un visuel sombre pour conserver sa lisibilité.
 
 Le visuel d’accueil est une illustration générée, clairement identifiée comme telle, et non une photo de réalisation. Son origine et son prompt sont documentés dans [assets/README.md](assets/README.md). Les photos du site de référence n’ont pas été copiées. Les photos avant/après réelles pourront être ajoutées lorsque le propriétaire les fournira.
+
+
+## Galerie générale et courriel professionnel — 14 octobre 2026
+
+Les trois photos de préparation et d’installation du point d’accès industriel figurent dans la section autonome « Sur le terrain ». Elles ne sont associées à aucune fiche projet. Chaque projet pourra recevoir ses propres photographies et précisions plus tard. Les légendes et la visionneuse restent bilingues.
+
+Tous les liens de contact publics utilisent `support@solvonord.com`. `email` configure ce contact; `formsubmitRecipient` indique séparément la boîte de réception activée pour les demandes. Ne remplacer cette dernière qu’après confirmation de son activation FormSubmit.

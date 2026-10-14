@@ -11,7 +11,7 @@
   const style = document.createElement("link"); style.rel="stylesheet";style.href=new URL("widget.css?v=20261013-unified",base).href;
   const welcome = document.createElement("div"); welcome.className="welcome";
   const message=document.createElement("p");message.textContent=en?"Hello! Need IT help or a quote?":"Bonjour! Un besoin TI ou un devis?";
-  const direct=document.createElement("a");direct.href="mailto:solvonord@gmail.com";direct.textContent=en?"Email us directly":"Nous écrire directement";
+  const direct=document.createElement("a");direct.href="mailto:support@solvonord.com";direct.textContent=en?"Email us directly":"Nous écrire directement";
   const dismiss=document.createElement("button");dismiss.className="dismiss";dismiss.type="button";dismiss.textContent="×";dismiss.setAttribute("aria-label",en?"Dismiss welcome message":"Masquer le message d’accueil");dismiss.onclick=()=>welcome.hidden=true;
   welcome.append(message,direct,dismiss);
   const launch=document.createElement("button");launch.className="launcher";launch.type="button";launch.textContent=en?"Let’s talk about your needs ↗":"Parlons de votre besoin ↗";launch.setAttribute("aria-haspopup","dialog");launch.setAttribute("aria-expanded","false");

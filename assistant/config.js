@@ -6,5 +6,6 @@ window.SOLVONORD_CONFIG = Object.freeze({
   formspreeId: "", // No second live delivery destination.
   formspreeUploads: false,
   testMode: false,
-  email: "solvonord@gmail.com"
+  email: "support@solvonord.com",
+  formsubmitRecipient: "solvonord@gmail.com" // Keep the activated recipient until the new address is confirmed.
 });
