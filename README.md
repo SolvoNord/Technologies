@@ -103,7 +103,7 @@ Le logo approuvé le 13 octobre 2026 est le fichier JPEG fourni par le propriét
 
 Navigation : Services, Réalisations, Nous joindre et Demander de l’aide. Le logo revient à l’accueil. « Nous joindre » mène aux coordonnées (`#contact`); « Demander de l’aide » mène au formulaire guidé (`#demande`), intitulé « Demande de service ». La page propose un visuel d’accueil, une introduction courte, six services, huit réalisations, les étapes d’intervention et le formulaire existant. Chaque réalisation utilise un élément natif `details` accessible au clavier. Les liens `#projet-N` ouvrent le projet concerné; le changement de langue conserve les projets ouverts. Les descriptions détaillées et les coordonnées de contact du propriétaire sont conservées.
 
-Les icônes LinkedIn et X du contact sont des SVG locaux intégrés, sans script social ni suivi supplémentaire. LinkedIn conserve le profil du propriétaire. À sa demande, X mène pour le moment à `https://x.com/`; remplacer cette adresse lorsqu’il fournira son profil. Ne pas présenter ce lien générique comme un compte SolvoNord existant.
+Le téléphone, le courriel, LinkedIn et X sont regroupés dans un seul ensemble de boutons avec le même style et des icônes SVG locales, sans script social ni suivi supplémentaire. LinkedIn conserve le profil du propriétaire. X mène à `https://x.com/solvonord`, selon le nom d’utilisateur confirmé par le propriétaire. Le téléphone utilise un lien `tel:` et le courriel un lien `mailto:`.
 
 Le logo horizontal sans slogan est identique dans l’en-tête et le pied de page. Les boutons et accents restent au vert #015F41. Le texte blanc de l’accueil est placé sur un visuel sombre pour conserver sa lisibilité.
 

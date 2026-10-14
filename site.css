@@ -128,16 +128,12 @@ html{scroll-behavior:smooth;scroll-padding-top:125px}
 .footer-identity .brand{max-width:100%;font-size:20px}
 .footer-identity .brand .brand-artwork{width:280px;height:auto;border-radius:9px}
 .company-name{font-size:11px;line-height:1.6}
-.footer-socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-.social-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:44px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:5px;color:var(--brand);text-decoration:none;font-size:12px;font-weight:600;background:var(--surface)}
-.social-link svg{display:block;flex-shrink:0}
-.social-link:hover{border-color:var(--brand);background:var(--brand);color:var(--on-brand)}
-.social-link:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
-.footer-contacts{display:grid;grid-template-columns:1fr 1.4fr;gap:30px;margin:0;padding-top:8px;font-style:normal}
-.footer-contact{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:60px;text-decoration:none;min-width:0}
-.footer-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;line-height:1.5}
-.footer-value{font-size:13px;line-height:1.6;color:var(--brand);text-decoration:underline;text-underline-offset:5px;white-space:nowrap}
-.footer-contact:hover .footer-value{text-decoration-thickness:2px}
+.footer-contact-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0;font-style:normal}
+.contact-link{display:flex;align-items:center;gap:12px;min-width:0;min-height:48px;padding:13px 16px;border:1px solid var(--line);border-radius:5px;color:var(--brand);text-decoration:none;font-size:13px;line-height:1.5;font-weight:600;background:var(--surface)}
+.contact-link svg{display:block;flex-shrink:0}
+.contact-link span{overflow-wrap:anywhere}
+.contact-link:hover{border-color:var(--brand);background:var(--brand);color:var(--on-brand)}
+.contact-link:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
 .footer-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px 25px;border-top:1px solid var(--line);margin-top:32px;padding-top:18px;font-size:11px;line-height:1.7}
 @media(hover:hover){.site-nav .nav-request:hover{background:var(--brand);box-shadow:0 0 0 2px white,0 0 0 4px var(--brand)}}
 
@@ -145,7 +141,7 @@ html{scroll-behavior:smooth;scroll-padding-top:125px}
   .header-inner{gap:20px;padding:22px 30px}.site-header .brand-artwork{width:240px}.site-nav{gap:15px}.site-nav .nav-request{padding-inline:14px}
   .site-container{width:calc(100% - 60px)}.section-intro{gap:40px}.service-grid{column-gap:30px}
   .request-layout{gap:40px;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
-  .footer-main{grid-template-columns:1fr;gap:30px}.footer-contacts{max-width:800px}
+  .footer-main{grid-template-columns:1fr;gap:30px}.footer-contact-links{max-width:800px}
 }
 @media(min-width:801px) and (max-width:1000px){html{scroll-padding-top:170px}.header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}.site-header .brand{grid-column:1;grid-row:1}.language-picker{grid-column:2;grid-row:1}.site-nav{grid-column:1/-1;grid-row:2;justify-content:space-between}.request-intro{top:170px}}
 @media(max-width:800px){
@@ -173,7 +169,7 @@ html{scroll-behavior:smooth;scroll-padding-top:125px}
   .approach-section{padding:45px 0}.approach-grid{grid-template-columns:1fr;gap:25px}.approach-grid>div{display:grid;grid-template-columns:30px 1fr;column-gap:12px}.approach-grid>div>span{grid-row:1/3;padding-top:5px}.approach-grid h3{margin:0 0 10px}.approach-grid p{grid-column:2}
   .request-intro h2{font-size:33px}.request-layout{width:calc(100% - 30px)}.request-intro{padding-inline:5px}
   .contact-heading{display:block;padding-bottom:25px;margin-bottom:28px}.contact-heading>p{margin-top:18px}.site-footer{padding-top:40px}
-  .footer-contacts{grid-template-columns:1fr;gap:20px;padding-top:0}.footer-contact{min-height:50px;gap:5px}.footer-meta{flex-direction:column;gap:8px}.footer-value{font-size:14px}
+  .footer-contact-links{grid-template-columns:1fr;gap:10px}.footer-meta{flex-direction:column;gap:8px}
 }
 @media(max-width:360px){.header-inner{padding-inline:12px}.site-header .brand-artwork{width:188px}.hero-copy{padding-inline:22px}.hero-copy h1{font-size:30px}.site-nav{gap:5px}.site-nav a{font-size:10px}.site-nav .nav-request{padding-inline:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-plus{transition:none}}
