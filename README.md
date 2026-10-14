@@ -11,6 +11,8 @@ Portfolio bilingue français/anglais et assistant guidé de demande de service, 
 
 Site publié initialement le 11 octobre 2026, en français et en anglais. GitHub Pages utilise la branche `main`, dossier racine. Le domaine personnalisé a été configuré et ouvert en HTTPS le 14 octobre 2026, avec **Enforce HTTPS** activé. Ce dépôt est indépendant de l'ancien portfolio.
 
+La présentation a été harmonisée le 14 octobre 2026 : typographie plus lisible, espacements et alignements cohérents, coordonnées regroupées et icônes seules pour LinkedIn et X (avec noms accessibles bilingues). Le menu compact apparaît jusqu’à 960 px; il se ferme à la sélection d’une rubrique, au clic extérieur, à la sortie du focus et avec Échap. Sans JavaScript, les liens de navigation restent visibles.
+
 ## Publication sur GitHub Pages
 
 1. Ajouter les fichiers de ce dossier à la branche `main` du dépôt `SolvoNord/Technologies`, en conservant le dossier `assistant/`.

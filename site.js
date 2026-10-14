@@ -28,11 +28,11 @@
     "approach3Title": "Réaliser.",
     "approach3Text": "Nous réalisons l’intervention et vérifions le fonctionnement ensemble.",
     "requestEyebrow": "DEMANDE DE SERVICE",
-    "requestTitle": "Comment pouvons-nous vous aider?",
+    "requestTitle": "Préparons votre demande.",
     "requestText": "Un dépannage ou une installation à prévoir? L’assistant vous guide pour décrire votre besoin et préparer votre demande.",
     "emailLabel": "Courriel",
     "phoneLabel": "Cellulaire",
-    "requestDisclosure": "Nous vous contacterons pour discuter de la suite et, au besoin, convenir d’un rendez-vous.",
+    "requestDisclosure": "Nous vous recontactons pour préciser les prochaines étapes.",
     "contactEyebrow": "NOUS JOINDRE",
     "contactTitle": "Nos coordonnées.",
     "contactText": "Une question ou besoin d’un renseignement? Écrivez-nous ou appelez-nous.",
@@ -186,6 +186,9 @@
     "navHome": "Accueil",
     "navContact": "Nous joindre",
     "navRequest": "Demander de l’aide",
+    "menuLabel": "Menu",
+    "linkedinLabel": "Profil LinkedIn",
+    "xLabel": "SolvoNord sur X",
     "heroIllustration": "Visuel d’illustration",
     "introLead": "Une technologie bien pensée.\nUne installation qui vous simplifie la vie.",
     "projectMore": "Voir le projet",
@@ -225,11 +228,11 @@
     "approach3Title": "Deliver.",
     "approach3Text": "We carry out the work and check that everything functions together.",
     "requestEyebrow": "SERVICE REQUEST",
-    "requestTitle": "How can we help you?",
+    "requestTitle": "Let’s prepare your request.",
     "requestText": "Need troubleshooting or a new installation? The assistant guides you through describing your needs and preparing your request.",
     "emailLabel": "Email",
     "phoneLabel": "Mobile",
-    "requestDisclosure": "We’ll contact you to discuss the next steps and arrange an appointment if needed.",
+    "requestDisclosure": "We’ll get back to you to discuss the next steps.",
     "contactEyebrow": "GET IN TOUCH",
     "contactTitle": "Contact details.",
     "contactText": "Have a question or need more information? Send us an email or give us a call.",
@@ -383,6 +386,9 @@
     "navHome": "Home",
     "navContact": "Contact us",
     "navRequest": "Request help",
+    "menuLabel": "Menu",
+    "linkedinLabel": "LinkedIn profile",
+    "xLabel": "SolvoNord on X",
     "heroIllustration": "Illustrative image",
     "introLead": "Thoughtfully connected.\nTechnology that makes life easier.",
     "projectMore": "View project",
@@ -398,6 +404,17 @@
 };
 
   const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;};
+  const header=document.querySelector('.site-header');
+  const menuToggle=document.querySelector('.menu-toggle');
+  const menu=document.getElementById('site-menu');
+  function closeMenu(restoreFocus=false){header.classList.remove('menu-open');menuToggle.setAttribute('aria-expanded','false');if(restoreFocus)menuToggle.focus();}
+  header.classList.add('navigation-ready');
+  menuToggle.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');menuToggle.setAttribute('aria-expanded',String(open));});
+  menu.addEventListener('click',event=>{if(event.target.closest('.site-nav a'))closeMenu();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&header.classList.contains('menu-open')){event.preventDefault();closeMenu(true);}});
+  document.addEventListener('click',event=>{if(!header.contains(event.target))closeMenu();});
+  header.addEventListener('focusout',event=>{if(event.relatedTarget&&!header.contains(event.relatedTarget))closeMenu();});
+  window.matchMedia('(min-width: 961px)').addEventListener('change',event=>{closeMenu(!event.matches&&menu.contains(document.activeElement));});
   let currentLang;
   const photoDialog=document.getElementById('project-photo-dialog');
   let photoProject=0,photoIndex=0,photoReturnFocus=null;
@@ -441,6 +458,7 @@
     currentLang=lang;const c=copy[lang];
     const openProjects=new Set(Array.from(document.querySelectorAll('.project-item details[open]'),n=>n.closest('.project-item').id));
     document.querySelectorAll('[data-site]').forEach(n=>n.textContent=c[n.dataset.site]||'');
+    document.querySelectorAll('[data-site-aria]').forEach(n=>n.setAttribute('aria-label',c[n.dataset.siteAria]));
     document.title=c.title;document.querySelector('meta[name="description"]').content=c.description;
     document.querySelector('meta[property="og:title"]').content=c.title;document.querySelector('meta[property="og:description"]').content=c.description;
     const services=document.getElementById('service-cards');services.replaceChildren();
