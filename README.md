@@ -6,9 +6,10 @@ Portfolio bilingue français/anglais et assistant guidé de demande de service, 
 - Dépôt de destination : **https://github.com/SolvoNord/Technologies**
 - Courriel public : **support@solvonord.com**
 - Dénomination de la société confirmée par le propriétaire : **9512-6173 Québec inc.** (distincte d’un NEQ).
-- Site public : **https://solvonord.github.io/Technologies/**
+- Adresse principale configurée : **https://solvonord.com/**
+- Ancienne adresse GitHub Pages : **https://solvonord.github.io/Technologies/**
 
-Site publié et vérifié le 11 octobre 2026, en français et en anglais. GitHub Pages utilise la branche `main`, dossier racine, avec HTTPS activé. Ce dépôt est indépendant de l'ancien portfolio.
+Site publié initialement le 11 octobre 2026, en français et en anglais. GitHub Pages utilise la branche `main`, dossier racine. Le domaine personnalisé a été configuré et ouvert en HTTPS le 14 octobre 2026, avec **Enforce HTTPS** activé. Ce dépôt est indépendant de l'ancien portfolio.
 
 ## Publication sur GitHub Pages
 
@@ -19,6 +20,14 @@ Site publié et vérifié le 11 octobre 2026, en français et en anglais. GitHub
 
 Le site est entièrement statique, sans compilation ni clé d'API payante. Les chemins relatifs sont compatibles avec le sous-dossier `/Technologies/`.
 
+### Domaine personnalisé
+
+Le fichier `CNAME` contient `solvonord.com`. Chez GoDaddy, les quatre enregistrements A de `@` pointent vers `185.199.108.153`, `185.199.109.153`, `185.199.110.153` et `185.199.111.153`; le CNAME `www` pointe vers `solvonord.github.io`. GitHub gère le certificat HTTPS et les redirections du domaine www et de l'ancienne adresse Pages. Conserver les enregistrements MX, SPF, DKIM, DMARC et les autres enregistrements Microsoft 365/GoDaddy de la messagerie.
+
+La balise canonique, `og:url`, `sitemap.xml` et `robots.txt` utilisent la racine `https://solvonord.com/`. Les chemins relatifs des images, scripts et styles fonctionnent à la racine comme dans l'ancien sous-dossier. La page de retour du formulaire est calculée à partir de son propre script; elle suit donc automatiquement le domaine utilisé.
+
+Le domaine a également été vérifié dans **GitHub → Personal settings → Pages**, pour le compte SolvoNord. Conserver le TXT `_github-pages-challenge-SolvoNord` chez GoDaddy afin de maintenir cette preuve de propriété. Le certificat approuvé couvre `solvonord.com` et `www.solvonord.com`.
+
 ## Envoi des demandes et photos
 
 Le fournisseur actif est **FormSubmit**, avec le destinataire `support@solvonord.com`. Le propriétaire a confirmé l'activation du formulaire et la réception d'une véritable pièce jointe pour le test natif **SN-20261011-1APJE70**, le 11 octobre 2026. `assistant/config.js` contient `provider: "formsubmit"`, `formsubmitActivated: true`, `formsubmitUploadMode: "native"` et `testMode: false`.
@@ -27,7 +36,7 @@ Le bouton unique « Envoyer ma demande » transmet le résumé édité et le con
 
 Le site accepte jusqu'à **6 photos JPG, PNG ou WebP**, **5 Mo par fichier** et **9 Mo au total**. Cette limite garde une marge sous la limite de 10 Mo de FormSubmit. Les fichiers sont renommés `photo-1`, `photo-2`, etc., avec leur extension; les noms de fichiers d'origine ne sont pas transmis. Le parcours intégré et la version assistant séparée utilisent la même page de retour. Dans un widget, le navigateur ouvre la vérification dans la page entière.
 
-Une réponse positive remplace le questionnaire par une confirmation visible et une référence de demande sur la même page du portfolio. Le paramètre `_next` pointe explicitement vers `/Technologies/?lang=…&receipt=…#demande`. Aucun bouton ne renvoie la même demande depuis la confirmation. Le retour exige le jeton de la demande en cours et refuse les références absentes ou périmées après 30 minutes. Le résumé envoyé reste consultable pour les envois sans navigation; il n'est pas stocké entre les pages. L'ancienne page `assistant/thanks.html` redirige les anciennes confirmations valides vers le portfolio. La confirmation ne garantit pas chaque livraison future dans la boîte de réception et ne confirme aucun rendez-vous.
+Une réponse positive remplace le questionnaire par une confirmation visible et une référence de demande sur la même page du portfolio. Le paramètre `_next` pointe vers la racine du portfolio courant, avec `?lang=…&receipt=…#demande`. Aucun bouton ne renvoie la même demande depuis la confirmation. Le retour exige le jeton de la demande en cours et refuse les références absentes ou périmées après 30 minutes. Le résumé envoyé reste consultable pour les envois sans navigation; il n'est pas stocké entre les pages. L'ancienne page `assistant/thanks.html` redirige les anciennes confirmations valides vers le portfolio. La confirmation ne garantit pas chaque livraison future dans la boîte de réception et ne confirme aucun rendez-vous.
 
 Le bouton « Ouvrir ma messagerie » a été supprimé du questionnaire. Les coordonnées de contact restent disponibles dans le pied de page. Copier ou télécharger le résumé reste possible dans la section repliable « Conserver une copie ».
 
@@ -43,9 +52,9 @@ Les réponses et photos restent en mémoire dans la page jusqu'à l'envoi direct
 
 ## Statistiques de fréquentation
 
-Cloudflare Web Analytics est configuré pour `solvonord.github.io` dans le compte Cloudflare du propriétaire. Le script officiel est installé une seule fois dans `index.html`, pour les versions française et anglaise du portfolio. L’offre Web Analytics est gratuite; aucun transfert du domaine ou de l’hébergement n’est nécessaire. Le jeton du script est un identifiant public de site, pas une clé d’API.
+Cloudflare Web Analytics est configuré pour `solvonord.com` dans le compte Cloudflare du propriétaire. Le nom d'hôte du site existant a été modifié le 14 octobre 2026, en conservant son jeton et son historique. Le script officiel est installé une seule fois dans `index.html`, pour les versions française et anglaise du portfolio. L’offre Web Analytics est gratuite; aucun transfert du domaine ou de l’hébergement n’est nécessaire. Le jeton du script est un identifiant public de site, pas une clé d’API.
 
-Dans Cloudflare : **Observability → Analytics → Web analytics → solvonord.github.io**. Choisir la période et conserver le filtre **Exclude Bots: Yes**. Les statistiques commencent à l’installation et ne reconstituent pas les visites passées. Une visite ne correspond pas nécessairement à une personne unique; les bloqueurs et l’échantillonnage peuvent modifier les totaux. Les visites du propriétaire et les vérifications du site peuvent aussi être comptées.
+Dans Cloudflare : **Observability → Analytics → Web analytics → solvonord.com**. Choisir la période et conserver le filtre **Exclude Bots: Yes**. Les statistiques commencent à l’installation et ne reconstituent pas les visites passées. Une visite ne correspond pas nécessairement à une personne unique; les bloqueurs et l’échantillonnage peuvent modifier les totaux. Les visites du propriétaire et les vérifications du site peuvent aussi être comptées.
 
 L’option `spa: false` évite de traiter la navigation interne du portfolio ou du questionnaire comme de nouvelles pages. Aucun événement de formulaire, réponse, coordonnée ou fichier n’est ajouté aux données analytiques. Cloudflare ne journalise pas les paramètres de requête. La politique `strict-origin-when-cross-origin` fournit l’origine requise par le service sans transmettre le chemin ni les paramètres dans l’en-tête Referer des requêtes externes. La CSP autorise uniquement le script officiel et son point de collecte en plus des services existants. La notice de confidentialité du portfolio explique ces statistiques en FR/EN.
 
@@ -57,11 +66,11 @@ Les références suivent le format `SN-AAAAMMJJ-XXXXXXX` : la date est en UTC et
 
 ## Google Search Console et statistiques
 
-La propriété Search Console est validée pour `https://solvonord.github.io/Technologies/`. Conserver la balise de vérification de `index.html` et `sitemap.xml`. Google a accepté la demande d’indexation de la page le 12 octobre 2026; cela ne garantit pas sa présence ni sa position dans les résultats.
+La propriété Search Console historique est validée pour `https://solvonord.github.io/Technologies/`. Conserver la balise de vérification de `index.html` et `sitemap.xml`. Google a accepté la demande d’indexation de cette ancienne adresse le 12 octobre 2026; cela ne garantit pas sa présence ni sa position dans les résultats. La configuration du nouveau domaine dans GitHub ne valide pas automatiquement une nouvelle propriété Search Console ni son indexation.
 
 La carte FR/EN décrit les cookies et technologies facultatives en langage courant : mesurer la fréquentation et améliorer la navigation. Elle propose deux boutons de même visibilité, **Accepter** et **Refuser**, et ouvre la politique de confidentialité locale. Les fournisseurs, les durées et la modification du choix sont expliqués dans cette politique. Aucune personnalisation publicitaire n’est activée. Le formulaire reste utilisable dans les deux cas. Cloudflare Web Analytics continue de fonctionner sans cookies de suivi.
 
-Le flux GA4 `G-8HCFSX3ZVC` ne charge son script qu’après accord explicite ou lecture d’un accord enregistré encore valide. La préférence `solvonord-analytics-choice-v2` expire après 180 jours. Aucun accord n’est présumé à partir de l’ancienne intégration retirée. Les cookies de cette intégration sont limités au domaine hôte et au chemin `/Technologies/`, avec une durée de 30 jours. Le refus arrête la mesure Google et supprime ces cookies. Le choix reste modifiable dans le pied de page et dans Confidentialité. Les aperçus locaux ne transmettent rien à GA4.
+Le flux GA4 `G-8HCFSX3ZVC` ne charge son script qu’après accord explicite ou lecture d’un accord enregistré encore valide. La préférence `solvonord-analytics-choice-v2` expire après 180 jours. Aucun accord n’est présumé à partir de l’ancienne intégration retirée. Les cookies sont limités au domaine hôte et à la racine `/` sur le domaine personnalisé (ou `/Technologies/` sur l'ancienne adresse GitHub), avec une durée de 30 jours. Le consentement reste propre à chaque origine. Le refus arrête la mesure Google et supprime ces cookies. Le choix reste modifiable dans le pied de page et dans Confidentialité. Les aperçus locaux ne transmettent rien à GA4.
 
 La mesure couvre les visites et des actions générales : clic de contact, début de demande et confirmation d’envoi. Aucun contenu de formulaire, coordonnée, nom de fichier, référence ou jeton de retour n’est inclus dans les événements. L’URL transmise est fixe, sans paramètres ni fragment; le référent est réduit à son origine. Les fonctions publicitaires et Google Signals sont désactivés. Les mesures améliorées du flux ont été désactivées lors de sa création. Les événements antérieurs à l’accord ne sont pas rejoués.
 
@@ -81,7 +90,7 @@ Le formulaire conserve six photos maximum, les mêmes limites de taille et le m�
 
 ## English
 
-A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
+A bilingual portfolio and guided service request form for SolvoNord Technologies. The custom address is **https://solvonord.com/**, configured and opened successfully over HTTPS on October 14, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enforcement enabled. Domain ownership is verified for the SolvoNord GitHub account.
 
 The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `support@solvonord.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: six JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.
 
