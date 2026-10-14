@@ -7,5 +7,5 @@ window.SOLVONORD_CONFIG = Object.freeze({
   formspreeUploads: false,
   testMode: false,
   email: "support@solvonord.com",
-  formsubmitRecipient: "solvonord@gmail.com" // Keep the activated recipient until the new address is confirmed.
+  formsubmitRecipient: "support@solvonord.com" // Activation confirmed by the owner on 2026-10-14.
 });

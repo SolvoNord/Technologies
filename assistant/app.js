@@ -14,7 +14,7 @@
   const receiptKey = "solvonord-upload-receipt";
   const maxPhotos = 6;
   const contactEmail = config.email || "support@solvonord.com";
-  const recipient = config.formsubmitRecipient || "solvonord@gmail.com";
+  const recipient = config.formsubmitRecipient || "support@solvonord.com";
   const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
   let statusKey = "";
   let photoEpoch = 0;

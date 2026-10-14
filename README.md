@@ -21,9 +21,9 @@ Le site est entièrement statique, sans compilation ni clé d'API payante. Les c
 
 ## Envoi des demandes et photos
 
-Le fournisseur actif est **FormSubmit**, avec le destinataire `solvonord@gmail.com`. Le propriétaire a confirmé l'activation du formulaire et la réception d'une véritable pièce jointe pour le test natif **SN-20261011-1APJE70**, le 11 octobre 2026. `assistant/config.js` contient `provider: "formsubmit"`, `formsubmitActivated: true`, `formsubmitUploadMode: "native"` et `testMode: false`.
+Le fournisseur actif est **FormSubmit**, avec le destinataire `support@solvonord.com`. Le propriétaire a confirmé l'activation du formulaire et la réception d'une véritable pièce jointe pour le test natif **SN-20261011-1APJE70**, le 11 octobre 2026. `assistant/config.js` contient `provider: "formsubmit"`, `formsubmitActivated: true`, `formsubmitUploadMode: "native"` et `testMode: false`.
 
-Le bouton unique « Envoyer ma demande » transmet le résumé édité et le consentement. Sans photo, l'envoi se fait en arrière-plan. Avec des photos, un formulaire natif `multipart/form-data` utilise `https://formsubmit.co/solvonord@gmail.com` : le visiteur termine la vérification anti-spam, puis revient directement au portfolio, section demande, où s'affiche la confirmation. Le formulaire n'affiche aucun détail technique sur ce transport. Ne pas envoyer les fichiers au point d'accès `/ajax/` : nos tests ont confirmé l'arrivée du texte sans les pièces jointes avec cette méthode.
+Le bouton unique « Envoyer ma demande » transmet le résumé édité et le consentement. Sans photo, l'envoi se fait en arrière-plan. Avec des photos, un formulaire natif `multipart/form-data` utilise `https://formsubmit.co/support@solvonord.com` : le visiteur termine la vérification anti-spam, puis revient directement au portfolio, section demande, où s'affiche la confirmation. Le formulaire n'affiche aucun détail technique sur ce transport. Ne pas envoyer les fichiers au point d'accès `/ajax/` : nos tests ont confirmé l'arrivée du texte sans les pièces jointes avec cette méthode.
 
 Le site accepte jusqu'à **6 photos JPG, PNG ou WebP**, **5 Mo par fichier** et **9 Mo au total**. Cette limite garde une marge sous la limite de 10 Mo de FormSubmit. Les fichiers sont renommés `photo-1`, `photo-2`, etc., avec leur extension; les noms de fichiers d'origine ne sont pas transmis. Le parcours intégré et la version assistant séparée utilisent la même page de retour. Dans un widget, le navigateur ouvre la vérification dans la page entière.
 
@@ -83,7 +83,7 @@ Le formulaire conserve six photos maximum, les mêmes limites de taille et le m�
 
 A bilingual portfolio and guided service request form for SolvoNord Technologies. The site is published at **https://solvonord.github.io/Technologies/** and was verified on October 11, 2026. GitHub Pages deploys the `main` branch / root of **SolvoNord/Technologies**, with HTTPS enabled.
 
-The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `solvonord@gmail.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: six JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.
+The form has one **Send my request** button and uses the owner's activated **FormSubmit** address, `support@solvonord.com`. Text-only requests show an on-page confirmation. Photo requests pass through the provider's verification and return to the same portfolio page with a confirmation and reference. The owner confirmed receipt of the native test image **SN-20261011-1APJE70**. Limits: six JPG/PNG/WebP files, 5 MB each and 9 MB combined. Only non-content receipt metadata is stored for the session. The email-app submission button and old Formspree destination have been removed. A direct email contact link remains available. Portfolio services now include cable management and a residential project featuring CAT6, HDMI, Ajax Home Security System and Sonos.
 
 ## Identité visuelle
 
@@ -104,3 +104,6 @@ Le visuel d’accueil est une illustration générée, clairement identifiée co
 Les trois photos de préparation et d’installation du point d’accès industriel figurent dans la section autonome « Sur le terrain ». Elles ne sont associées à aucune fiche projet. Chaque projet pourra recevoir ses propres photographies et précisions plus tard. Les légendes et la visionneuse restent bilingues.
 
 Tous les liens de contact publics utilisent `support@solvonord.com`. `email` configure ce contact; `formsubmitRecipient` indique séparément la boîte de réception activée pour les demandes. Ne remplacer cette dernière qu’après confirmation de son activation FormSubmit.
+
+
+Activation de support@solvonord.com confirmée par le propriétaire le 14 octobre 2026. Le formulaire utilise maintenant cette adresse pour les demandes avec ou sans photos. Le test natif SN-20261011-1APJE70 cité ci-dessus concernait la boîte Gmail précédente; le mécanisme d’envoi des pièces jointes est conservé.
