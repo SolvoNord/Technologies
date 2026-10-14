@@ -3,7 +3,11 @@
   const measurementId = 'G-8HCFSX3ZVC'; // Public measurement ID, never an API secret.
   const preferenceKey = 'solvonord-analytics-choice-v2';
   const preferenceLifetime = 180 * 24 * 60 * 60 * 1000;
-  const live = location.origin === 'https://solvonord.github.io' && location.pathname.startsWith('/Technologies/');
+  const githubHost = location.origin === 'https://solvonord.github.io' && location.pathname.startsWith('/Technologies/');
+  const domainHost = ['https://solvonord.com','https://www.solvonord.com'].includes(location.origin);
+  const live = githubHost || domainHost;
+  const sitePath = githubHost ? '/Technologies/' : '/';
+  const publicPage = domainHost ? 'https://solvonord.com/' : 'https://solvonord.github.io/Technologies/';
   const banner = document.getElementById('analytics-choice');
   if (!banner) return;
   const copy = {
@@ -58,7 +62,7 @@
     try {
     for (const part of document.cookie.split(';')) {
       const name = part.trim().split('=')[0];
-      if (name === 'sn_ga' || name.startsWith('sn_ga_')) document.cookie = `${name}=; Max-Age=0; Path=/Technologies/; SameSite=Lax; Secure`;
+      if (name === 'sn_ga' || name.startsWith('sn_ga_')) document.cookie = `${name}=; Max-Age=0; Path=${sitePath}; SameSite=Lax; Secure`;
     }
     } catch { /* Cookie restrictions must not prevent use of the form. */ }
   }
@@ -77,12 +81,12 @@
     // The receipt token, query, fragment and form contents never enter event payloads.
     window.gtag('config',measurementId,{
       send_page_view:false,
-      page_location:'https://solvonord.github.io/Technologies/',
+      page_location:publicPage,
       page_referrer:referrer,
       page_title:'SolvoNord Technologies',
       allow_google_signals:false,
       allow_ad_personalization_signals:false,
-      cookie_domain:'none',cookie_path:'/Technologies/',cookie_prefix:'sn',
+      cookie_domain:'none',cookie_path:sitePath,cookie_prefix:'sn',
       cookie_expires:30*24*60*60,cookie_update:false,cookie_flags:'SameSite=Lax;Secure'
     });
     window.gtag('event','page_view');

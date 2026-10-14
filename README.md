@@ -99,9 +99,9 @@ Le logo horizontal sans slogan est identique dans l’en-tête et le pied de pag
 Le visuel d’accueil est une illustration générée, clairement identifiée comme telle, et non une photo de réalisation. Son origine et son prompt sont documentés dans [assets/README.md](assets/README.md). Les photos du site de référence n’ont pas été copiées. Les photos avant/après réelles pourront être ajoutées lorsque le propriétaire les fournira.
 
 
-## Galerie générale et courriel professionnel — 14 octobre 2026
+## Galerie de projet et courriel professionnel — 14 octobre 2026
 
-Les trois photos de préparation et d’installation du point d’accès industriel figurent dans la section autonome « Sur le terrain ». Elles ne sont associées à aucune fiche projet. Chaque projet pourra recevoir ses propres photographies et précisions plus tard. Les légendes et la visionneuse restent bilingues.
+Les trois photos de préparation et d’installation du point d’accès industriel figurent à nouveau dans le projet 07, avec la photo installée en couverture et les trois étapes dans ses détails. Les légendes et la visionneuse restent bilingues.
 
 Tous les liens de contact publics utilisent `support@solvonord.com`. `email` configure ce contact; `formsubmitRecipient` indique séparément la boîte de réception activée pour les demandes. Ne remplacer cette dernière qu’après confirmation de son activation FormSubmit.
 

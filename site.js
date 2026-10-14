@@ -139,6 +139,32 @@
           "Fortinet",
           "FortiAP 432FR",
           "FortiSwitch Rugged FSR-108F"
+        ],
+        "photos": [
+          {
+            "src": "./assets/projects/industrial-ap/01-unboxing.webp",
+            "width": 1200,
+            "height": 1600,
+            "title": "Déballage",
+            "caption": "Déballage du point d’accès industriel FortiAP 432FR.",
+            "alt": "Point d’accès Fortinet FortiAP 432FR dans son emballage."
+          },
+          {
+            "src": "./assets/projects/industrial-ap/02-antennas.webp",
+            "width": 897,
+            "height": 1600,
+            "title": "Préparation",
+            "caption": "Branchement des antennes et préparation avant installation.",
+            "alt": "Point d’accès FortiAP avec ses antennes raccordées, en préparation sur une structure métallique."
+          },
+          {
+            "src": "./assets/projects/industrial-ap/03-installed.webp",
+            "width": 1600,
+            "height": 1200,
+            "title": "Installation",
+            "caption": "Point d’accès installé en environnement industriel.",
+            "alt": "Point d’accès FortiAP fixé sur une structure métallique avec ses antennes et son câblage."
+          }
         ]
       },
       {
@@ -160,40 +186,13 @@
     "introLead": "Une technologie bien pensée.\nUne installation qui vous simplifie la vie.",
     "projectMore": "Voir le projet",
     "projectLess": "Réduire",
+    "projectPhotos": "Voir le projet et les photos",
+    "galleryTitle": "Les étapes en images",
     "enlargePhoto": "Agrandir la photo",
     "photoClose": "Fermer",
     "photoPrevious": "Photo précédente",
     "photoNext": "Photo suivante",
-    "photoOf": "sur",
-    "fieldPhotos": [
-      {
-        "src": "./assets/projects/industrial-ap/01-unboxing.webp",
-        "width": 1200,
-        "height": 1600,
-        "title": "Déballage",
-        "caption": "Déballage du point d’accès industriel FortiAP 432FR.",
-        "alt": "Point d’accès Fortinet FortiAP 432FR dans son emballage."
-      },
-      {
-        "src": "./assets/projects/industrial-ap/02-antennas.webp",
-        "width": 897,
-        "height": 1600,
-        "title": "Préparation",
-        "caption": "Branchement des antennes et préparation avant installation.",
-        "alt": "Point d’accès FortiAP avec ses antennes raccordées, en préparation sur une structure métallique."
-      },
-      {
-        "src": "./assets/projects/industrial-ap/03-installed.webp",
-        "width": 1600,
-        "height": 1200,
-        "title": "Installation",
-        "caption": "Point d’accès installé en environnement industriel.",
-        "alt": "Point d’accès FortiAP fixé sur une structure métallique avec ses antennes et son câblage."
-      }
-    ],
-    "fieldEyebrow": "SUR LE TERRAIN",
-    "fieldTitle": "Installation d’un point d’accès industriel.",
-    "fieldIntro": "Du déballage à la pose : un aperçu de la préparation et de l’installation d’un point d’accès Wi-Fi industriel."
+    "photoOf": "sur"
   },
   "en": {
     "title": "SolvoNord Technologies | Networks, Telecommunications & Security",
@@ -333,6 +332,32 @@
           "Fortinet",
           "FortiAP 432FR",
           "FortiSwitch Rugged FSR-108F"
+        ],
+        "photos": [
+          {
+            "src": "./assets/projects/industrial-ap/01-unboxing.webp",
+            "width": 1200,
+            "height": 1600,
+            "title": "Unboxing",
+            "caption": "Unboxing the FortiAP 432FR industrial access point.",
+            "alt": "Fortinet FortiAP 432FR access point in its packaging."
+          },
+          {
+            "src": "./assets/projects/industrial-ap/02-antennas.webp",
+            "width": 897,
+            "height": 1600,
+            "title": "Preparation",
+            "caption": "Connecting the antennas and preparing for installation.",
+            "alt": "FortiAP access point with antennas connected, being prepared on a metal structure."
+          },
+          {
+            "src": "./assets/projects/industrial-ap/03-installed.webp",
+            "width": 1600,
+            "height": 1200,
+            "title": "Installation",
+            "caption": "Access point installed in an industrial environment.",
+            "alt": "FortiAP access point mounted on a metal structure with its antennas and cabling."
+          }
         ]
       },
       {
@@ -354,65 +379,38 @@
     "introLead": "Thoughtfully connected.\nTechnology that makes life easier.",
     "projectMore": "View project",
     "projectLess": "Show less",
+    "projectPhotos": "View project and photos",
+    "galleryTitle": "The project in pictures",
     "enlargePhoto": "Enlarge photo",
     "photoClose": "Close",
     "photoPrevious": "Previous photo",
     "photoNext": "Next photo",
-    "photoOf": "of",
-    "fieldPhotos": [
-      {
-        "src": "./assets/projects/industrial-ap/01-unboxing.webp",
-        "width": 1200,
-        "height": 1600,
-        "title": "Unboxing",
-        "caption": "Unboxing the FortiAP 432FR industrial access point.",
-        "alt": "Fortinet FortiAP 432FR access point in its packaging."
-      },
-      {
-        "src": "./assets/projects/industrial-ap/02-antennas.webp",
-        "width": 897,
-        "height": 1600,
-        "title": "Preparation",
-        "caption": "Connecting the antennas and preparing for installation.",
-        "alt": "FortiAP access point with antennas connected, being prepared on a metal structure."
-      },
-      {
-        "src": "./assets/projects/industrial-ap/03-installed.webp",
-        "width": 1600,
-        "height": 1200,
-        "title": "Installation",
-        "caption": "Access point installed in an industrial environment.",
-        "alt": "FortiAP access point mounted on a metal structure with its antennas and cabling."
-      }
-    ],
-    "fieldEyebrow": "IN THE FIELD",
-    "fieldTitle": "Installing an industrial access point.",
-    "fieldIntro": "From unboxing to mounting: a look at preparing and installing an industrial Wi-Fi access point."
+    "photoOf": "of"
   }
 };
 
   const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;};
   let currentLang;
   const photoDialog=document.getElementById('project-photo-dialog');
-  let photoIndex=0,photoReturnFocus=null;
+  let photoProject=0,photoIndex=0,photoReturnFocus=null;
   function renderPhoto(){
-    const c=copy[currentLang],photo=c.fieldPhotos[photoIndex];
-    document.getElementById('photo-dialog-title').textContent=c.fieldTitle;
+    const c=copy[currentLang],project=c.projects[photoProject],photo=project.photos[photoIndex];
+    document.getElementById('photo-dialog-title').textContent=project.title;
     const image=document.getElementById('photo-view-image');image.src=photo.src;image.alt=photo.alt;
     document.getElementById('photo-view-caption').textContent=photo.title+' — '+photo.caption;
-    document.getElementById('photo-position').textContent=(photoIndex+1)+' '+c.photoOf+' '+c.fieldPhotos.length;
+    document.getElementById('photo-position').textContent=(photoIndex+1)+' '+c.photoOf+' '+project.photos.length;
   }
-  function openPhoto(index,trigger){
-    if(!copy[currentLang].fieldPhotos[index])return;
-    photoIndex=index;photoReturnFocus=trigger;renderPhoto();photoDialog.showModal();
+  function openPhoto(project,index,trigger){
+    if(!copy[currentLang].projects[project]?.photos?.[index])return;
+    photoProject=project;photoIndex=index;photoReturnFocus=trigger;renderPhoto();photoDialog.showModal();
   }
   function movePhoto(direction){
-    const count=copy[currentLang].fieldPhotos.length;
+    const count=copy[currentLang].projects[photoProject].photos.length;
     photoIndex=(photoIndex+direction+count)%count;renderPhoto();
   }
-  function photoButton(photo,index,className){
+  function photoButton(photo,project,index,className){
     const c=copy[currentLang],button=make('button',className);button.type='button';
-    button.dataset.photoIndex=index;
+    button.dataset.photoProject=project;button.dataset.photoIndex=index;
     button.setAttribute('aria-label',c.enlargePhoto+' : '+photo.title);
     const image=make('img');image.src=photo.src;image.alt=photo.alt;image.width=photo.width;image.height=photo.height;image.loading='lazy';image.decoding='async';
     button.append(image);return button;
@@ -451,24 +449,30 @@
       const details=make('details','project-details');details.open=openProjects.has(card.id);
       const summary=make('summary','project-toggle');
       summary.id=card.id+'-toggle';summary.setAttribute('aria-labelledby',summary.id+' '+heading.id);
-      const expand=make('span','when-closed',c.projectMore);const collapse=make('span','when-open',c.projectLess);const plus=make('span','project-plus','+');plus.setAttribute('aria-hidden','true');
+      const expand=make('span','when-closed',project.photos?c.projectPhotos:c.projectMore);const collapse=make('span','when-open',c.projectLess);const plus=make('span','project-plus','+');plus.setAttribute('aria-hidden','true');
       summary.append(expand,collapse,plus);
       const body=make('div','project-body');const tags=make('div','project-tags');project.tags.forEach(tag=>tags.append(make('span','',tag)));
       body.append(make('p','',project.description),tags);card.append(top,heading);
+      if(project.photos?.length){
+        card.classList.add('has-photos');
+        const last=project.photos.length-1,cover=photoButton(project.photos[last],i,last,'project-cover');
+        cover.append(make('span','photo-cover-label',project.photos.length+' photos · '+c.enlargePhoto));card.append(cover);
+        const gallery=make('section','project-gallery');gallery.setAttribute('aria-labelledby',card.id+'-gallery-title');
+        const title=make('h4','',c.galleryTitle);title.id=card.id+'-gallery-title';const grid=make('div','project-gallery-grid');
+        project.photos.forEach((photo,index)=>{
+          const figure=make('figure','project-photo'),button=photoButton(photo,i,index,'photo-thumbnail');
+          const caption=make('figcaption');caption.append(make('span','photo-step',String(index+1).padStart(2,'0')),make('strong','',photo.title),make('span','photo-description',photo.caption));
+          figure.append(button,caption);grid.append(figure);
+        });
+        gallery.append(title,grid);body.append(gallery);
+      }
       details.append(summary,body);card.append(details);projects.append(card);
     });
-    const gallery=document.getElementById('field-photos');gallery.replaceChildren();
-    c.fieldPhotos.forEach((photo,index)=>{
-      const figure=make('figure','project-photo'),button=photoButton(photo,index,'photo-thumbnail');
-      const caption=make('figcaption');caption.append(make('span','photo-step',String(index+1).padStart(2,'0')),make('strong','',photo.title),make('span','photo-description',photo.caption));
-      figure.append(button,caption);gallery.append(figure);
-    });
-    if(photoDialog.open)renderPhoto();
     openLinkedProject();
   }
   document.addEventListener('solvonord:language',e=>render(e.detail.lang));
   document.addEventListener('click',e=>{const link=e.target.closest('[data-service-link]');if(link)document.dispatchEvent(new CustomEvent('solvonord:service',{detail:{service:link.dataset.serviceLink}}));});
-  document.addEventListener('click',e=>{const trigger=e.target.closest('[data-photo-index]');if(trigger)openPhoto(Number(trigger.dataset.photoIndex),trigger);});
+  document.addEventListener('click',e=>{const trigger=e.target.closest('[data-photo-project]');if(trigger)openPhoto(Number(trigger.dataset.photoProject),Number(trigger.dataset.photoIndex),trigger);});
   window.addEventListener('hashchange',openLinkedProject);
   const query=new URLSearchParams(location.search).get('lang');render(['fr','en'].includes(query)?query:(navigator.language.toLowerCase().startsWith('en')?'en':'fr'));
 })();
