@@ -14,11 +14,11 @@
   <link rel="icon" href="./assistant/mark.svg?v=20261013-approved" type="image/svg+xml">
   <link rel="stylesheet" href="./assistant/brand.css?v=20261013-unified">
   <link rel="stylesheet" href="./assistant/styles.css?v=20261013-clean-logo">
-  <link rel="stylesheet" href="./site.css?v=20261014-simple">
+  <link rel="stylesheet" href="./site.css?v=20261014-project-photos">
   <link rel="stylesheet" href="./analytics.css?v=20261013-privacy">
   <script src="./assistant/config.js?v=20261011-7" defer></script>
   <script src="./assistant/content.js?v=20261013-privacy" defer></script>
-  <script src="./site.js?v=20261014-simple" defer></script>
+  <script src="./site.js?v=20261014-project-photos" defer></script>
   <script src="./analytics.js?v=20261013-privacy" defer></script>
   <script src="./assistant/app.js?v=20261012-4" defer></script>
 </head>
@@ -94,6 +94,11 @@ Un projet à concrétiser?</h2><p data-site="requestText">Décrivez-nous la situ
   </div></footer>
     <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-inner"><h2 id="privacy-title" tabindex="-1" autofocus data-t="privacyTitle"></h2><p data-t="privacyBody"></p><p data-t="privacyPhotos"></p><p data-t="privacyService"></p><p data-t="privacyAnalytics"></p><div class="analytics-info"><h3 data-analytics-copy="policyTitle"></h3><p data-analytics-copy="definition"></p><p data-analytics-copy="detail"></p><p data-analytics-copy="preference"></p><p data-analytics-copy="storage"></p><p><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" data-analytics-copy="learn"></a></p><p id="analytics-preference-status"></p><button type="button" class="analytics-settings" data-analytics-settings data-analytics-copy="settings"></button></div><p><span data-t="privacyContactIntro"></span> <a href="mailto:solvonord@gmail.com" data-t="privacyContactLink"></a>.</p><form method="dialog"><button class="primary" data-t="close"></button></form></div></dialog>
   <section id="analytics-choice" class="analytics-choice" aria-labelledby="analytics-choice-title" hidden><h2 id="analytics-choice-title" tabindex="-1" data-analytics-copy="title"></h2><p data-analytics-copy="text"></p><ul><li data-analytics-copy="purposeTraffic"></li><li data-analytics-copy="purposeExperience"></li></ul><p class="analytics-essential" data-analytics-copy="essential"></p><div class="analytics-actions"><button type="button" id="analytics-accept" data-analytics-copy="accept"></button><button type="button" id="analytics-decline" data-analytics-copy="decline"></button></div><button type="button" class="analytics-more" data-analytics-details data-analytics-copy="more"></button></section>
+  <dialog id="project-photo-dialog" class="photo-dialog" aria-labelledby="photo-dialog-title">
+    <div class="photo-toolbar"><h2 id="photo-dialog-title"></h2><button id="photo-close" type="button" class="secondary" autofocus data-site="photoClose">Fermer</button></div>
+    <figure class="photo-view"><img id="photo-view-image" alt=""><figcaption id="photo-view-caption" aria-live="polite"></figcaption></figure>
+    <div class="photo-controls"><button id="photo-previous" type="button" class="secondary"><span aria-hidden="true">←</span><span data-site="photoPrevious">Photo précédente</span></button><span id="photo-position"></span><button id="photo-next" type="button" class="secondary"><span data-site="photoNext">Photo suivante</span><span aria-hidden="true">→</span></button></div>
+  </dialog>
   <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="dialog-inner"><h2 id="reset-title" data-t="resetTitle"></h2><p data-t="resetBody"></p><div class="navigation"><button id="cancel-reset" class="secondary" data-t="cancel"></button><button id="confirm-reset" class="primary" data-t="erase"></button></div></div></dialog>
   <noscript><p>JavaScript est nécessaire pour l’assistant. / The assistant requires JavaScript. <a href="mailto:solvonord@gmail.com">solvonord@gmail.com</a></p></noscript>
   <!-- Public Web Analytics site identifier; not an API key. No form events are tracked. -->

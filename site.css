@@ -70,6 +70,36 @@ html{scroll-behavior:smooth;scroll-padding-top:125px}
 .project-tags span{font-size:10px;line-height:1.5;background:var(--paper);border:1px solid var(--line);padding:5px 9px}
 .project-cta{margin-top:30px}
 
+/* Real project photographs: a compact cover, chronological gallery and full-frame viewer. */
+.project-cover,.photo-thumbnail{display:block;position:relative;width:100%;padding:0;border:0;background:var(--paper);color:var(--on-brand);overflow:hidden;cursor:zoom-in}
+.project-cover{margin:0 0 22px}
+.project-cover>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.photo-cover-label{position:absolute;bottom:12px;right:12px;padding:7px 10px;font-size:11px;line-height:1.5;background:var(--brand);color:var(--on-brand);border-radius:4px}
+.project-item.has-photos:has(details[open]){grid-column:1/-1}
+.project-item.has-photos:has(details[open])>.project-cover{display:none}
+.project-item.has-photos:has(details[open])>h3{max-width:none;min-height:0}
+.project-gallery{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.project-gallery h4{font-size:18px;font-weight:500;margin:0 0 20px;letter-spacing:-.3px}
+.project-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.project-photo{min-width:0;margin:0}
+.photo-thumbnail>img{display:block;width:100%;height:280px;object-fit:contain}
+.photo-thumbnail:focus-visible,.project-cover:focus-visible{outline:3px solid var(--brand);outline-offset:4px}
+.project-photo figcaption{display:grid;grid-template-columns:24px 1fr;gap:6px 8px;padding-top:15px;font-size:13px;line-height:1.65}
+.photo-step{font-size:11px;padding-top:2px}.project-photo strong{font-weight:600}.photo-description{grid-column:2;color:var(--muted);font-size:12px}
+.photo-dialog{width:min(1120px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:22px;border-radius:10px;overflow:auto;background:var(--surface)}
+.photo-dialog[open]{display:flex;flex-direction:column;gap:16px}
+.photo-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.portfolio-page .photo-toolbar h2{font-size:19px;letter-spacing:-.4px;line-height:1.35;margin:0}
+.photo-toolbar button{flex-shrink:0;min-height:44px}
+.photo-view{margin:0;min-height:0}
+.photo-view>img{display:block;width:100%;height:min(62dvh,690px);object-fit:contain;background:var(--paper)}
+.photo-view figcaption{font-size:13px;line-height:1.65;color:var(--muted);padding-top:12px}
+.photo-controls{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.photo-controls button{display:flex;align-items:center;gap:10px;font-size:12px;min-height:44px}
+#photo-position{font-size:12px;white-space:nowrap}
+@media(max-width:800px){.photo-thumbnail>img{height:240px}.project-gallery-grid{gap:14px}.photo-dialog{padding:16px}.portfolio-page .photo-toolbar h2{font-size:16px}.photo-controls button{gap:7px;padding:10px}}
+@media(max-width:600px){.project-gallery-grid{grid-template-columns:1fr;gap:25px}.photo-thumbnail>img{height:300px}.photo-dialog{width:calc(100% - 20px);max-height:calc(100dvh - 20px);padding:12px}.photo-toolbar{align-items:start;gap:10px}.photo-view>img{height:52dvh}.photo-controls{gap:8px}.photo-controls button{font-size:11px;padding:8px}.photo-controls button span[aria-hidden]{display:none}.photo-view figcaption{font-size:12px}}
+
 .approach-section{padding:65px 0;border-bottom:1px solid var(--line);background:var(--surface)}
 .approach-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:60px;margin-top:32px}
 .approach-grid>div>span{font-size:11px}
@@ -137,3 +167,5 @@ html{scroll-behavior:smooth;scroll-padding-top:125px}
 }
 @media(max-width:360px){.header-inner{padding-inline:12px}.site-header .brand-artwork{width:188px}.hero-copy{padding-inline:22px}.hero-copy h1{font-size:30px}.site-nav{gap:5px}.site-nav a{font-size:10px}.site-nav .nav-request{padding-inline:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-plus{transition:none}}
+.project-item.has-photos{scroll-margin-top:16px}
+.project-item.has-photos .project-body>p{max-width:850px}
