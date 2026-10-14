@@ -15,11 +15,11 @@
   <link rel="stylesheet" href="./assistant/brand.css?v=20261013-unified">
   <link rel="stylesheet" href="./assistant/styles.css?v=20261013-clean-logo">
   <link rel="stylesheet" href="./site.css?v=20261013-unified">
-  <link rel="stylesheet" href="./analytics.css?v=20261013-unified">
+  <link rel="stylesheet" href="./analytics.css?v=20261013-privacy">
   <script src="./assistant/config.js?v=20261011-7" defer></script>
-  <script src="./assistant/content.js?v=20261012-2" defer></script>
-  <script src="./site.js?v=20261011-9" defer></script>
-  <script src="./analytics.js?v=20261012-4" defer></script>
+  <script src="./assistant/content.js?v=20261013-privacy" defer></script>
+  <script src="./site.js?v=20261013-privacy" defer></script>
+  <script src="./analytics.js?v=20261013-privacy" defer></script>
   <script src="./assistant/app.js?v=20261012-4" defer></script>
 </head>
 <body class="portfolio-page">
@@ -27,7 +27,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#accueil" aria-label="SolvoNord Technologies"><img class="brand-artwork" src="./assistant/solvonord-logo-horizontal.svg?v=20261013-green" alt="" width="600" height="120"></a>
-      <nav class="site-nav" aria-label="Navigation principale / Main navigation"><a href="#services" data-site="navServices">Services</a><a href="#projets" data-site="navProjects">Réalisations</a><a href="#apropos" data-site="navAbout">À propos</a><a href="#demande" class="nav-request" data-site="navRequest">Demander de l’aide ↗</a></nav>
+      <nav class="site-nav" aria-label="Navigation principale / Main navigation"><a href="#services" data-site="navServices">Services</a><a href="#projets" data-site="navProjects">Réalisations</a><a href="#demande" class="nav-request" data-site="navRequest">Demander de l’aide ↗</a></nav>
       <nav class="language-picker" aria-label="Langue / Language"><button type="button" class="lang" data-lang="fr" lang="fr" aria-label="Français">FR</button><button type="button" class="lang" data-lang="en" lang="en" aria-label="English">EN</button></nav>
     </div>
   </header>
@@ -66,10 +66,6 @@ Au bon endroit.</h2></div><p data-site="servicesIntro">Maison, bureau, commerce,
       <div id="project-cards" class="project-grid"></div>
       <a href="#demande" class="portfolio-link project-cta" data-site="projectCta">Vous avez un projet similaire? Parlons-en ↗</a>
     </div></section>
-    <section id="apropos" class="site-container content-section about-section">
-      <div class="about-copy"><span class="eyebrow" data-site="aboutEyebrow">L’EXPERTISE DERRIÈRE SOLVONORD</span><h2>Abdoul Mazide Baldé</h2><p class="about-role" data-site="aboutRole">Spécialiste en réseaux, télécommunications et sécurité</p><p data-site="aboutText">Je suis Abdoul Mazide Baldé, votre interlocuteur pour les réseaux, les télécommunications et la sécurité. J’analyse vos besoins, conçois la solution et réalise sa configuration et son déploiement. Mon objectif : vous laisser une installation fonctionnelle, structurée et compréhensible, avec des explications utiles pour la prendre en main.</p><a href="https://linkedin.com/in/abdoul-mazide-balde-05a909140" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-site="linkedin">Voir le profil LinkedIn ↗</a></div>
-      <div class="credentials"><h3 data-site="credentialsTitle">Parcours et compétences</h3><div class="credential"><strong>CCNA</strong><span>Cisco Systems</span></div><div class="credential"><strong>Fortinet Certified Associate</strong><span>Fortinet</span></div><div class="credential"><strong>EDU-110</strong><span>Palo Alto Networks</span></div><div class="credential"><strong data-site="degree1">Baccalauréat en cybersécurité</strong><span>Polytechnique Montréal</span></div><div class="credential"><strong data-site="degree2">DEC en réseautique</strong><span>Institut Teccart</span></div></div>
-    </section>
     <section class="approach-section"><div class="site-container"><span class="eyebrow" data-site="approachEyebrow">COMMENT ÇA SE PASSE</span><div class="approach-grid"><div><span>01</span><h3 data-site="approach1Title">Comprendre votre besoin.</h3><p data-site="approach1Text">Un problème à résoudre ou un projet à préparer : décrivez votre environnement, vos usages et vos priorités.</p></div><div><span>02</span><h3 data-site="approach2Title">Définir la solution.</h3><p data-site="approach2Text">Nous précisons les travaux, les équipements et les disponibilités. Vous connaissez le périmètre avant de donner votre accord.</p></div><div><span>03</span><h3 data-site="approach3Title">Réaliser et vérifier.</h3><p data-site="approach3Text">Installation, configuration ou dépannage : nous réalisons l’intervention et vérifions le fonctionnement avec vous.</p></div></div></div></section>
     <section id="demande" class="site-container content-section request-layout">
       <aside class="request-intro"><span class="eyebrow" data-site="requestEyebrow">COMMENÇONS PAR VOTRE BESOIN</span><h2 data-site="requestTitle">Un problème à régler?
@@ -105,8 +101,8 @@ Un projet à concrétiser?</h2><p data-site="requestText">Décrivez-nous la situ
     </div>
     <div class="footer-meta"><span data-site="footerLocation">Québec, Montréal et environs · FR / EN</span><button type="button" class="analytics-settings" data-analytics-settings data-analytics-copy="settings">Préférences des cookies</button><span>© 2026 SolvoNord Technologies</span></div>
   </div></footer>
-    <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-inner"><h2 id="privacy-title" data-t="privacyTitle"></h2><p data-t="privacyBody"></p><p data-t="privacyPhotos"></p><p data-t="privacyService"></p><p data-t="privacyAnalytics"></p><div class="analytics-info"><p data-analytics-copy="detail"></p><p><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" data-analytics-copy="learn"></a></p><p id="analytics-preference-status"></p><button type="button" class="analytics-settings" data-analytics-settings data-analytics-copy="settings"></button></div><p><span data-t="privacyContactIntro"></span> <a href="mailto:solvonord@gmail.com" data-t="privacyContactLink"></a>.</p><form method="dialog"><button class="primary" data-t="close"></button></form></div></dialog>
-  <section id="analytics-choice" class="analytics-choice" aria-labelledby="analytics-choice-title" hidden><h2 id="analytics-choice-title" tabindex="-1" data-analytics-copy="title"></h2><p data-analytics-copy="text"></p><div class="analytics-actions"><button type="button" id="analytics-accept" data-analytics-copy="accept"></button><button type="button" id="analytics-decline" data-analytics-copy="decline"></button></div><button type="button" class="analytics-more" data-analytics-details data-analytics-copy="more"></button></section>
+    <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-inner"><h2 id="privacy-title" tabindex="-1" autofocus data-t="privacyTitle"></h2><p data-t="privacyBody"></p><p data-t="privacyPhotos"></p><p data-t="privacyService"></p><p data-t="privacyAnalytics"></p><div class="analytics-info"><h3 data-analytics-copy="policyTitle"></h3><p data-analytics-copy="definition"></p><p data-analytics-copy="detail"></p><p data-analytics-copy="preference"></p><p data-analytics-copy="storage"></p><p><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" data-analytics-copy="learn"></a></p><p id="analytics-preference-status"></p><button type="button" class="analytics-settings" data-analytics-settings data-analytics-copy="settings"></button></div><p><span data-t="privacyContactIntro"></span> <a href="mailto:solvonord@gmail.com" data-t="privacyContactLink"></a>.</p><form method="dialog"><button class="primary" data-t="close"></button></form></div></dialog>
+  <section id="analytics-choice" class="analytics-choice" aria-labelledby="analytics-choice-title" hidden><h2 id="analytics-choice-title" tabindex="-1" data-analytics-copy="title"></h2><p data-analytics-copy="text"></p><ul><li data-analytics-copy="purposeTraffic"></li><li data-analytics-copy="purposeExperience"></li></ul><p class="analytics-essential" data-analytics-copy="essential"></p><div class="analytics-actions"><button type="button" id="analytics-accept" data-analytics-copy="accept"></button><button type="button" id="analytics-decline" data-analytics-copy="decline"></button></div><button type="button" class="analytics-more" data-analytics-details data-analytics-copy="more"></button></section>
   <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="dialog-inner"><h2 id="reset-title" data-t="resetTitle"></h2><p data-t="resetBody"></p><div class="navigation"><button id="cancel-reset" class="secondary" data-t="cancel"></button><button id="confirm-reset" class="primary" data-t="erase"></button></div></div></dialog>
   <noscript><p>JavaScript est nécessaire pour l’assistant. / The assistant requires JavaScript. <a href="mailto:solvonord@gmail.com">solvonord@gmail.com</a></p></noscript>
   <!-- Public Web Analytics site identifier; not an API key. No form events are tracked. -->

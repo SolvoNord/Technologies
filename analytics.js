@@ -9,21 +9,35 @@
   const copy = {
     fr: {
       title: 'Les cookies',
-      text: 'Nous utilisons Google Analytics pour comprendre les visites du site. Acceptez-vous ces cookies?',
-      more: 'En savoir plus',
+      text: 'Avec votre accord, nous utilisons des cookies et des technologies similaires pour recueillir des informations sur votre appareil et votre navigation sur ce site, afin de :',
+      purposeTraffic: 'Mesurer la fréquentation du site',
+      purposeExperience: 'Améliorer votre expérience de navigation',
+      essential: 'Vous pouvez accepter ou refuser ces technologies facultatives. Les fonctions nécessaires au site restent disponibles.',
+      more: 'Consulter notre politique de confidentialité',
       accept: 'Accepter', decline: 'Refuser', settings: 'Préférences des cookies',
-      detail: 'Avec votre accord, Google Analytics utilise des cookies pour mesurer les visites, les villes approximatives et des actions comme les clics de contact ou l’envoi d’une demande. Vos réponses, coordonnées, fichiers et références de demande ne sont pas envoyés à Google Analytics. Les fonctions publicitaires sont désactivées. Votre choix est conservé pendant six mois et peut être modifié à tout moment.',
+      policyTitle: 'Cookies et technologies de mesure',
+      definition: 'Un cookie est un petit fichier enregistré par votre navigateur sur votre appareil. Certains cookies permettent de comprendre comment un site est utilisé.',
+      detail: 'Avec votre accord, notre outil de mesure d’audience, Google Analytics, recueille des informations sur les visites, le type d’appareil, la localisation approximative et des actions comme les clics de contact ou l’envoi d’une demande. Ces statistiques nous aident à améliorer le site. Vos réponses, coordonnées, fichiers et références de demande ne sont pas transmis à cet outil. Les fonctions publicitaires et les offres personnalisées sont désactivées.',
+      preference: 'Ces cookies facultatifs ne sont activés qu’après votre accord. Vous pouvez les refuser et continuer à utiliser le site et le formulaire. Votre choix est enregistré dans votre navigateur pendant 180 jours; les cookies de mesure sont configurés pour durer au maximum 30 jours. Vous pouvez changer votre choix à tout moment avec « Préférences des cookies », en bas de page.',
+      storage: 'Le stockage nécessaire au fonctionnement sert à mémoriser votre choix et, pendant la session, les détails de confirmation d’une demande. Il ne contient ni le texte de votre demande, ni vos coordonnées, ni vos fichiers.',
       learn: 'Comment Google utilise les données',
-      allowed: 'Google Analytics : autorisé.', denied: 'Google Analytics : refusé.', unknown: 'Google Analytics : en attente de votre choix.'
+      allowed: 'Cookies de mesure : acceptés.', denied: 'Cookies de mesure : refusés.', unknown: 'Cookies de mesure : en attente de votre choix.'
     },
     en: {
       title: 'Cookies',
-      text: 'We use Google Analytics to understand visits to our website. Do you accept these cookies?',
-      more: 'Learn more',
+      text: 'With your consent, we use cookies and similar technologies to collect information about your device and your browsing on this site, to:',
+      purposeTraffic: 'Measure website traffic',
+      purposeExperience: 'Improve your browsing experience',
+      essential: 'You can accept or decline these optional technologies. Essential website functions remain available.',
+      more: 'Read our privacy policy',
       accept: 'Accept', decline: 'Decline', settings: 'Cookie preferences',
-      detail: 'With your permission, Google Analytics uses cookies to measure visits, approximate cities and actions such as contact clicks or submitting a request. Your answers, contact details, files and request references are not sent to Google Analytics. Advertising features are disabled. Your choice is saved for six months and can be changed at any time.',
+      policyTitle: 'Cookies and measurement technologies',
+      definition: 'A cookie is a small file saved on your device by your browser. Some cookies help us understand how a website is used.',
+      detail: 'With your consent, our audience measurement tool, Google Analytics, collects information about visits, device type, approximate location and actions such as contact clicks or submitting a request. These statistics help us improve the site. Your answers, contact details, files and request references are not sent to this tool. Advertising features and personalized offers are disabled.',
+      preference: 'These optional cookies are activated only after you agree. You can decline them and still use the website and request form. Your choice is saved in your browser for 180 days; measurement cookies are configured to last up to 30 days. You can change your choice at any time using “Cookie preferences” at the bottom of the page.',
+      storage: 'Storage needed for the site to work remembers your choice and, during the session, request confirmation details. It does not contain your request text, contact details or files.',
       learn: 'How Google uses data',
-      allowed: 'Google Analytics: allowed.', denied: 'Google Analytics: declined.', unknown: 'Google Analytics: awaiting your choice.'
+      allowed: 'Measurement cookies: accepted.', denied: 'Measurement cookies: declined.', unknown: 'Measurement cookies: awaiting your choice.'
     }
   };
   let choice = null, started = false, requestStarted = false, returnFocus = null;

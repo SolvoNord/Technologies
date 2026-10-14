@@ -2,6 +2,10 @@
 .analytics-choice h2{font-size:17px;line-height:1.35;margin:0 0 8px;letter-spacing:0}
 .analytics-choice h2:focus{outline:none}
 .analytics-choice p{font-size:13px;line-height:1.6;margin:0 0 14px;color:var(--muted)}
+.analytics-choice ul{padding-left:20px;margin:0 0 14px;font-size:13px;line-height:1.6;color:var(--muted)}
+.analytics-choice li+li{margin-top:4px}
+.analytics-choice ul li::marker{color:var(--brand)}
+.analytics-choice .analytics-essential{font-size:12px;line-height:1.55}
 .analytics-actions{display:flex;gap:10px}
 .analytics-actions button{flex:1;background:var(--brand);color:#fff;border:1px solid var(--brand);border-radius:9px;padding:10px 14px;min-height:44px;font-size:13px;font-weight:650}
 .analytics-actions button:hover{background:var(--brand)}
