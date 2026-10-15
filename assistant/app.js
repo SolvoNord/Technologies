@@ -15,9 +15,10 @@
   const maxPhotos = 6;
   const contactEmail = config.email || "support@solvonord.com";
   const recipient = config.formsubmitRecipient || "support@solvonord.com";
-  const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, submitted:false, reference:"", photoFollowup:false};
+  const state = {step:0, answers:{}, photos:[], summary:"", summaryDirty:false, consent:false, started:Date.now(), lastSend:0, busy:false, photoBusy:false, submitted:false, reference:"", photoFollowup:false};
   let statusKey = "";
   let photoEpoch = 0;
+  let nativeNavigationTimer;
   const t = () => window.SN_CONTENT[lang];
   const el = (tag, attrs = {}, text = "") => {
     const node = document.createElement(tag);
@@ -100,7 +101,7 @@
     document.querySelectorAll("[data-t]").forEach(node=>node.textContent=c[node.dataset.t]);
     document.querySelector('[data-t="privacyPhotos"]').textContent=uploadsEnabled?c.privacyPhotosUpload:c.privacyPhotos;
     document.querySelector('[data-t="privacyService"]').textContent=c.privacyService.replaceAll("{service}",provider==="formsubmit"?"FormSubmit":"Formspree");
-    document.querySelectorAll("[data-lang]").forEach(node=>{node.setAttribute("aria-pressed",String(node.dataset.lang===lang));node.disabled=state.busy;});
+    document.querySelectorAll("[data-lang]").forEach(node=>{node.setAttribute("aria-pressed",String(node.dataset.lang===lang));node.disabled=state.busy||state.photoBusy;});
     $("step-label").textContent=c.steps[state.step];
     $("step-count").textContent=`${String(state.step+1).padStart(2,"0")} / 08`;
     $("progress").value=state.step+1;
@@ -117,7 +118,7 @@
     $("intake").hidden=state.submitted;
     $("history").hidden=state.submitted;
     $("submission-success").hidden=!state.submitted;
-    $("intake").setAttribute("aria-busy",String(state.busy));
+    $("intake").setAttribute("aria-busy",String(state.busy||state.photoBusy));
     $("fields").replaceChildren();
     if(state.submitted){
       $("status").hidden=true;
@@ -166,7 +167,7 @@
     }
     if (state.step===5 && uploadsEnabled) {
       const wrap=el("div",{class:"field"});wrap.append(el("label",{for:"photos"},c.photoLabel));
-      const input=el("input",{type:"file",id:"photos",accept:"image/jpeg,image/png,image/webp",multiple:"","aria-describedby":"photos-hint"});
+      const input=el("input",{type:"file",id:"photos",accept:".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp",multiple:"","aria-describedby":"photos-hint"});
       input.addEventListener("change",()=>addPhotos(input));
       wrap.append(input,el("small",{id:"photos-hint"},c.photoHint));
       f.append(wrap);
@@ -178,6 +179,7 @@
         fig.append(remove);grid.append(fig);
       });
       f.append(grid);
+      if(state.photos.length)f.append(el("p",{class:"note"},`${state.photos.length} ${state.photos.length===1?c.photoCountOne:c.photoCount}`));
     }
     if (state.step===6) {
       f.append(field("name",c.name,c.namePlaceholder,{min:2,max:80,autocomplete:"name"}),field("method",c.method,c.methods));
@@ -185,8 +187,8 @@
       f.append(field("email",`${c.email} (${emailRequired?c.required:c.optional})`,"vous@exemple.com",{type:"email",optional:!emailRequired,max:254,autocomplete:"email"}),field("phone",`${c.phone} (${!emailRequired?c.required:c.optional})`,"+1 514 555 0100",{type:"tel",optional:emailRequired,max:25,autocomplete:"tel"}));
     }
     if(state.step===7) renderReview(f);
-    $("reset").disabled=state.busy;
-    $("intake").querySelectorAll("input,textarea,select,button").forEach(node=>node.disabled=state.busy||(node.id==="send-direct"&&!deliveryConfigured));
+    $("reset").disabled=state.busy||state.photoBusy;
+    $("intake").querySelectorAll("input,textarea,select,button").forEach(node=>node.disabled=state.busy||state.photoBusy||(node.id==="send-direct"&&!deliveryConfigured));
     finishRender(focus);
   }
   function finishRender(focus){
@@ -265,8 +267,19 @@
     $("error").hidden=true;return true;
   }
   function showStatus(key){statusKey=key;$("status").textContent=t()[key];$("status").hidden=false;}
+  function stopNativeWatch(){clearTimeout(nativeNavigationTimer);nativeNavigationTimer=undefined;}
+  function nativeNavigationFailed(){
+    if(!state.nativePending)return;
+    stopNativeWatch();state.nativePending=false;state.busy=false;statusKey="sendError";
+    document.querySelectorAll('form[data-solvonord-delivery]').forEach(form=>form.remove());
+    render();$("status").focus();
+  }
+  window.addEventListener("pagehide",stopNativeWatch);
+  document.addEventListener("securitypolicyviolation",event=>{
+    if(event.effectiveDirective==="form-action")nativeNavigationFailed();
+  });
   async function sendDirect() {
-    if(state.submitted || !deliveryConfigured || state.busy || !readyToSend())return;
+    if(state.submitted || !deliveryConfigured || state.busy || state.photoBusy || !readyToSend())return;
     if(state.lastSend && Date.now()-state.lastSend<60000)return error(t().rateError);
     if(!state.reference)state.reference=`SN-${new Date().toISOString().slice(0,10).replaceAll("-","")}-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36).toUpperCase().padStart(7,"0")}`;
     state.busy=true;state.lastSend=Date.now();statusKey="sending";render();
@@ -285,7 +298,7 @@
         const receipt={reference:state.reference,lang,count:state.photos.length,token,createdAt:Date.now(),status:"pending"};
         sessionStorage.setItem(receiptKey,JSON.stringify(receipt));
         const target=new URL(receiptUrl);target.searchParams.set("lang",lang);target.searchParams.set("receipt",token);target.hash="demande";
-        const form=el("form",{method:"post",action:`https://formsubmit.co/${recipient}`,target:"_top",enctype:"multipart/form-data",hidden:""});
+        const form=el("form",{method:"post",action:`https://formsubmit.co/${recipient}`,target:"_top",enctype:"multipart/form-data","data-solvonord-delivery":"",hidden:""});
         payload._next=target.href;
         Object.entries(payload).forEach(([name,value])=>form.append(el("input",{type:"hidden",name,value})));
         if(form.elements.namedItem("_next")?.value!==target.href)throw new Error("Missing return address");
@@ -297,6 +310,8 @@
         // This navigation preserves the provider's verification; never disable CAPTCHA.
         document.querySelector('meta[name="referrer"]').content="strict-origin-when-cross-origin";
         document.body.append(form);state.nativePending=true;
+        // A blocked navigation must not leave the visitor locked in a busy state.
+        nativeNavigationTimer=setTimeout(nativeNavigationFailed,45000);
         HTMLFormElement.prototype.submit.call(form);
         return;
       }
@@ -312,11 +327,12 @@
       if(!response.ok || !accepted)throw new Error("Unconfirmed submission");
       state.submitted=true;statusKey="";
       document.dispatchEvent(new Event("solvonord:request-sent"));
-    } catch {state.nativePending=false;statusKey="sendError";}
+    } catch {stopNativeWatch();state.nativePending=false;statusKey="sendError";}
     finally {clearTimeout(timeout);if(!state.nativePending){state.busy=false;render(state.submitted);if(!state.submitted)$("status").focus();}}
   }
   window.addEventListener("pageshow",event=>{
     if(!event.persisted||!state.nativePending)return;
+    stopNativeWatch();
     state.nativePending=false;state.busy=false;
     let receipt;try{receipt=JSON.parse(sessionStorage.getItem(receiptKey));}catch{}
     state.submitted=receipt?.reference===state.reference&&receipt.status==="confirmed";
@@ -325,23 +341,42 @@
     render(true);
   });
   async function addPhotos(input) {
-    const files=Array.from(input.files||[]),accepted=[],epoch=++photoEpoch;
-    if(state.photos.length+files.length>maxPhotos)return error(t().photoError,input);
-    if([...state.photos.map(p=>p.file),...files].reduce((total,file)=>total+file.size,0)>9*1024*1024)return error(t().photoTotalError,input);
+    if(state.photoBusy||state.busy)return;
+    const files=Array.from(input.files||[]),accepted=[];
+    if(!files.length)return;
+    if(state.photos.length+files.length>maxPhotos){input.value="";return error(t().photoCountError,input);}
+    if([...state.photos.map(p=>p.file),...files].reduce((total,file)=>total+file.size,0)>9*1024*1024){input.value="";return error(t().photoTotalError,input);}
+    const epoch=++photoEpoch;
+    state.photoBusy=true;statusKey="photosLoading";render();
+    let failure="";
     // Validate actual image decoding as well as file type and size.
     try {
-      for(const file of files){
-        if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>5*1024*1024||!file.size)throw new Error("image");
+      for(let file of files){
+        const extension=file.name.split(".").pop().toLowerCase();
+        const type=file.type||({jpg:"image/jpeg",jpeg:"image/jpeg",png:"image/png",webp:"image/webp"})[extension];
+        if(!["image/jpeg","image/png","image/webp"].includes(type))throw new Error("photoFormatError");
+        if(file.size>5*1024*1024)throw new Error("photoSizeError");
+        if(!file.size)throw new Error("photoReadError");
+        if(!file.type)file=new File([file],file.name,{type});
         const url=URL.createObjectURL(file);accepted.push({url,file});
-        const image=new Image();image.src=url;await image.decode();
+        const image=new Image();image.src=url;
+        let timer;
+        try{await Promise.race([image.decode(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error("photoReadError")),20000);})]);}
+        finally{clearTimeout(timer);}
+        if(epoch!==photoEpoch){accepted.forEach(p=>URL.revokeObjectURL(p.url));return;}
       }
-      if(epoch!==photoEpoch){accepted.forEach(p=>URL.revokeObjectURL(p.url));return;}
-      state.photos.push(...accepted);state.summary="";state.summaryDirty=false;state.consent=false;render(true);
-    }catch{accepted.forEach(p=>URL.revokeObjectURL(p.url));input.value="";error(t().photoError,input);}
+      state.photos.push(...accepted);state.summary="";state.summaryDirty=false;state.consent=false;
+    }catch(cause){
+      accepted.forEach(p=>URL.revokeObjectURL(p.url));
+      if(epoch!==photoEpoch)return;
+      failure=["photoFormatError","photoSizeError","photoReadError"].includes(cause.message)?cause.message:"photoReadError";
+    }finally{
+      if(epoch===photoEpoch){state.photoBusy=false;statusKey="";render(true);if(failure)error(t()[failure],$("photos"));}
+    }
   }
   document.addEventListener("solvonord:service",event=>{
     const service=event.detail?.service;
-    if(state.busy||state.step!==0||!Object.hasOwn(t().services,service))return;
+    if(state.busy||state.photoBusy||state.step!==0||!Object.hasOwn(t().services,service))return;
     if(state.answers.service!==service)(details()?.fields||[]).forEach(([key])=>delete state.answers[key]);
     state.answers.service=service;state.summary="";state.summaryDirty=false;state.consent=false;state.step=1;statusKey="";document.dispatchEvent(new Event("solvonord:request-started"));render(true);
   });
@@ -362,10 +397,10 @@
       render();$("answer-method").focus();
     }
   });
-  $("intake").addEventListener("submit",event=>{event.preventDefault();if(state.busy||state.step===7||!validate())return;if(state.step===0)document.dispatchEvent(new Event("solvonord:request-started"));state.step++;statusKey="";render(true);});
-  $("back").onclick=()=>{if(state.busy)return;state.step=Math.max(0,state.step-1);statusKey="";render(true);};
+  $("intake").addEventListener("submit",event=>{event.preventDefault();if(state.busy||state.photoBusy||state.step===7||!validate())return;if(state.step===0)document.dispatchEvent(new Event("solvonord:request-started"));state.step++;statusKey="";render(true);});
+  $("back").onclick=()=>{if(state.busy||state.photoBusy)return;state.step=Math.max(0,state.step-1);statusKey="";render(true);};
   document.querySelectorAll("[data-lang]").forEach(button=>button.onclick=()=>{
-    if(state.busy)return;lang=button.dataset.lang;state.consent=false;
+    if(state.busy||state.photoBusy)return;lang=button.dataset.lang;state.consent=false;
     const url=new URL(location.href);url.searchParams.set("lang",lang);
     try{history.replaceState(null,"",url);}catch{/* file preview may restrict history */}
     render();button.focus();
@@ -376,7 +411,7 @@
   $("confirm-reset").onclick=()=>{
     photoEpoch++;
     state.photos.forEach(p=>URL.revokeObjectURL(p.url));
-    Object.assign(state,{step:0,answers:{},photos:[],summary:"",summaryDirty:false,consent:false,started:Date.now(),submitted:false,reference:"",photoFollowup:false});
+    Object.assign(state,{step:0,answers:{},photos:[],summary:"",summaryDirty:false,consent:false,started:Date.now(),photoBusy:false,submitted:false,reference:"",photoFollowup:false});
     try{sessionStorage.removeItem(receiptKey);const url=new URL(location.href);url.searchParams.delete("receipt");history.replaceState(null,"",url);}catch{}
     $("website").value="";statusKey="";$("reset-dialog").close();render(true);
   };
