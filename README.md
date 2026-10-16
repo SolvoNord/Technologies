@@ -2,6 +2,8 @@
 
 Portfolio bilingue français/anglais et assistant guidé de demande de service, réunis sur une seule page.
 
+Mise à jour du 16 octobre 2026 : accueil conversationnel FR/EN, messages en bulles, fil de la demande et réponses aux questions courantes (services, territoire, photos). L’assistant reste guidé, sans abonnement ni API d’IA. Les sept parcours, l’envoi des photos et la confirmation avec référence utilisent le fonctionnement existant. Le lien X a été retiré du site. La page `/signature/` présente une nouvelle signature professionnelle pour Outlook, avec copie enrichie, sélection manuelle et téléchargements HTML/texte; aucun compte X n’y figure. Le modèle utilise des tableaux et des styles intégrés adaptés aux courriels. Il doit être collé et enregistré dans les paramètres de signature du compte Outlook concerné.
+
 - Compte GitHub : **SolvoNord**
 - Dépôt de destination : **https://github.com/SolvoNord/Technologies**
 - Courriel public : **support@solvonord.com**

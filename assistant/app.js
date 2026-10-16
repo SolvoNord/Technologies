@@ -149,6 +149,9 @@
         list.append(button);
       });
       f.append(list);
+      const help=el("details",{class:"chat-help"});help.append(el("summary",{},c.faqTitle));
+      c.faq.forEach(([question,answer])=>{const item=el("details",{class:"chat-faq"});item.append(el("summary",{},question),el("p",{},answer));help.append(item);});
+      f.append(help);
     }
     if (state.step===1) f.append(field("description",c.description,c.descriptionPlaceholder,{multiline:true,min:10,max:700,hint:c.descriptionHint}));
     if (state.step===2) {

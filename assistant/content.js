@@ -1,4 +1,4 @@
-/* Bilingual interface copy. Visitor text is never translated automatically. */
+/* Bilingual guided assistant. Visitor answers are never automatically translated. */
 window.SN_CONTENT = {
   "fr": {
     "directEmail": "Courriel direct",
@@ -11,9 +11,9 @@ window.SN_CONTENT = {
     "p3": "Envoyez votre demande.",
     "preferEmail": "Vous préférez nous écrire?",
     "guided": "Assistant guidé gratuit, sans IA générative. Pour les particuliers et les entreprises.",
-    "assistantTitle": "L’assistant SolvoNord",
-    "assistantSub": "Quelques questions. Une demande bien préparée.",
-    "botLabel": "SOLVONORD • ASSISTANT GUIDÉ",
+    "assistantTitle": "Votre assistant SolvoNord",
+    "assistantSub": "Accueil et demandes de service · FR / EN",
+    "botLabel": "SOLVONORD VOUS ACCOMPAGNE",
     "reset": "Recommencer",
     "back": "Retour",
     "next": "Continuer",
@@ -33,16 +33,16 @@ window.SN_CONTENT = {
     "privacyService": "Lors de l’envoi, vos réponses, vos coordonnées et les photos choisies passent par {service} pour parvenir à SolvoNord Technologies (9512-6173 Québec inc.). Elles ne sont pas utilisées pour des envois marketing.",
     "steps": [
       "Votre besoin",
-      "En quelques mots",
-      "Les précisions utiles",
-      "Votre contexte",
-      "Le bon moment",
-      "Photos facultatives",
-      "Pour vous joindre",
-      "Vérifier et transmettre"
+      "Votre description",
+      "Les détails",
+      "Votre environnement",
+      "Vos disponibilités",
+      "Vos photos",
+      "Vos coordonnées",
+      "Votre résumé"
     ],
     "questions": [
-      "Bonjour! Comment pouvons-nous vous aider?",
+      "Bonjour! Parlons de votre besoin.",
       "Dites-moi ce qui vous amène.",
       "Précisons votre demande.",
       "Où avez-vous besoin de nous?",
@@ -52,7 +52,7 @@ window.SN_CONTENT = {
       "Votre demande est prête à être relue."
     ],
     "hints": [
-      "Choisissez le sujet le plus proche de votre besoin. Je vous guiderai, une étape à la fois.",
+      "Un problème à régler ou un projet à préparer? Choisissez un sujet pour commencer notre échange.",
       "Quelques phrases suffisent pour décrire le problème ou votre projet.",
       "Répondez à ce que vous savez. « Je ne sais pas » convient aussi.",
       "La ville ou le secteur suffit. Nous n’avons pas besoin de votre adresse précise à cette étape.",
@@ -164,7 +164,7 @@ window.SN_CONTENT = {
     "consentError": "Cochez la case pour nous autoriser à traiter votre demande.",
     "sensitiveError": "Retirez les mots de passe, codes de connexion, numéros d’identité ou coordonnées bancaires avant de continuer.",
     "spamError": "La demande n’a pas été envoyée. Patientez quelques secondes ou recommencez.",
-    "history": "Vos réponses précédentes",
+    "history": "Le fil de votre demande",
     "summaryTitle": "DEMANDE SOLVONORD TECHNOLOGIES",
     "summaryLabels": {
       "service": "Sujet",
@@ -362,7 +362,22 @@ window.SN_CONTENT = {
     "saveCopy": "Conserver une copie",
     "receiptUnconfirmed": "Nous ne pouvons pas afficher la confirmation de cette demande. Si vous l’avez déjà envoyée, contactez-nous par courriel avant de la renvoyer.",
     "privacyContactIntro": "Pour corriger ou supprimer vos informations,",
-    "privacyContactLink": "veuillez nous contacter"
+    "privacyContactLink": "veuillez nous contacter",
+    "faqTitle": "Une question avant de commencer?",
+    "faq": [
+      [
+        "Que peut faire cet assistant?",
+        "Il vous aide à préparer une demande de dépannage, d’installation ou de devis. Un membre de SolvoNord vous recontactera pour discuter de la solution."
+      ],
+      [
+        "Dans quels secteurs intervenez-vous?",
+        "Nous intervenons dans la grande région de Montréal et étudions les projets ailleurs au Québec selon le lieu et les travaux à réaliser."
+      ],
+      [
+        "Puis-je joindre des photos?",
+        "Oui, jusqu’à 6 photos JPG, PNG ou WebP : 5 Mo par image et 9 Mo au total. Vous pourrez vérifier votre demande avant de l’envoyer."
+      ]
+    ]
   },
   "en": {
     "directEmail": "Email us directly",
@@ -375,9 +390,9 @@ window.SN_CONTENT = {
     "p3": "Send your request.",
     "preferEmail": "Prefer to write to us?",
     "guided": "Free guided assistant, without generative AI. For homes and businesses.",
-    "assistantTitle": "The SolvoNord assistant",
-    "assistantSub": "A few questions. A well-prepared request.",
-    "botLabel": "SOLVONORD • GUIDED ASSISTANT",
+    "assistantTitle": "Your SolvoNord assistant",
+    "assistantSub": "Welcome and service requests · FR / EN",
+    "botLabel": "SOLVONORD IS HERE TO HELP",
     "reset": "Start over",
     "back": "Back",
     "next": "Continue",
@@ -397,16 +412,16 @@ window.SN_CONTENT = {
     "privacyService": "When you submit, your answers, contact details and selected photos pass through {service} to reach SolvoNord Technologies (9512-6173 Québec inc.). They are not used for marketing emails.",
     "steps": [
       "Your needs",
-      "In a few words",
-      "Helpful details",
-      "Your context",
-      "Timing",
-      "Optional photos",
+      "Your description",
+      "The details",
+      "Your environment",
+      "Your availability",
+      "Your photos",
       "Your contact details",
-      "Review and send"
+      "Your summary"
     ],
     "questions": [
-      "Hello! How can we help you?",
+      "Hello! Let’s talk about your needs.",
       "Tell me what brings you here.",
       "Let’s clarify your request.",
       "Where do you need our help?",
@@ -416,7 +431,7 @@ window.SN_CONTENT = {
       "Your request is ready to review."
     ],
     "hints": [
-      "Choose the topic closest to your needs. I’ll guide you, one step at a time.",
+      "An issue to resolve or a project to plan? Choose a topic to start our conversation.",
       "A few sentences are enough to describe the issue or your project.",
       "Answer what you can. “I don’t know” is fine too.",
       "A city or area is enough. We don’t need your exact address at this stage.",
@@ -528,7 +543,7 @@ window.SN_CONTENT = {
     "consentError": "Please check the box so we can handle your request.",
     "sensitiveError": "Remove passwords, sign-in codes, identity numbers or banking details before continuing.",
     "spamError": "The request was not sent. Wait a few seconds or start over.",
-    "history": "Your previous answers",
+    "history": "Your request so far",
     "summaryTitle": "SOLVONORD TECHNOLOGIES REQUEST",
     "summaryLabels": {
       "service": "Topic",
@@ -726,6 +741,21 @@ window.SN_CONTENT = {
     "saveCopy": "Keep a copy",
     "receiptUnconfirmed": "We cannot display confirmation for this request. If you have already sent it, email us before submitting it again.",
     "privacyContactIntro": "To correct or delete your information,",
-    "privacyContactLink": "please contact us"
+    "privacyContactLink": "please contact us",
+    "faqTitle": "A question before we start?",
+    "faq": [
+      [
+        "How can this assistant help?",
+        "It helps you prepare a support, installation or quote request. A member of SolvoNord will contact you to discuss the solution."
+      ],
+      [
+        "Which areas do you serve?",
+        "We work across Greater Montréal and consider projects elsewhere in Québec based on the location and work involved."
+      ],
+      [
+        "Can I add photos?",
+        "Yes, up to 6 JPG, PNG or WebP photos: 5 MB per image and 9 MB combined. You can review your request before sending it."
+      ]
+    ]
   }
 };
